@@ -1,295 +1,202 @@
 import { motion } from 'framer-motion'
-import { ArrowDown, ArrowUpRight, BarChart3, Globe2, Layers3, Sparkles } from 'lucide-react'
-import lntLogo from '../../assets/logo/lnt-logo.png'
+import {
+  ArrowDown,
+  ArrowUpRight,
+  Award,
+  CheckCircle2,
+  Server,
+  ShieldCheck,
+  Zap,
+} from 'lucide-react'
 
-const floatingItems = [
+// Hình ảnh kiến trúc công nghệ đón nắng & bầu trời xanh, hòa tan mượt mà vào nền trắng
+const daylightTechImage =
+  'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80'
+
+const credentials = [
   {
-    label: 'ERP',
-    icon: Layers3,
-    className: 'left-4 top-16',
+    icon: Award,
+    title: '20+ Years Excellence',
+    desc: 'Deep enterprise software implementation heritage',
   },
   {
-    label: 'Analytics',
-    icon: BarChart3,
-    className: 'right-0 top-28',
+    icon: ShieldCheck,
+    title: 'ISO 27001 Certified',
+    desc: 'Banking-grade data security & privacy standards',
   },
   {
-    label: 'Digital',
-    icon: Globe2,
-    className: 'bottom-24 left-10',
+    icon: Zap,
+    title: '99.9% High Availability',
+    desc: 'Cloud disaster recovery & zero-downtime SLA',
   },
   {
-    label: 'Innovation',
-    icon: Sparkles,
-    className: 'bottom-12 right-10',
+    icon: Server,
+    title: '500+ Deployments',
+    desc: 'Trusted by medium and large-scale enterprises',
   },
+]
+
+const techStandards = [
+  'AWS Cloud Partner',
+  'Microsoft Azure',
+  'Oracle Database',
+  'SAP Integration Ready',
+  'PostgreSQL',
+  'Kubernetes & Docker',
 ]
 
 function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden bg-[#f7fbff] pt-20"
+      className="relative overflow-hidden bg-white pt-24 text-slate-900 lg:pt-28"
     >
-      {/* Background Glow */}
-      <motion.div
-        animate={{
-          x: [0, 30, 0],
-          y: [0, -20, 0],
-          scale: [1, 1.08, 1],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="pointer-events-none absolute -right-32 top-24 h-[500px] w-[500px] rounded-full bg-[#38bde8]/15 blur-3xl"
-      />
+      {/* =====================================================
+          HÌNH ẢNH NỀN SÁNG PHÍA BÊN PHẢI (CHUẨN MISYNERGY)
+      ===================================================== */}
+      <div className="pointer-events-none absolute right-0 top-0 h-[680px] z-0 hidden w-full overflow-hidden lg:block lg:w-[48%] xl:w-[45%]">
+        <img
+          src={daylightTechImage}
+          alt="LNTBOOST Enterprise Growth & Technology"
+          className="h-full w-full object-cover object-center opacity-65"
+          loading="eager"
+        />
 
-      <motion.div
-        animate={{
-          x: [0, -20, 0],
-          y: [0, 25, 0],
-          scale: [1, 1.05, 1],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="pointer-events-none absolute -bottom-40 -left-32 h-[450px] w-[450px] rounded-full bg-[#087bc1]/10 blur-3xl"
-      />
+        {/* Lớp phủ gradient trắng xóa viền hoàn toàn, tạo không gian thoáng đãng */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/55 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white to-transparent" />
+      </div>
 
-      <div className="relative z-10 mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-12 px-6 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
-        {/* Left Content */}
+      {/* =====================================================
+          KHUNG NỘI DUNG CHÍNH HERO
+      ===================================================== */}
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 lg:px-8 lg:pb-20">
         <div className="max-w-2xl">
-          {/* Logo */}
+          {/* Eyebrow badge */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.7 }}
-            className="mb-8"
+            viewport={{ once: false, amount: 0.15 }}
+            transition={{ duration: 0.4 }}
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#087bc1]/20 bg-[#087bc1]/5 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#087bc1]"
           >
-            <img
-              src={lntLogo}
-              alt="LNTSoft"
-              className="h-20 w-20 object-contain"
-            />
+            <span className="h-1.5 w-1.5 rounded-full bg-[#087bc1]" />
+            LNTBOOST · ENTERPRISE SOLUTIONS
           </motion.div>
 
-          {/* Eyebrow */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="mb-5 flex items-center gap-3"
-          >
-            <span className="h-px w-8 bg-[#087bc1]" />
-
-            <span className="text-xs font-semibold uppercase tracking-[0.28em] text-[#087bc1]">
-              Technology & Innovation
-            </span>
-          </motion.div>
-
-          {/* Heading */}
+          {/* Headline */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            className="text-5xl font-semibold leading-[0.98] tracking-[-0.04em] text-[#15194f] sm:text-6xl lg:text-7xl"
+            viewport={{ once: false, amount: 0.15 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl font-extrabold uppercase tracking-tight text-[#15194f] sm:text-4xl lg:text-5xl leading-[1.18]"
           >
-            Technology
+            Empower Your Business
             <br />
-            that drives
+            Connect Your Enterprise
             <br />
-            <span className="bg-gradient-to-r from-[#163d91] via-[#087bc1] to-[#24a6d8] bg-clip-text text-transparent">
-              business.
+            <span className="text-[#087bc1]">
+              Scale for the Future
             </span>
           </motion.h1>
 
-          {/* Description */}
+          {/* Subtitle */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-7 max-w-xl text-base leading-7 text-slate-600 sm:text-lg"
+            viewport={{ once: false, amount: 0.15 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-6 max-w-xl text-sm leading-relaxed text-slate-500 sm:text-base sm:leading-7 font-normal"
           >
-            Building innovative technology solutions that help businesses
-            operate smarter, adapt faster, and move forward.
+            Cloud ERP and intelligent software solutions to unify business operations,
+            optimize performance, and accelerate digital transformation.
           </motion.p>
 
-          {/* CTA */}
+          {/* CTA Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="mt-9 flex flex-wrap items-center gap-4"
+            viewport={{ once: false, amount: 0.15 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-8 flex flex-wrap items-center gap-4"
           >
             <a
               href="#solutions"
-              className="group flex items-center gap-3 rounded-full bg-[#087bc1] px-6 py-3.5 text-sm font-semibold text-white shadow-xl shadow-[#087bc1]/20 transition-all duration-300 hover:-translate-y-1 hover:bg-[#076da9] hover:shadow-2xl hover:shadow-[#087bc1]/25"
+              className="group flex items-center gap-2.5 rounded-full bg-[#087bc1] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-[#087bc1]/20 transition-all duration-300 hover:bg-[#076da9] hover:shadow-lg hover:-translate-y-0.5"
             >
-              Discover LNTSoft
-
+              Explore Our Solutions
               <ArrowUpRight
-                size={17}
+                size={16}
                 className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               />
             </a>
 
             <a
-              href="#about"
-              className="text-sm font-semibold text-slate-600 transition-colors hover:text-[#087bc1]"
+              href="#contact"
+              className="flex items-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-xs transition-all duration-300 hover:border-[#087bc1] hover:text-[#087bc1] hover:-translate-y-0.5"
             >
-              Who we are
+              Schedule Live Demo
             </a>
           </motion.div>
         </div>
-
-        {/* Right Visual */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.92, x: 30 }}
-          whileInView={{ opacity: 1, scale: 1, x: 0 }}
-          viewport={{ once: false, amount: 0.25 }}
-          transition={{ duration: 1, ease: 'easeOut' }}
-          className="relative mx-auto h-[480px] w-full max-w-[560px] lg:h-[580px]"
-        >
-          {/* Main Orb */}
-          <motion.div
-            animate={{
-              rotate: 360,
-            }}
-            transition={{
-              duration: 35,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
-            className="absolute left-1/2 top-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#087bc1]/10"
-          >
-            <div className="absolute -right-2 top-1/2 h-3 w-3 rounded-full bg-[#24a6d8] shadow-lg shadow-[#24a6d8]/40" />
-          </motion.div>
-
-          <motion.div
-            animate={{
-              rotate: -360,
-            }}
-            transition={{
-              duration: 45,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
-            className="absolute left-1/2 top-1/2 h-[430px] w-[430px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#38bde8]/10"
-          >
-            <div className="absolute left-1/2 -top-1 h-2.5 w-2.5 rounded-full bg-[#087bc1]" />
-          </motion.div>
-
-          {/* Center Glow */}
-          <motion.div
-            animate={{
-              scale: [1, 1.08, 1],
-              opacity: [0.7, 1, 0.7],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-[#163d91] via-[#087bc1] to-[#38bde8] opacity-80 blur-2xl"
-          />
-
-          {/* Center Logo */}
-          <motion.div
-            animate={{
-              y: [0, -8, 0],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            className="absolute left-1/2 top-1/2 flex h-44 w-44 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[2.5rem] border border-white/40 bg-white/20 shadow-2xl shadow-[#087bc1]/20 backdrop-blur-xl"
-          >
-            <div className="flex h-32 w-32 items-center justify-center rounded-[2rem] bg-white shadow-xl">
-              <img
-                src={lntLogo}
-                alt="LNTSoft"
-                className="h-24 w-24 object-contain"
-              />
-            </div>
-          </motion.div>
-
-          {/* Floating Items */}
-          {floatingItems.map((item, index) => {
-            const Icon = item.icon
-
-            return (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: false, amount: 0.25 }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.35 + index * 0.1,
-                }}
-                animate={{
-                  y: [0, index % 2 === 0 ? -8 : 8, 0],
-                }}
-                className={`absolute ${item.className}`}
-              >
-                <div className="flex items-center gap-2 rounded-full border border-white/70 bg-white/80 px-4 py-2.5 text-xs font-semibold text-slate-700 shadow-lg shadow-slate-900/5 backdrop-blur-xl">
-                  <Icon size={15} className="text-[#087bc1]" />
-                  {item.label}
-                </div>
-              </motion.div>
-            )
-          })}
-
-          {/* Small Decorative Dots */}
-          <motion.div
-            animate={{
-              scale: [1, 1.4, 1],
-              opacity: [0.4, 1, 0.4],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-            }}
-            className="absolute right-16 top-12 h-2 w-2 rounded-full bg-[#24a6d8]"
-          />
-
-          <motion.div
-            animate={{
-              scale: [1, 1.4, 1],
-              opacity: [0.4, 1, 0.4],
-            }}
-            transition={{
-              duration: 3.5,
-              repeat: Infinity,
-              delay: 1,
-            }}
-            className="absolute bottom-20 left-20 h-2 w-2 rounded-full bg-[#087bc1]"
-          />
-        </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.a
-        href="#about"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: false }}
-        transition={{ duration: 0.8, delay: 0.8 }}
-        animate={{ y: [0, 6, 0] }}
-        className="absolute bottom-7 left-1/2 -translate-x-1/2 text-[#087bc1]/60 transition-colors hover:text-[#087bc1]"
-      >
-        <ArrowDown size={20} />
-      </motion.a>
+      {/* =====================================================
+          DẢI BẢO CHỨNG UY TÍN & CHUẨN CÔNG NGHỆ (GẮN LIỀN CHÂN HERO)
+      ===================================================== */}
+      <div className="relative z-10 border-t border-slate-200/90 bg-slate-50/70 py-10">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          {/* Credential Metrics Grid */}
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {credentials.map((item, idx) => {
+              const Icon = item.icon
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.35, delay: idx * 0.08 }}
+                  className="flex items-start gap-3.5"
+                >
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-[#087bc1] shadow-xs border border-slate-200/80">
+                    <Icon size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-[#15194f]">
+                      {item.title}
+                    </h4>
+                    <p className="mt-0.5 text-xs leading-relaxed text-slate-500">
+                      {item.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              )
+            })}
+          </div>
+
+          {/* Technology Standards Strip */}
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200/80 pt-6">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+              Technology Standards & Compatibility:
+            </span>
+
+            <div className="flex flex-wrap items-center gap-5 text-xs font-medium text-slate-500">
+              {techStandards.map((tech) => (
+                <span
+                  key={tech}
+                  className="inline-flex items-center gap-1.5 transition-colors hover:text-[#087bc1]"
+                >
+                  <CheckCircle2 size={13} className="text-[#087bc1]" />
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }

@@ -3,40 +3,31 @@ import { ArrowUpRight, Mail, MapPin, Phone } from 'lucide-react'
 import lntLogo from '../../assets/logo/lnt-logo.png'
 
 const solutionLinks = [
-  'ERP Solution',
-  'Apparel Product Suite',
-  'Data Analytics',
-  'Insurance Solutions',
+  { label: 'Core ERP & MES Modules', href: '#solutions' },
+  { label: 'Apparel Manufacturing MES', href: '#industries' },
+  { label: 'FinTech & Core Banking', href: '#industries' },
+  { label: 'Add-On Ecosystem', href: '#solutions' },
 ]
 
 const companyLinks = [
   { label: 'About Us', href: '#about' },
-  { label: 'Why LNTSoft', href: '#why-lntsoft' },
-  { label: 'Our Impact', href: '#impact' },
-  { label: 'Contact Us', href: '#contact' },
+  { label: 'Our Methodology', href: '#methodology' },
+  { label: 'Industry Specialization', href: '#industries' },
+  { label: 'Contact & Demo', href: '#contact' },
 ]
 
 function Footer() {
   return (
     <footer className="relative overflow-hidden bg-[#0d1038] text-white">
-      <motion.div
-        animate={{ x: [0, 40, 0], y: [0, -20, 0], scale: [1, 1.08, 1] }}
-        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-        className="pointer-events-none absolute -right-40 -top-40 h-[450px] w-[450px] rounded-full bg-[#087bc1]/15 blur-[120px]"
-      />
-
-      <motion.div
-        animate={{ x: [0, -30, 0], y: [0, 30, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-        className="pointer-events-none absolute -bottom-40 -left-40 h-[400px] w-[400px] rounded-full bg-[#38bde8]/10 blur-[120px]"
-      />
+      <div className="pointer-events-none absolute -right-40 -top-40 h-[450px] w-[450px] rounded-full bg-[#087bc1]/12 blur-[100px] transform-gpu" />
+      <div className="pointer-events-none absolute -bottom-40 -left-40 h-[400px] w-[400px] rounded-full bg-[#38bde8]/10 blur-[100px] transform-gpu" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid gap-14 border-b border-white/10 py-16 lg:grid-cols-[1.4fr_0.8fr_0.8fr_1fr] lg:py-20">
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.15 }}
             transition={{ duration: 0.7 }}
           >
             <a href="#hero" className="inline-flex items-center gap-3">
@@ -66,7 +57,7 @@ function Footer() {
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.15 }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
             <h3 className="text-sm font-semibold text-white">
@@ -75,12 +66,12 @@ function Footer() {
 
             <ul className="mt-6 space-y-4">
               {solutionLinks.map((item) => (
-                <li key={item}>
+                <li key={item.label}>
                   <a
-                    href="#featured-solutions"
+                    href={item.href}
                     className="text-sm text-white/40 transition-colors duration-300 hover:text-[#38bde8]"
                   >
-                    {item}
+                    {item.label}
                   </a>
                 </li>
               ))}
@@ -90,7 +81,7 @@ function Footer() {
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.15 }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             <h3 className="text-sm font-semibold text-white">
@@ -114,7 +105,7 @@ function Footer() {
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.15 }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
             <h3 className="text-sm font-semibold text-white">

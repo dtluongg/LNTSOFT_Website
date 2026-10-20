@@ -1,0 +1,100 @@
+[
+  {
+    "id": "core",
+    "name": "Core Solutions & Modules",
+    "items": [
+      {
+        "title": "Enterprise Resource Planning (ERP)",
+        "icon": "BuildingComplex",
+        "href": "#solutions"
+      },
+      {
+        "title": "Manufacturing & Manufacturing Execution System (MES)",
+        "icon": "Factory",
+        "href": "#solutions"
+      },
+      {
+        "title": "Supply Chain & Warehouse Management",
+        "icon": "Warehouse",
+        "href": "#solutions"
+      },
+      {
+        "title": "Sales & Distribution",
+        "icon": "ShoppingCart",
+        "href": "#solutions"
+      },
+      {
+        "title": "Management Accounting",
+        "icon": "Calculator",
+        "href": "#solutions"
+      },
+      {
+        "title": "Business Intelligence & Analytics",
+        "icon": "ChartNoAxesCombined",
+        "href": "#solutions"
+      },
+      {
+        "title": "Artificial Intelligence (AI) & Machine Learning",
+        "icon": "BrainCircuit",
+        "href": "#solutions"
+      },
+      {
+        "title": "Workflow & Document Management",
+        "icon": "Workflow",
+        "href": "#solutions"
+      },
+      {
+        "title": "Mobile & Digital Applications",
+        "icon": "Smartphone",
+        "href": "#solutions"
+      },
+      {
+        "title": "System Integration & Platform Services",
+        "icon": "Network",
+        "href": "#solutions"
+      }
+    ]
+  },
+  {
+    "id": "industry",
+    "name": "Industry-Specific Solutions",
+    "items": [
+      {
+        "title": "Apparel ERP & MES Solution",
+        "icon": "Shirt",
+        "href": "#solutions"
+      },
+      {
+        "title": "FinTech Solutions Implementation & Integration",
+        "icon": "Landmark",
+        "href": "#solutions"
+      }
+    ]
+  },
+  {
+    "id": "addon",
+    "name": "Featured Add-On Solutions",
+    "items": [
+      {
+        "title": "Document Automation & PDF Generation",
+        "icon": "FileText",
+        "href": "#solutions"
+      },
+      {
+        "title": "eDoc Digital Document Management",
+        "icon": "FolderArchive",
+        "href": "#solutions"
+      },
+      {
+        "title": "Remote Visual Assistance & Customer Support Platform",
+        "icon": "Headphones",
+        "href": "#solutions"
+      },
+      {
+        "title": "Data Analytics Toolkit",
+        "icon": "ChartPie",
+        "href": "#solutions"
+      }
+    ]
+  }
+]

@@ -10,18 +10,7 @@ function About() {
           BACKGROUND DECORATION
       ===================================================== */}
 
-      <motion.div
-        animate={{
-          x: [0, 30, 0],
-          y: [0, -20, 0],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="pointer-events-none absolute top-20 -right-40 h-96 w-96 rounded-full bg-[#38bde8]/8 blur-3xl"
-      />
+      <div className="pointer-events-none absolute top-20 -right-40 h-96 w-96 rounded-full bg-[#38bde8]/8 blur-3xl transform-gpu" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* =====================================================
@@ -35,7 +24,7 @@ function About() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: false, amount: 0.15 }}
               transition={{ duration: 0.7 }}
               className="mb-5 flex items-center gap-3"
             >
@@ -47,7 +36,7 @@ function About() {
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: false, amount: 0.15 }}
               transition={{
                 duration: 0.9,
                 delay: 0.1,
@@ -64,7 +53,7 @@ function About() {
           <motion.p
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: false, amount: 0.15 }}
             transition={{
               duration: 0.8,
               delay: 0.2,
@@ -97,7 +86,7 @@ function About() {
             }}
             viewport={{
               once: false,
-              amount: 0.2,
+              amount: 0.15,
             }}
             transition={{
               duration: 1,
@@ -110,7 +99,7 @@ function About() {
             <motion.img
               initial={{ scale: 1.08 }}
               whileInView={{ scale: 1 }}
-              viewport={{ once: false, amount: 0.2 }}
+              viewport={{ once: false, amount: 0.15 }}
               transition={{
                 duration: 1.4,
                 ease: [0.22, 1, 0.36, 1],
@@ -143,7 +132,7 @@ function About() {
               }}
               viewport={{
                 once: false,
-                amount: 0.2,
+                amount: 0.15,
               }}
               transition={{
                 duration: 0.7,
@@ -181,7 +170,7 @@ function About() {
               }}
               viewport={{
                 once: false,
-                amount: 0.2,
+                amount: 0.15,
               }}
               transition={{
                 duration: 0.8,
@@ -221,7 +210,7 @@ function About() {
               }}
               viewport={{
                 once: false,
-                amount: 0.2,
+                amount: 0.15,
               }}
               transition={{
                 duration: 0.9,
@@ -298,7 +287,7 @@ function Stat({ icon: Icon, value, label, delay }: StatProps) {
       }}
       viewport={{
         once: false,
-        amount: 0.3,
+        amount: 0.15,
       }}
       transition={{
         duration: 0.7,
