@@ -12,10 +12,14 @@ const services = [
   'Training & Certifications',
 ]
 
-function Navbar() {
+export interface NavbarProps {
+  currentPage?: 'home' | 'product'
+  onNavigate?: (page: 'home' | 'product', targetId?: string) => void
+}
+
+function Navbar({ currentPage = 'home', onNavigate }: NavbarProps = {}) {
   const [scrolled, setScrolled] = useState(false)
   const [openMenu, setOpenMenu] = useState<'products' | 'services' | null>(null)
-  const [activeCategoryIndex, setActiveCategoryIndex] = useState(0)
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const menuTimeoutRef = useRef<NodeJS.Timeout | null>(null)
@@ -57,6 +61,18 @@ function Navbar() {
     setOpenMenu(null)
   }
 
+  const handleSectionNav = (
+    e: React.MouseEvent,
+    targetSection: string,
+    targetPage: 'home' | 'product' = 'home'
+  ) => {
+    closeMenu()
+    if (onNavigate) {
+      e.preventDefault()
+      onNavigate(targetPage, targetSection)
+    }
+  }
+
   return (
     <header
       className="fixed inset-x-0 top-0 z-50"
@@ -71,7 +87,16 @@ function Navbar() {
       >
         <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
           {/* Brand Logo */}
-          <a href="/" className="flex items-center">
+          <a
+            href="/"
+            onClick={(e) => {
+              if (onNavigate) {
+                e.preventDefault()
+                onNavigate('home')
+              }
+            }}
+            className="flex items-center cursor-pointer"
+          >
             <img
               src={lntLogo}
               alt="LNTSoft"
@@ -81,19 +106,32 @@ function Navbar() {
 
           {/* Desktop Navigation Links */}
           <div className="hidden items-center gap-2 md:flex">
-            {/* PRODUCTS (Hover trigger) */}
+            {/* PRODUCTS (Hover trigger & click to #product page) */}
             <div
               className="relative"
               onMouseEnter={() => handleMouseEnter('products')}
             >
-              <button
-                type="button"
-                onClick={() =>
-                  setOpenMenu(openMenu === 'products' ? null : 'products')
-                }
+              <a
+                href="#product"
+                onClick={(e) => {
+                  closeMenu()
+                  if (onNavigate) {
+                    e.preventDefault()
+                    onNavigate('product', 'product')
+                  } else {
+                    const el = document.getElementById('product')
+                    if (el) {
+                      const navOffset = 80
+                      const elementPosition = el.getBoundingClientRect().top
+                      const offsetPosition =
+                        elementPosition + window.pageYOffset - navOffset
+                      window.scrollTo({ top: offsetPosition, behavior: 'smooth' })
+                    }
+                  }
+                }}
                 className={`group flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold tracking-wide transition-colors cursor-pointer ${
-                  openMenu === 'products'
-                    ? 'text-[#087bc1] bg-sky-50/80'
+                  currentPage === 'product' || openMenu === 'products'
+                    ? 'text-[#087bc1] font-bold bg-sky-50/80'
                     : 'text-slate-700 hover:text-[#087bc1]'
                 }`}
               >
@@ -106,7 +144,7 @@ function Navbar() {
                       : 'text-slate-400 group-hover:text-[#087bc1]'
                   }`}
                 />
-              </button>
+              </a>
             </div>
 
             {/* SERVICES (Hover trigger) */}
@@ -150,7 +188,7 @@ function Navbar() {
                       <a
                         key={service}
                         href="#contact"
-                        onClick={closeMenu}
+                        onClick={(e) => handleSectionNav(e, 'contact', 'home')}
                         className="group flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-colors duration-200 hover:bg-slate-50 hover:text-[#087bc1]"
                       >
                         <span>{service}</span>
@@ -168,8 +206,8 @@ function Navbar() {
             {/* INDUSTRIES */}
             <a
               href="#industries"
-              onClick={closeMenu}
-              className="rounded-full px-4 py-2 text-sm font-semibold tracking-wide text-slate-700 transition-colors hover:text-[#087bc1]"
+              onClick={(e) => handleSectionNav(e, 'industries', 'home')}
+              className="rounded-full px-4 py-2 text-sm font-semibold tracking-wide text-slate-700 transition-colors hover:text-[#087bc1] cursor-pointer"
             >
               INDUSTRIES
             </a>
@@ -177,8 +215,8 @@ function Navbar() {
             {/* METHODOLOGY */}
             <a
               href="#methodology"
-              onClick={closeMenu}
-              className="rounded-full px-4 py-2 text-sm font-semibold tracking-wide text-slate-700 transition-colors hover:text-[#087bc1]"
+              onClick={(e) => handleSectionNav(e, 'methodology', 'home')}
+              className="rounded-full px-4 py-2 text-sm font-semibold tracking-wide text-slate-700 transition-colors hover:text-[#087bc1] cursor-pointer"
             >
               METHODOLOGY
             </a>
@@ -186,8 +224,8 @@ function Navbar() {
             {/* ABOUT */}
             <a
               href="#about"
-              onClick={closeMenu}
-              className="rounded-full px-4 py-2 text-sm font-semibold tracking-wide text-slate-700 transition-colors hover:text-[#087bc1]"
+              onClick={(e) => handleSectionNav(e, 'about', 'home')}
+              className="rounded-full px-4 py-2 text-sm font-semibold tracking-wide text-slate-700 transition-colors hover:text-[#087bc1] cursor-pointer"
             >
               ABOUT
             </a>
@@ -195,8 +233,8 @@ function Navbar() {
             {/* CONTACT */}
             <a
               href="#contact"
-              onClick={closeMenu}
-              className="ml-3 flex items-center gap-2 rounded-full bg-[#087bc1] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#087bc1]/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#076da9]"
+              onClick={(e) => handleSectionNav(e, 'contact', currentPage)}
+              className="ml-3 flex items-center gap-2 rounded-full bg-[#087bc1] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#087bc1]/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#076da9] cursor-pointer"
             >
               CONTACT
               <ArrowUpRight size={15} />
@@ -218,10 +256,9 @@ function Navbar() {
         <AnimatePresence>
           {openMenu === 'products' && (
             <ProductsMegaMenu
-              activeCategoryIndex={activeCategoryIndex}
-              setActiveCategoryIndex={setActiveCategoryIndex}
               onClose={closeMenu}
               onMouseEnter={() => handleMouseEnter('products')}
+              onNavigate={onNavigate}
             />
           )}
         </AnimatePresence>
@@ -236,16 +273,94 @@ function Navbar() {
               className="overflow-hidden border-t border-slate-200/70 bg-white md:hidden"
             >
               <div className="space-y-2 px-6 py-5">
-                <a
-                  href="#solutions"
-                  onClick={() => setMobileOpen(false)}
-                  className="block py-3 text-sm font-semibold text-slate-800"
-                >
-                  PRODUCTS
-                </a>
+                {/* Mobile Products Accordion with 5 Categories */}
+                <details className="group" open>
+                  <summary className="flex cursor-pointer list-none items-center justify-between py-2.5 text-sm font-semibold text-slate-800">
+                    <span
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        setMobileOpen(false)
+                        handleSectionNav(e, 'product', 'product')
+                      }}
+                      className={`font-bold cursor-pointer ${
+                        currentPage === 'product' ? 'text-[#087bc1]' : 'text-slate-900'
+                      }`}
+                    >
+                      PRODUCTS (LNTBOOST ERP)
+                    </span>
+                    <ChevronDown
+                      size={17}
+                      className="transition-transform duration-200 group-open:rotate-180"
+                    />
+                  </summary>
 
+                  <div className="space-y-1 pb-2 pl-3">
+                    <a
+                      href="#product"
+                      onClick={(e) => {
+                        setMobileOpen(false)
+                        handleSectionNav(e, 'product', 'product')
+                      }}
+                      className="block rounded-lg px-3 py-2 text-xs font-semibold text-[#087bc1] bg-sky-50"
+                    >
+                      Overview (LNTBOOST Cloud ERP)
+                    </a>
+                    <a
+                      href="#commercial"
+                      onClick={(e) => {
+                        setMobileOpen(false)
+                        handleSectionNav(e, 'commercial', 'product')
+                      }}
+                      className="block rounded-lg px-3 py-2 text-xs text-slate-600 hover:bg-slate-50 hover:text-[#087bc1]"
+                    >
+                      Commercial (CRM & Sales)
+                    </a>
+                    <a
+                      href="#supply-chain"
+                      onClick={(e) => {
+                        setMobileOpen(false)
+                        handleSectionNav(e, 'supply-chain', 'product')
+                      }}
+                      className="block rounded-lg px-3 py-2 text-xs text-slate-600 hover:bg-slate-50 hover:text-[#087bc1]"
+                    >
+                      Supply Chain (Procurement & IWM)
+                    </a>
+                    <a
+                      href="#manufacturing-operations"
+                      onClick={(e) => {
+                        setMobileOpen(false)
+                        handleSectionNav(e, 'manufacturing-operations', 'product')
+                      }}
+                      className="block rounded-lg px-3 py-2 text-xs text-slate-600 hover:bg-slate-50 hover:text-[#087bc1]"
+                    >
+                      Manufacturing Operations (MRP & MES)
+                    </a>
+                    <a
+                      href="#financial-management"
+                      onClick={(e) => {
+                        setMobileOpen(false)
+                        handleSectionNav(e, 'financial-management', 'product')
+                      }}
+                      className="block rounded-lg px-3 py-2 text-xs text-slate-600 hover:bg-slate-50 hover:text-[#087bc1]"
+                    >
+                      Financial Management (Costing)
+                    </a>
+                    <a
+                      href="#enterprise-management"
+                      onClick={(e) => {
+                        setMobileOpen(false)
+                        handleSectionNav(e, 'enterprise-management', 'product')
+                      }}
+                      className="block rounded-lg px-3 py-2 text-xs text-slate-600 hover:bg-slate-50 hover:text-[#087bc1]"
+                    >
+                      Enterprise Management (BI Analytics)
+                    </a>
+                  </div>
+                </details>
+
+                {/* SERVICES */}
                 <details className="group">
-                  <summary className="flex cursor-pointer list-none items-center justify-between py-3 text-sm font-semibold text-slate-800">
+                  <summary className="flex cursor-pointer list-none items-center justify-between py-2.5 text-sm font-semibold text-slate-800">
                     SERVICES
                     <ChevronDown
                       size={17}
@@ -258,8 +373,11 @@ function Navbar() {
                       <a
                         key={service}
                         href="#contact"
-                        onClick={() => setMobileOpen(false)}
-                        className="block rounded-lg px-3 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-[#087bc1]"
+                        onClick={(e) => {
+                          setMobileOpen(false)
+                          handleSectionNav(e, 'contact', 'home')
+                        }}
+                        className="block rounded-lg px-3 py-2 text-xs text-slate-600 hover:bg-slate-50 hover:text-[#087bc1]"
                       >
                         {service}
                       </a>
@@ -269,31 +387,43 @@ function Navbar() {
 
                 <a
                   href="#industries"
-                  onClick={() => setMobileOpen(false)}
-                  className="block py-3 text-sm font-semibold text-slate-800"
+                  onClick={(e) => {
+                    setMobileOpen(false)
+                    handleSectionNav(e, 'industries', 'home')
+                  }}
+                  className="block py-2.5 text-sm font-semibold text-slate-800"
                 >
                   INDUSTRIES
                 </a>
 
                 <a
                   href="#methodology"
-                  onClick={() => setMobileOpen(false)}
-                  className="block py-3 text-sm font-semibold text-slate-800"
+                  onClick={(e) => {
+                    setMobileOpen(false)
+                    handleSectionNav(e, 'methodology', 'home')
+                  }}
+                  className="block py-2.5 text-sm font-semibold text-slate-800"
                 >
                   METHODOLOGY
                 </a>
 
                 <a
                   href="#about"
-                  onClick={() => setMobileOpen(false)}
-                  className="block py-3 text-sm font-semibold text-slate-800"
+                  onClick={(e) => {
+                    setMobileOpen(false)
+                    handleSectionNav(e, 'about', 'home')
+                  }}
+                  className="block py-2.5 text-sm font-semibold text-slate-800"
                 >
                   ABOUT
                 </a>
 
                 <a
                   href="#contact"
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => {
+                    setMobileOpen(false)
+                    handleSectionNav(e, 'contact', currentPage)
+                  }}
                   className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-[#087bc1] px-5 py-3 text-sm font-semibold text-white"
                 >
                   CONTACT

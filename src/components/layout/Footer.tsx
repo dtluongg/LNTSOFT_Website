@@ -3,16 +3,18 @@ import { ArrowUpRight, Mail, MapPin, Phone } from 'lucide-react'
 import lntLogo from '../../assets/logo/lnt-logo.png'
 
 const solutionLinks = [
-  { label: 'Core ERP & MES Modules', href: '#solutions' },
-  { label: 'Apparel Manufacturing MES', href: '#industries' },
-  { label: 'FinTech & Core Banking', href: '#industries' },
-  { label: 'Add-On Ecosystem', href: '#solutions' },
+  { label: 'LNTBOOST Cloud ERP', href: '#product' },
+  { label: 'Commercial (CRM & Sales)', href: '#commercial' },
+  { label: 'Supply Chain (IWM)', href: '#supply-chain' },
+  { label: 'Manufacturing Operations (MES)', href: '#manufacturing-operations' },
+  { label: 'Financial Management', href: '#financial-management' },
+  { label: 'Enterprise Management (BI)', href: '#enterprise-management' },
 ]
 
 const companyLinks = [
-  { label: 'About Us', href: '#about' },
-  { label: 'Our Methodology', href: '#methodology' },
-  { label: 'Industry Specialization', href: '#industries' },
+  { label: 'About Us', href: '/#about' },
+  { label: 'Our Methodology', href: '/#methodology' },
+  { label: 'Industry Specialization', href: '/#industries' },
   { label: 'Contact & Demo', href: '#contact' },
 ]
 
