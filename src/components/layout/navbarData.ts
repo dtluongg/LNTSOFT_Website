@@ -6,85 +6,126 @@ import {
   Coins,
   BarChart3,
   Scissors,
-  Boxes,
   Landmark,
   HelpCircle,
   FileCheck,
   GraduationCap,
+  Cloud,
+  Sparkles,
+  FileText,
+  FolderArchive,
+  Video,
+  LineChart,
 } from 'lucide-react'
+
+export interface NavSubItem {
+  id: string
+  name: string
+  desc?: string
+  badge?: string
+  icon?: React.ComponentType<{ size?: number; className?: string }>
+  targetPage?: 'home' | 'product' | 'industry'
+  targetId?: string
+}
 
 export interface NavMenuCategory {
   id: string
   title: string
   subtitle?: string
+  badge?: string
   icon?: React.ComponentType<{ size?: number; className?: string }>
   description?: string
-  targetPage?: 'home' | 'product'
+  targetPage?: 'home' | 'product' | 'industry'
   targetId?: string
-  // NẾU SAU NÀY MUỐN CÓ MỤC CON: Thêm mảng `items: [...]` vào đây
-  items?: {
-    id: string
-    name: string
-    desc?: string
-    badge?: string
-    targetPage?: 'home' | 'product'
-    targetId?: string
-  }[]
+  items?: NavSubItem[]
 }
 
 // -----------------------------------------------------------------------
-// 1. DỮ LIỆU PRODUCTS
+// 1. PRODUCTS DATA (2 Tiers: Core ERP + Add-on Platforms)
 // -----------------------------------------------------------------------
 export const productCategories: NavMenuCategory[] = [
   {
-    id: 'commercial',
-    title: 'Commercial & Sales',
-    subtitle: 'CRM & Omnichannel Orders',
-    icon: Users,
-    description: 'Streamline customer relationships, pricing agreements, sales orders, and delivery pipelines with automated billing.',
+    id: 'lntboost-erp',
+    title: 'LNTBOOST Cloud ERP',
+    subtitle: 'Core Enterprise Resource Planning Suite',
+    badge: '5 Modules',
+    icon: Cloud,
+    description: 'Comprehensive end-to-end ERP suite connecting sales, warehouse supply chain, manufacturing shop-floor, finance and executive BI.',
     targetPage: 'product',
-    targetId: 'commercial',
+    targetId: 'product',
+    items: [
+      {
+        id: 'commercial',
+        name: 'Commercial & Sales',
+        desc: 'CRM, pricing agreements, sales orders & delivery pipelines',
+        icon: Users,
+      },
+      {
+        id: 'supply-chain',
+        name: 'Supply Chain & Warehouse',
+        desc: 'Procurement, automated reorder thresholds & barcode IWM',
+        icon: Truck,
+      },
+      {
+        id: 'manufacturing-operations',
+        name: 'Manufacturing Operations',
+        desc: 'MRP planning, shop-floor execution & inline QC inspection',
+        icon: Factory,
+      },
+      {
+        id: 'financial-management',
+        name: 'Financial Management',
+        desc: 'Product costing, variance analysis, GL & automated tax',
+        icon: Coins,
+      },
+      {
+        id: 'enterprise-management',
+        name: 'Enterprise Management',
+        desc: 'Executive analytics, predictive KPI drill-downs & control',
+        icon: BarChart3,
+      },
+    ],
   },
   {
-    id: 'supply-chain',
-    title: 'Supply Chain & Warehouse',
-    subtitle: 'Procurement & IWM',
-    icon: Truck,
-    description: 'Centralized vendor management, automated reorder thresholds, smart bin-allocation, and barcode inventory sync.',
+    id: 'featured-addons',
+    title: 'Featured Add-On Solutions',
+    subtitle: 'Specialized Productivity & Extension Tools',
+    badge: '4 Modules',
+    icon: Sparkles,
+    description: 'Plug-and-play extension platforms engineered to streamline automated document workflows, customer support and advanced analytics.',
     targetPage: 'product',
-    targetId: 'supply-chain',
-  },
-  {
-    id: 'manufacturing-operations',
-    title: 'Manufacturing Operations',
-    subtitle: 'MRP & MES Execution',
-    icon: Factory,
-    description: 'Material requirements planning, real-time shop-floor data collection, machine downtime logs, and automated QC.',
-    targetPage: 'product',
-    targetId: 'manufacturing-operations',
-  },
-  {
-    id: 'financial-management',
-    title: 'Financial Management',
-    subtitle: 'Costing & Accounting',
-    icon: Coins,
-    description: 'Standard product lifecycle costing, variance analysis, GL, multi-entity settlement, and automated tax compliance.',
-    targetPage: 'product',
-    targetId: 'financial-management',
-  },
-  {
-    id: 'enterprise-management',
-    title: 'Enterprise Management',
-    subtitle: 'BI & Executive Insights',
-    icon: BarChart3,
-    description: 'Executive dashboards, predictive forecasting, KPI drill-downs, and centralized role-based access control.',
-    targetPage: 'product',
-    targetId: 'enterprise-management',
+    targetId: 'featured-addons',
+    items: [
+      {
+        id: 'doc-automation',
+        name: 'Document Automation & PDF Generation',
+        desc: 'Automated invoice, contract & high-throughput template rendering engine',
+        icon: FileText,
+      },
+      {
+        id: 'edoc-management',
+        name: 'eDoc Digital Document Management',
+        desc: 'Centralized document repository with role-based access & versioning',
+        icon: FolderArchive,
+      },
+      {
+        id: 'remote-assistance',
+        name: 'Remote Visual Assistance & Support',
+        desc: 'Live interactive video support & on-site technical troubleshooting',
+        icon: Video,
+      },
+      {
+        id: 'data-analytics',
+        name: 'Data Analytics Toolkit',
+        desc: 'Advanced business intelligence, ETL data pipelines & custom KPI metrics',
+        icon: LineChart,
+      },
+    ],
   },
 ]
 
 // -----------------------------------------------------------------------
-// 2. DỮ LIỆU SERVICES
+// 2. SERVICES DATA
 // -----------------------------------------------------------------------
 export const serviceCategories: NavMenuCategory[] = [
   {
@@ -117,7 +158,7 @@ export const serviceCategories: NavMenuCategory[] = [
 ]
 
 // -----------------------------------------------------------------------
-// 3. DỮ LIỆU INDUSTRIES
+// 3. INDUSTRIES DATA
 // -----------------------------------------------------------------------
 export const industryCategoriesData: NavMenuCategory[] = [
   {
@@ -126,8 +167,7 @@ export const industryCategoriesData: NavMenuCategory[] = [
     subtitle: 'Full Factory Visibility',
     icon: Factory,
     description: 'Integrated system designed for high-mix manufacturing companies to control operations from raw materials to shipment.',
-    targetPage: 'home',
-    targetId: 'industries',
+    targetPage: 'industry',
   },
   {
     id: 'apparel',
@@ -135,8 +175,7 @@ export const industryCategoriesData: NavMenuCategory[] = [
     subtitle: 'Textile & Garment Production',
     icon: Scissors,
     description: 'The proven FX PRO Suite: real-time sewing line balancing, style sampling, cut-plans, and defect heatmaps.',
-    targetPage: 'home',
-    targetId: 'industries',
+    targetPage: 'industry',
   },
   {
     id: 'fintech',
@@ -144,8 +183,6 @@ export const industryCategoriesData: NavMenuCategory[] = [
     subtitle: 'Open Banking & Treasury Engine',
     icon: Landmark,
     description: 'Enterprise open banking APIs, real-time multi-bank automated reconciliation, and predictive cashflow microservices.',
-    targetPage: 'home',
-    targetId: 'industries',
+    targetPage: 'industry',
   },
 ]
-
