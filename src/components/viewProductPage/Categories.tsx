@@ -205,7 +205,7 @@ export default function Categories({ initialTargetId }: CategoriesProps = {}) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-4 text-3xl font-extrabold tracking-tight text-[#15194f] sm:text-4xl lg:text-5xl"
+            className="mt-4 text-3xl font-bold tracking-tight text-[#15194f] sm:text-4xl lg:text-5xl"
           >
             Complete Business Solutions, One Platform
           </motion.h2>

@@ -23,7 +23,7 @@ export default function CTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl"
+          className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl"
         >
           Ready to Transform Your Business?
         </motion.h2>

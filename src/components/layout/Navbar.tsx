@@ -59,9 +59,19 @@ interface NavDrawerProps {
   categories: NavMenuCategory[]
   onItemClick: (cat: NavMenuCategory, sub?: NavSubItem) => void
   onClose: () => void
+  onMouseEnter?: () => void
+  onMouseLeave?: () => void
 }
 
-function NavDrawer({ title, tagline, categories, onItemClick, onClose }: NavDrawerProps) {
+function NavDrawer({
+  title,
+  tagline,
+  categories,
+  onItemClick,
+  onClose,
+  onMouseEnter,
+  onMouseLeave,
+}: NavDrawerProps) {
   const drawerRef = useRef<HTMLDivElement>(null)
   const hasSubItems = categories.some((c) => c.items && c.items.length > 0)
   const [activeParentId, setActiveParentId] = useState<string | null>(
@@ -93,6 +103,8 @@ function NavDrawer({ title, tagline, categories, onItemClick, onClose }: NavDraw
       {/* Drawer Container */}
       <motion.div
         ref={drawerRef}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -8 }}
@@ -375,6 +387,7 @@ export function Navbar({ currentPage = 'home', onNavigate }: NavbarProps = {}) {
   const [scrolled, setScrolled] = useState(false)
   const [activeMenu, setActiveMenu] = useState<DropdownMenuKey | null>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -382,12 +395,35 @@ export function Navbar({ currentPage = 'home', onNavigate }: NavbarProps = {}) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const closeMenu = () => setActiveMenu(null)
-  const toggleMenu = (menu: DropdownMenuKey) => {
-    setActiveMenu((prev) => (prev === menu ? null : menu))
+  // Xóa timeout đóng hover nếu có
+  const clearHoverTimeout = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current)
+      hoverTimeoutRef.current = null
+    }
   }
 
-  // Unified Item Navigation Handler
+  // Đóng ngay lập tức mega drawer
+  const closeMenu = () => {
+    clearHoverTimeout()
+    setActiveMenu(null)
+  }
+
+  // Hover vào nav cha -> Mở mega drawer tương ứng
+  const handleMouseEnter = (menu: DropdownMenuKey) => {
+    clearHoverTimeout()
+    setActiveMenu(menu)
+  }
+
+  // Rời chuột khỏi nav cha hoặc drawer -> Đóng sau 180ms delay mượt mà
+  const handleMouseLeave = () => {
+    clearHoverTimeout()
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActiveMenu(null)
+    }, 180)
+  }
+
+  // Unified Item Navigation Handler (khi click vào mục con trong drawer)
   const handleItemNavigate = (cat: NavMenuCategory, sub?: NavSubItem) => {
     closeMenu()
     const page = sub?.targetPage || cat.targetPage || 'home'
@@ -429,20 +465,26 @@ export function Navbar({ currentPage = 'home', onNavigate }: NavbarProps = {}) {
     }
   }
 
-  const handleDropdownClick = (
+  // Click vào nav lớn: Chuyển trang NGAY LẬP TỨC và ĐÓNG drawer để người dùng thấy rõ trang mới
+  const handleNavClick = (
     e: React.MouseEvent,
-    menu: DropdownMenuKey,
-    page?: PageRoute
+    item: (typeof NAV_DROPDOWNS)[number]
   ) => {
     e.preventDefault()
-    if (page && currentPage !== page) {
+    closeMenu()
+
+    const page = item.page
+    if (page) {
       if (onNavigate) {
         onNavigate(page, page)
       } else {
         window.location.hash = `#${page}`
       }
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      // Với SERVICES (không có trang riêng), điều hướng tới solutions hoặc contact
+      handleSectionNav(e, 'solutions', 'home')
     }
-    toggleMenu(menu)
   }
 
   return (
@@ -458,7 +500,9 @@ export function Navbar({ currentPage = 'home', onNavigate }: NavbarProps = {}) {
           {/* Logo */}
           <a
             href="/"
+            onMouseEnter={closeMenu}
             onClick={(e) => {
+              closeMenu()
               if (onNavigate) {
                 e.preventDefault()
                 onNavigate('home')
@@ -470,28 +514,37 @@ export function Navbar({ currentPage = 'home', onNavigate }: NavbarProps = {}) {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden items-center gap-1.5 md:flex">
+          <div
+            className="hidden items-center gap-1.5 md:flex"
+            onMouseLeave={handleMouseLeave}
+          >
             {NAV_DROPDOWNS.map((item) => {
-              const isSelected = currentPage === item.page || activeMenu === item.id
+              const isSelected = currentPage === item.page
+              const isOpen = activeMenu === item.id
               return (
-                <button
+                <div
                   key={item.id}
-                  type="button"
-                  onClick={(e) => handleDropdownClick(e, item.id, item.page)}
-                  className={`group flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold tracking-wide transition-colors cursor-pointer ${
-                    isSelected
-                      ? 'bg-slate-100 text-[#087bc1] font-bold'
-                      : 'text-slate-700 hover:text-[#087bc1]'
-                  }`}
+                  className="relative"
+                  onMouseEnter={() => handleMouseEnter(item.id)}
                 >
-                  <span>{item.label}</span>
-                  <ChevronDown
-                    size={15}
-                    className={`transition-transform duration-200 ${
-                      activeMenu === item.id ? 'rotate-180 text-[#087bc1]' : 'text-slate-400'
+                  <button
+                    type="button"
+                    onClick={(e) => handleNavClick(e, item)}
+                    className={`group flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold tracking-wide transition-colors cursor-pointer ${
+                      isSelected || isOpen
+                        ? 'bg-slate-100 text-[#087bc1]'
+                        : 'text-slate-700 hover:text-[#087bc1]'
                     }`}
-                  />
-                </button>
+                  >
+                    <span>{item.label}</span>
+                    <ChevronDown
+                      size={15}
+                      className={`transition-transform duration-200 ${
+                        isOpen ? 'rotate-180 text-[#087bc1]' : 'text-slate-400'
+                      }`}
+                    />
+                  </button>
+                </div>
               )
             })}
 
@@ -499,6 +552,7 @@ export function Navbar({ currentPage = 'home', onNavigate }: NavbarProps = {}) {
               <a
                 key={link.id}
                 href={`#${link.id}`}
+                onMouseEnter={closeMenu}
                 onClick={(e) => handleSectionNav(e, link.id, 'home')}
                 className="rounded-full px-3.5 py-2 text-sm font-semibold tracking-wide text-slate-700 transition-colors hover:text-[#087bc1] cursor-pointer"
               >
@@ -508,8 +562,9 @@ export function Navbar({ currentPage = 'home', onNavigate }: NavbarProps = {}) {
 
             <a
               href="#contact"
+              onMouseEnter={closeMenu}
               onClick={(e) => handleSectionNav(e, 'contact', currentPage)}
-              className="ml-2 flex items-center gap-1.5 rounded-full bg-[#087bc1] px-4.5 py-2 text-xs sm:text-sm font-bold text-white shadow-md shadow-[#087bc1]/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#076da9] cursor-pointer"
+              className="ml-2 flex items-center gap-1.5 rounded-full bg-[#087bc1] px-4.5 py-2 text-xs sm:text-sm font-semibold text-white shadow-md shadow-[#087bc1]/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#076da9] cursor-pointer"
             >
               CONTACT
               <ArrowUpRight size={14} />
@@ -536,6 +591,8 @@ export function Navbar({ currentPage = 'home', onNavigate }: NavbarProps = {}) {
               categories={DRAWER_CONFIGS[activeMenu].categories}
               onItemClick={handleItemNavigate}
               onClose={closeMenu}
+              onMouseEnter={clearHoverTimeout}
+              onMouseLeave={handleMouseLeave}
             />
           )}
         </AnimatePresence>

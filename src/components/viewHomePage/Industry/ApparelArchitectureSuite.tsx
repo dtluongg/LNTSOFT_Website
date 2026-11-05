@@ -522,7 +522,7 @@ export default function ApparelArchitectureSuite() {
                       </div>
 
                       {/* Main Title */}
-                      <h3 className="text-2xl sm:text-[27px] font-black text-[#15194f] tracking-tight leading-snug">
+                      <h3 className="text-2xl sm:text-[27px] font-bold text-[#15194f] tracking-tight leading-snug">
                         {activeModule.title || activeModule.fullName}
                       </h3>
                       <div className="h-1.5 w-20 bg-gradient-to-r from-[#087bc1] to-sky-400 rounded-full mt-2 mb-3.5" />
@@ -545,12 +545,12 @@ export default function ApparelArchitectureSuite() {
                         </span>
                       </div>
 
-                      {/* 2-Column Features Checklist (To, chữ đậm, checkmark xanh lá chuẩn) */}
+                      {/* 2-Column Features Checklist (To, chữ đậm vừa, checkmark xanh lá chuẩn) */}
                       <div className="grid grid-cols-2 gap-x-5 gap-y-2.5">
                         {activeModule.features?.slice(0, 6).map((feat, idx) => (
                           <div key={idx} className="flex items-start gap-2.5">
                             <CheckCircle2 size={18} className="text-emerald-600 shrink-0 mt-0.5" />
-                            <span className="text-xs sm:text-[13px] font-bold text-slate-800 leading-snug">
+                            <span className="text-xs sm:text-[13px] font-semibold text-slate-800 leading-snug">
                               {feat}
                             </span>
                           </div>

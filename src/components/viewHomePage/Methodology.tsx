@@ -99,7 +99,7 @@ function Methodology() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.15 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-4 text-3xl font-extrabold tracking-tight text-[#15194f] sm:text-4xl lg:text-5xl"
+            className="mt-4 text-3xl font-bold tracking-tight text-[#15194f] sm:text-4xl lg:text-5xl"
           >
             A Systematic Roadmap to Digital Transformation
           </motion.h2>

@@ -31,7 +31,7 @@ export default function FinTechSection() {
               <Landmark size={14} />
               <span>ENTERPRISE OPEN BANKING & CORPORATE TREASURY</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#15194f] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#15194f] tracking-tight">
               FinTech Infrastructure & Open Banking Solutions
             </h2>
             <p className="text-sm sm:text-base text-slate-600 mt-1.5 max-w-2xl">
@@ -43,7 +43,7 @@ export default function FinTechSection() {
           <div className="flex items-center gap-3 shrink-0">
             {metrics.map((m, idx) => (
               <div key={idx} className="rounded-2xl bg-slate-50 border border-slate-200 px-4 py-2.5 text-center min-w-[105px]">
-                <div className="text-base sm:text-lg font-black text-[#15194f]">{m.value}</div>
+                <div className="text-base sm:text-lg font-bold text-[#15194f]">{m.value}</div>
                 <div className="text-[11px] text-slate-500 font-semibold">{m.label}</div>
               </div>
             ))}

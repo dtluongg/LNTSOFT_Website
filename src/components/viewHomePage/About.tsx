@@ -42,7 +42,7 @@ function About() {
                 delay: 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="max-w-2xl text-4xl leading-[1.03] font-semibold tracking-[-0.04em] text-[#15194f] sm:text-5xl lg:text-6xl"
+              className="max-w-2xl text-4xl leading-[1.08] font-semibold tracking-tight text-[#15194f] sm:text-5xl lg:text-6xl"
             >
               Technology that moves <span className="text-[#087bc1]">business forward.</span>
             </motion.h2>

@@ -238,7 +238,7 @@ export function IndustryFocus() {
             <div className="inline-flex items-center gap-2 rounded-full border border-[#087bc1]/20 bg-[#087bc1]/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#087bc1]">
               <Layers size={13} /> INDUSTRY FOCUS
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#15194f]">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#15194f]">
               Specialized Industry Engineering
             </h2>
 

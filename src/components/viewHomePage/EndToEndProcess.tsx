@@ -129,7 +129,7 @@ function EndToEndProcess() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl leading-[1.12]"
+              className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl leading-[1.12]"
             >
               How We Build Your Solutions from{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38bde8] via-sky-300 to-[#24a6d8]">

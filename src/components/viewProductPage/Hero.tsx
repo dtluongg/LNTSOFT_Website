@@ -53,7 +53,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-5 text-3xl font-extrabold tracking-tight text-[#15194f] sm:text-4xl lg:text-5xl leading-[1.18]"
+              className="mt-5 text-3xl font-bold tracking-tight text-[#15194f] sm:text-4xl lg:text-5xl leading-[1.18]"
             >
               Integrated Enterprise Solutions for Smarter Business Operations
             </motion.h1>

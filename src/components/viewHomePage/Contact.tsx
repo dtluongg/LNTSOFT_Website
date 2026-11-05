@@ -55,7 +55,7 @@ function Contact() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: false, amount: 0.15 }}
                   transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                  className="max-w-2xl text-4xl font-semibold leading-[1.04] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
+                  className="max-w-2xl text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl"
                 >
                   Schedule an Enterprise{' '}
                   <span className="text-[#38bde8]">Consultation & Demo.</span>

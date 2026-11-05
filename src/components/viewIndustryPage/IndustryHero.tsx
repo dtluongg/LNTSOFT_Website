@@ -54,7 +54,7 @@ export default function IndustryHero({ onSelectIndustry }: IndustryHeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#15194f] tracking-tight leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#15194f] tracking-tight leading-tight"
           >
             Purpose-Built ERP & Software Suites For High-Mix Industries
           </motion.h1>
@@ -79,7 +79,7 @@ export default function IndustryHero({ onSelectIndustry }: IndustryHeroProps) {
             <button
               type="button"
               onClick={() => scrollTo('manufacturing-erp')}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200/90 shadow-sm text-xs sm:text-sm font-bold text-slate-800 transition-all hover:-translate-y-0.5 hover:border-[#087bc1]/50 cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200/90 shadow-sm text-xs sm:text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-[#087bc1]/50 cursor-pointer"
             >
               <Factory size={16} className="text-[#087bc1]" />
               <span>Manufacturing ERP</span>
@@ -89,7 +89,7 @@ export default function IndustryHero({ onSelectIndustry }: IndustryHeroProps) {
             <button
               type="button"
               onClick={() => scrollTo('apparel')}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200/90 shadow-sm text-xs sm:text-sm font-bold text-slate-800 transition-all hover:-translate-y-0.5 hover:border-[#087bc1]/50 cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200/90 shadow-sm text-xs sm:text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-[#087bc1]/50 cursor-pointer"
             >
               <Scissors size={16} className="text-amber-500" />
               <span>Apparel ERP & MES</span>
@@ -99,7 +99,7 @@ export default function IndustryHero({ onSelectIndustry }: IndustryHeroProps) {
             <button
               type="button"
               onClick={() => scrollTo('fintech')}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200/90 shadow-sm text-xs sm:text-sm font-bold text-slate-800 transition-all hover:-translate-y-0.5 hover:border-[#087bc1]/50 cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200/90 shadow-sm text-xs sm:text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-[#087bc1]/50 cursor-pointer"
             >
               <Landmark size={16} className="text-emerald-600" />
               <span>FinTech Solutions</span>

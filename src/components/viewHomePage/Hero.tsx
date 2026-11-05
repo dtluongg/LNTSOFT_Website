@@ -91,7 +91,7 @@ function Hero() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.15 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl font-extrabold uppercase tracking-tight text-[#15194f] sm:text-4xl lg:text-5xl leading-[1.18]"
+            className="text-3xl font-bold tracking-tight text-[#15194f] sm:text-4xl lg:text-5xl leading-[1.18]"
           >
             Empower Your Business
             <br />

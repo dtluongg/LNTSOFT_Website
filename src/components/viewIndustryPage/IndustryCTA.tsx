@@ -23,7 +23,7 @@ export default function IndustryCTA() {
           <span>TAILORED INDUSTRY DEPLOYMENT</span>
         </div>
 
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight max-w-3xl mx-auto leading-tight">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight max-w-3xl mx-auto leading-tight">
           Ready to Modernize Your Industry Operations?
         </h2>
 
@@ -35,7 +35,7 @@ export default function IndustryCTA() {
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href="#contact"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-xl bg-white px-7 py-3.5 text-sm font-extrabold text-[#15194f] shadow-xl hover:bg-slate-100 transition-all hover:scale-102 cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-xl bg-white px-7 py-3.5 text-sm font-bold text-[#15194f] shadow-xl hover:bg-slate-100 transition-all hover:scale-102 cursor-pointer"
           >
             <span>Schedule an Industry Consultation</span>
             <ArrowRight size={16} />
@@ -43,7 +43,7 @@ export default function IndustryCTA() {
 
           <a
             href="tel:+84900000000"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 backdrop-blur px-6 py-3.5 text-sm font-bold text-white hover:bg-white/20 transition-all cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 backdrop-blur px-6 py-3.5 text-sm font-semibold text-white hover:bg-white/20 transition-all cursor-pointer"
           >
             <PhoneCall size={15} />
             <span>Speak with an Architect</span>
