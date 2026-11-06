@@ -33,7 +33,7 @@ const DRAWER_CONFIGS: Record<
   },
   industries: {
     title: 'Industry-Specific Engineering',
-    tagline: 'Domain expertise battle-tested for Manufacturing, Apparel & FinTech',
+    tagline: 'Streamline Operations. Optimize Production. Empower Growth.',
     categories: industryCategoriesData,
   },
 }
@@ -337,7 +337,7 @@ function NavDrawer({
 
                     <div className="mt-4 pt-3 border-t border-slate-50 flex items-center justify-between">
                       <span className="text-xs font-bold text-[#087bc1] group-hover:underline">
-                        Access Module
+                        Explore Solutions
                       </span>
                       <span className="text-xs text-slate-400 group-hover:text-[#087bc1] transition-colors">
                         →
@@ -364,7 +364,7 @@ function NavDrawer({
               onClick={onClose}
               className="font-bold text-[#087bc1] hover:underline flex items-center gap-1"
             >
-              <span>Need customized solution architecture? Contact our engineers</span>
+              <span>Looking for a Customized Solution? Contact Our Team.</span>
               <ArrowUpRight size={12} />
             </a>
           </div>

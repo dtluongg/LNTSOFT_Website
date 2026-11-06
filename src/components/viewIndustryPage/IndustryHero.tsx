@@ -3,12 +3,13 @@ import { motion } from 'framer-motion'
 import {
   Sparkles,
   Factory,
-  Scissors,
+  Shirt,
   Landmark,
   ArrowDown,
   Layers,
   ShieldCheck,
-  Zap,
+  RefreshCw,
+  
 } from 'lucide-react'
 
 interface IndustryHeroProps {
@@ -36,7 +37,7 @@ export default function IndustryHero({ onSelectIndustry }: IndustryHeroProps) {
       <div className="pointer-events-none absolute top-1/2 -left-20 h-80 w-80 rounded-full bg-blue-100/35 blur-[110px]" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-        <div className="max-w-3xl mx-auto text-center space-y-4">
+        <div className="max-w-5xl mx-auto text-center space-y-4">
           
           {/* Badge */}
           <motion.div
@@ -46,7 +47,7 @@ export default function IndustryHero({ onSelectIndustry }: IndustryHeroProps) {
             className="inline-flex items-center gap-2 rounded-full border border-[#087bc1]/25 bg-[#087bc1]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[#087bc1] shadow-xs"
           >
             <Layers size={13} />
-            <span>SPECIALIZED INDUSTRY ENGINEERING</span>
+            <span>POWERING INDUSTRIES THROUGH INNOVATION</span>
           </motion.div>
 
           {/* Heading */}
@@ -56,7 +57,15 @@ export default function IndustryHero({ onSelectIndustry }: IndustryHeroProps) {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#15194f] tracking-tight leading-tight"
           >
-            Purpose-Built ERP & Software Suites For High-Mix Industries
+            Industry-Specific Solutions.
+          </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#15194f] tracking-tight leading-tight"
+          >
+            Smarter Business. Stronger Growth.
           </motion.h1>
 
           {/* Tagline */}
@@ -66,7 +75,7 @@ export default function IndustryHero({ onSelectIndustry }: IndustryHeroProps) {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto"
           >
-            Eliminate operational silos with industry-tailored platforms engineered to solve deep manufacturing bottlenecks, fast-turnaround apparel execution, and high-throughput corporate FinTech.
+            LNTSOFT empowers businesses across diverse industries with intelligent enterprise software solutions. We combine industry knowledge, innovative technology, and practical expertise to help organizations streamline operations, improve efficiency, and accelerate digital transformation.
           </motion.p>
 
           {/* Quick Jump Industry Pills */}
@@ -91,7 +100,7 @@ export default function IndustryHero({ onSelectIndustry }: IndustryHeroProps) {
               onClick={() => scrollTo('apparel')}
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200/90 shadow-sm text-xs sm:text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-[#087bc1]/50 cursor-pointer"
             >
-              <Scissors size={16} className="text-amber-500" />
+              <Shirt size={16} className="text-amber-500" />
               <span>Apparel ERP & MES</span>
               <ArrowDown size={13} className="text-slate-400" />
             </button>
@@ -116,15 +125,15 @@ export default function IndustryHero({ onSelectIndustry }: IndustryHeroProps) {
           >
             <span className="flex items-center gap-1.5">
               <ShieldCheck size={15} className="text-emerald-600" />
-              <span>Enterprise Grade Reliability</span>
+              <span>Enterprise-Grade Reliability</span>
             </span>
             <span className="flex items-center gap-1.5">
-              <Zap size={15} className="text-[#087bc1]" />
-              <span>Real-Time Operational Sync</span>
+              <RefreshCw size={15} className="text-[#087bc1]" />
+              <span>Real-Time Operational Integration</span>
             </span>
             <span className="flex items-center gap-1.5">
               <Sparkles size={15} className="text-amber-500" />
-              <span>20+ Years Domain Engineering</span>
+              <span>20+ Years of Industry Expertise</span>
             </span>
           </motion.div>
 

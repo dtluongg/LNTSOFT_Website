@@ -112,7 +112,7 @@ export const apparelCapabilities: ApparelCapability[] = [
   },
 
   // =========================================================================
-  // NỘI DUNG 03: Style Costing & Pre-Production (Mẫu chờ cập nhật)
+  // NỘI DUNG 03:
   // =========================================================================
   {
     id: 'capacity-planning-order-scheduling',
@@ -170,7 +170,7 @@ export const apparelCapabilities: ApparelCapability[] = [
   },
 
   // =========================================================================
-  // NỘI DUNG 04: Intelligent Warehouse & Fabric Management (Mẫu chờ cập nhật)
+  // NỘI DUNG 04: Intelligen
   // =========================================================================
   {
     id: 'material-planning-procurement-management',
@@ -240,7 +240,7 @@ export const apparelCapabilities: ApparelCapability[] = [
   },
 
   // =========================================================================
-  // NỘI DUNG 05: Cutting Room & Marker Optimization (Mẫu chờ cập nhật)
+  // NỘI DUNG 05: Cut
   // =========================================================================
   {
     id: 'cost-planning-financial-control',
@@ -310,7 +310,7 @@ export const apparelCapabilities: ApparelCapability[] = [
   },
 
   // =========================================================================
-  // NỘI DUNG 06: Quality Assurance & Defect Analytics (Mẫu chờ cập nhật)
+  // NỘI DUNG 06: Quali
   // =========================================================================
   {
     id: 'integrated-warehouse-management',
@@ -377,7 +377,7 @@ export const apparelCapabilities: ApparelCapability[] = [
   },
 
   // =========================================================================
-  // NỘI DUNG 07: Sub-Contracting & Supply Chain Portal (Mẫu chờ cập nhật)
+  // NỘI DUNG 07: Sub-Co
   // =========================================================================
   {
     id: 'critical-path-activity-management',
@@ -447,7 +447,7 @@ export const apparelCapabilities: ApparelCapability[] = [
   },
 
   // =========================================================================
-  // NỘI DUNG 08: Executive Analytics & Order Tracking (Mẫu chờ cập nhật)
+  // NỘI DUNG 08: Execu
   // =========================================================================
   {
     id: 'mes-fg-management',
