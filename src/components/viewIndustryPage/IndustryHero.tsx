@@ -9,7 +9,6 @@ import {
   Layers,
   ShieldCheck,
   RefreshCw,
-  
 } from 'lucide-react'
 
 interface IndustryHeroProps {
@@ -50,22 +49,15 @@ export default function IndustryHero({ onSelectIndustry }: IndustryHeroProps) {
             <span>POWERING INDUSTRIES THROUGH INNOVATION</span>
           </motion.div>
 
-          {/* Heading */}
+          {/* Main Headline (Gộp thành 1 H1 duy nhất, khoảng cách tự nhiên, không bị hở xa) */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="max-w-5xl mx-auto text-3xl sm:text-4xl lg:text-5xl font-bold text-[#15194f] tracking-tight leading-tight"
+            className="max-w-5xl mx-auto text-3xl sm:text-4xl lg:text-5xl font-bold text-[#15194f] tracking-tight leading-[1.2] font-heading"
           >
-            Industry-Specific Solutions.
-          </motion.h1>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="max-w-5xl mx-auto text-3xl sm:text-4xl lg:text-5xl font-bold text-[#15194f] tracking-tight leading-tight"
-          >
-            Smarter Business. Stronger Growth.
+            <span>Industry-Specific Solutions.</span>
+            <span className="block mt-1 sm:mt-1.5">Smarter Business. Stronger Growth.</span>
           </motion.h1>
 
           {/* Tagline */}
@@ -73,25 +65,29 @@ export default function IndustryHero({ onSelectIndustry }: IndustryHeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="max-w-3xl text-justify text-base sm:text-lg text-slate-600 leading-relaxed w-full mx-auto"
+            className="max-w-3xl text-justify text-base sm:text-lg text-slate-600 leading-relaxed w-full mx-auto font-sans"
           >
-            LNTSOFT empowers businesses a,,,cross diverse industries with intelligent enterprise software solutions. We combine industry knowledge, innovative technology, and practical expertise to help organizations streamline operations, improve efficiency, and accelerate digital transformation.
+            LNTSOFT empowers businesses across diverse industries with intelligent enterprise software solutions. We combine industry knowledge, innovative technology, and practical expertise to help organizations streamline operations, improve efficiency, and accelerate digital transformation.
           </motion.p>
 
-          {/* Quick Jump Industry Pills */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+          {/* Quick Jump Section Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="max-w-5xl mx-auto text- sm:text-2xl lg:text-3xl font-bold text-[#15194f] tracking-tight leading-tight"
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="pt-3"
           >
-            EXPLORE OUR INDUSTRY SOLUTIONS
-          </motion.h1>
+            <h2 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-500 font-heading">
+              EXPLORE OUR INDUSTRY SOLUTIONS
+            </h2>
+          </motion.div>
+
+          {/* Quick Jump Industry Pills */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="pt-4 flex flex-wrap items-center justify-center gap-3"
+            className="flex flex-wrap items-center justify-center gap-3"
           >
             <button
               type="button"
@@ -150,4 +146,3 @@ export default function IndustryHero({ onSelectIndustry }: IndustryHeroProps) {
     </div>
   )
 }
-

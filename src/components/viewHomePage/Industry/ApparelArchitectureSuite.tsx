@@ -227,6 +227,22 @@ function ModulePreviewMockup({ module }: { module: ApparelModuleDetail }) {
 export default function ApparelArchitectureSuite() {
   const [hoveredId, setHoveredId] = useState<string | null>(null)
   const [hoveredOval, setHoveredOval] = useState<string | null>(null)
+  const [scale, setScale] = useState<number>(1)
+
+  useEffect(() => {
+    const handleResize = () => {
+      const w = typeof window !== 'undefined' ? window.innerWidth : 1440
+      if (w < 1440) {
+        const newScale = Math.min(1, Math.max(0.48, (w - 32) / 1400))
+        setScale(newScale)
+      } else {
+        setScale(1)
+      }
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
   const leaveTimerRef = useRef<NodeJS.Timeout | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(containerRef, { once: true, margin: '-80px' })
@@ -285,10 +301,10 @@ export default function ApparelArchitectureSuite() {
 
   // 22 Modules along the top arc of Oval 1
   const getCoordinates = (index: number) => {
-    const leftStart = 50
-    const leftEnd = 1390
+    const leftStart = 35
+    const leftEnd = 1365
     const left = leftStart + (index / (total - 1)) * (leftEnd - leftStart)
-    const mid = 720
+    const mid = 700
     const u = (left - mid) / 670
     const top = 152 - ry * Math.sqrt(Math.max(0, 1 - 0.95 * u * u)) - 42
     return { left, top }
@@ -302,13 +318,24 @@ export default function ApparelArchitectureSuite() {
   }, [isInView, svgControls])
 
   return (
-    <div ref={containerRef} className="w-full pt-1 pb-4 overflow-visible flex justify-center relative">
-      <div className="relative w-[1400px] h-[370px] shrink-0 overflow-visible">
+    <div
+      ref={containerRef}
+      className="w-full pt-1 pb-4 overflow-visible flex justify-center relative z-20 transition-all duration-200"
+      style={{
+        height: `${525 * scale}px`,
+      }}
+    >
+      <div
+        className="relative w-[1400px] h-[370px] shrink-0 overflow-visible origin-top transition-transform duration-150"
+        style={{
+          transform: `scale(${scale})`,
+        }}
+      >
 
         {/* =========================================================
             4 TẤM OVAL — animated layers
         ========================================================= */}
-        <div className="absolute top-[60px] left-[20px] w-[1400px] h-[370px] z-0 select-none">
+        <div className="absolute top-[60px] left-0 w-[1400px] h-[370px] z-0 select-none">
           <svg
             viewBox={`0 0 ${svgW} ${svgH}`}
             className="w-full h-full select-none"

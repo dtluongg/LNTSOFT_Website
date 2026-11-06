@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  CheckCircle2,
   ArrowUpRight,
   BarChart3,
   TrendingDown,
@@ -59,7 +58,7 @@ export default function ManufacturingSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         
         {/* =========================================================================
-            1. SECTION HEADER (Thoáng đãng, trang nhã, không còn 3 hộp chỉ số lặp lại)
+            1. SECTION HEADER (Thoáng đãng, trang nhã)
         ========================================================================= */}
         <div className="pb-8 border-b border-slate-100">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#15194f] tracking-tight">
@@ -127,72 +126,107 @@ export default function ManufacturingSection() {
 
         {/* =========================================================================
             3. KHỐI 2: KHUNG ĐIỀU HÀNH TRUNG TÂM & BÁO CÁO (Factory Control Center)
+            Cấu trúc 2 tầng ngang: Cân xứng 50/50 ở trên + 6 Báo cáo trải rộng ở dưới
         ========================================================================= */}
         <div className="mt-8 rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 lg:p-10 shadow-xs">
+          
+          {/* HÀNG TRÊN: CỘT TRÁI VĂN BẢN (50%) + CỘT PHẢI HÌNH ẢNH (50%) - CÂN ĐỐI HOÀN HẢO */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             
-            {/* Cột trái: Diễn giải điều hành + Bảng BI Báo cáo Quản trị */}
-            <div className="lg:col-span-7 space-y-5">
+            {/* Cột trái: Diễn giải điều hành súc tích */}
+            <div className="lg:col-span-6 space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 border border-sky-100 text-[#087bc1] text-xs font-semibold">
                 <Sparkles size={13} />
                 <span>Centralized Operations & Governance</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-bold text-[#15194f] tracking-tight leading-snug">
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#15194f] tracking-tight font-heading leading-snug">
                 Connecting Shop-Floor Operations Directly with Executive Finance
               </h3>
 
-              <p className="text-base sm:text-[16.5px] leading-relaxed text-slate-600 font-normal">
+              <p className="text-base sm:text-[16.5px] leading-relaxed text-slate-600 font-normal font-sans">
                 By replacing disjointed spreadsheets and isolated legacy tools with LNT Manufacturing ERP, industrial leaders gain continuous operational transparency across material procurement, warehouse stocks, machine schedules, and real-time cost variances.
               </p>
 
-              {/* Management Reporting & BI card */}
-              <div className="rounded-2xl border border-[#087bc1]/20 bg-gradient-to-br from-sky-50/60 to-slate-50/40 p-5 sm:p-6 shadow-2xs">
-                <div className="flex items-center gap-2.5 mb-3.5">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#087bc1]/15 text-[#087bc1]">
-                    <BarChart3 size={16} />
-                  </span>
-                  <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#15194f]">
-                    Management Reporting & Business Intelligence
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
-                  {biReports.map((item, i) => (
-                    <div key={i} className="flex items-start gap-2">
-                      <span className="mt-[6px] h-2 w-2 rounded-full bg-[#087bc1] shrink-0" />
-                      <span className="text-sm sm:text-[14.5px] text-slate-700 font-medium leading-snug">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Action Button */}
-              <div className="pt-2">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#087bc1] hover:bg-[#076da9] text-white text-xs sm:text-sm font-semibold shadow-md hover:shadow-lg transition-all hover:gap-2.5 cursor-pointer"
-                >
-                  <span>Request Manufacturing ERP Consultation</span>
-                  <ArrowUpRight size={15} />
-                </a>
+              {/* 3 Chỉ số cam kết nhanh */}
+              <div className="pt-2 flex flex-wrap gap-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50/80 border border-sky-100 text-xs font-semibold text-[#087bc1]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#087bc1]" />
+                  Real-Time Costing
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50/80 border border-emerald-100 text-xs font-semibold text-emerald-700">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                  Live Machine OEE
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-50/80 border border-indigo-100 text-xs font-semibold text-indigo-700">
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+                  Closed-Loop MRP
+                </span>
               </div>
             </div>
 
-            {/* Cột phải: Mockup Màn hình LNT Insight Smart Factory */}
-            <div className="lg:col-span-5 relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 group bg-slate-900">
+            {/* Cột phải: Mockup Màn hình LNT Insight Smart Factory (Cân đối chiều cao hoàn hảo) */}
+            <div className="lg:col-span-6 relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 group bg-slate-900">
               <img
                 src={industry1}
                 alt="LNT Manufacturing ERP Dashboard Showcase"
-                className="w-full h-auto max-h-[420px] object-contain mx-auto transition-transform duration-700 group-hover:scale-102"
+                className="w-full h-[230px] sm:h-[260px] object-cover mx-auto transition-transform duration-700 group-hover:scale-102"
               />
-              <div className="absolute bottom-3.5 left-3.5 inline-flex items-center gap-2 rounded-full bg-[#15194f]/90 backdrop-blur-md px-3.5 py-1.5 text-xs font-semibold text-white shadow-lg">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>LNT Insight • Smart Factory Telemetry</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#15194f]/80 via-transparent to-transparent" />
+              <div className="absolute bottom-3.5 left-3.5 right-3.5 flex items-center justify-between text-xs text-white">
+                <div className="inline-flex items-center gap-2 rounded-full bg-[#15194f]/90 backdrop-blur-md px-3.5 py-1.5 font-semibold shadow">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>LNT Insight • Smart Factory Telemetry</span>
+                </div>
+                <span className="text-[11px] text-slate-300 font-mono hidden sm:inline">Real-Time Sync</span>
               </div>
             </div>
 
           </div>
+
+          {/* HÀNG DƯỚI: TRẢI DÀI FULL-WIDTH 6 BÁO CÁO BI (3 CỘT X 2 HÀNG) + THANH CTA */}
+          <div className="mt-8 pt-6 border-t border-slate-100">
+            <div className="flex items-center gap-2.5 mb-4">
+              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#087bc1]/15 text-[#087bc1]">
+                <BarChart3 size={16} />
+              </span>
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#15194f] font-heading">
+                Management Reporting & Business Intelligence
+              </span>
+            </div>
+
+            {/* 6 Thẻ Báo cáo trải đều 3 cột x 2 hàng cân xứng */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {biReports.map((item, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/90 hover:bg-sky-50/50 hover:border-[#087bc1]/40 transition-colors shadow-2xs"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#087bc1] shrink-0" />
+                  <span className="text-xs sm:text-[13px] text-slate-800 font-semibold leading-snug">
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Dải CTA chân hàng dưới */}
+            <div className="mt-6 pt-5 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-700">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                <span>Ready to modernize your manufacturing execution and cost control?</span>
+              </div>
+
+              <a
+                href="#contact"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#087bc1] hover:bg-[#076da9] text-white text-xs sm:text-sm font-semibold shadow-md hover:shadow-lg transition-all hover:gap-2.5 shrink-0 cursor-pointer"
+              >
+                <span>Request Manufacturing ERP Consultation</span>
+                <ArrowUpRight size={15} />
+              </a>
+            </div>
+          </div>
+
         </div>
 
       </div>

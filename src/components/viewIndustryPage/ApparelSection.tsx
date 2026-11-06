@@ -1,8 +1,8 @@
 import React from 'react'
 import {
-  CheckCircle2,
   ArrowUpRight,
   Sparkles,
+  TrendingUp,
 } from 'lucide-react'
 import ApparelArchitectureSuite from '../viewHomePage/Industry/ApparelArchitectureSuite'
 import ExploreKeyCapabilities from './ExploreKeyCapabilities'
@@ -14,10 +14,13 @@ export default function ApparelSection() {
     { value: '100%', label: 'Order Traceability' },
   ]
 
-  const bulletPoints = [
-    'End-to-end garment production management tailored for fast-paced, high-mix apparel realities.',
-    'Real-time sewing line balancing, style sampling approval workflow, and defect heatmap inspection.',
-    'Seamless modular interoperability across fabric warehouse, cutting room, sewing lines, and ERP.',
+  // 5 Nội dung trọng tâm sếp yêu cầu
+  const highlights = [
+    'FXPRO AI Suite',
+    'FXPRO Optize Plan',
+    'Digital Data Tracking',
+    'FXPRO AI Insight',
+    'Work Note Management',
   ]
 
   return (
@@ -38,7 +41,7 @@ export default function ApparelSection() {
             </p>
           </div>
 
-          {/* Metric cards */}
+          {/* Metric cards
           <div className="flex items-center gap-3 shrink-0">
             {metrics.map((m, idx) => (
               <div key={idx} className="rounded-2xl bg-white border border-slate-200/90 shadow-xs px-4 py-2.5 text-center min-w-[105px]">
@@ -46,17 +49,19 @@ export default function ApparelSection() {
                 <div className="text-[11px] text-slate-500 font-semibold">{m.label}</div>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
 
         {/* =========================================================================
-            OVERVIEW FRAMED CARD: Cột trái nội dung text + Cột phải hình ảnh
+            OVERVIEW FRAMED CARD: Hàng trên (Text + Hình ảnh) + Hàng dưới (4 thẻ trải ngang)
         ========================================================================= */}
         <div className="mt-8 rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 lg:p-10 shadow-xs">
+          
+          {/* HÀNG TRÊN: Cột trái nội dung text + Cột phải hình ảnh (Hình được nâng lên gọn gàng) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             
             {/* Cột trái: Badge OVERVIEW + 2 Đoạn nội dung văn bản */}
-            <div className="lg:col-span-7 space-y-5">
+            <div className="lg:col-span-7 space-y-4">
               
               {/* OVERVIEW Badge (Capsule Pill đỏ Ruby tinh tế, thu hút ánh nhìn) */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-50 border border-rose-200/90 text-rose-600 text-xs font-bold uppercase tracking-wider shadow-xs">
@@ -76,42 +81,54 @@ export default function ApparelSection() {
               <p className="text-sm sm:text-base font-normal not-italic text-slate-600 leading-relaxed pl-1 font-sans">
                 Leveraging advanced technologies, intelligent automation, and real-time operational intelligence, FXPRO empowers apparel manufacturers to achieve greater operational efficiency, enhance production performance, improve end-to-end visibility, and accelerate data-driven decision-making.
               </p>
-
-              {/* Capability Tags */}
-              <div className="pt-2 flex flex-wrap gap-2.5 pl-1">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-sky-50 border border-sky-100 text-xs font-semibold text-[#087bc1]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#087bc1]" />
-                  AI Line Balancing
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-50 border border-emerald-100 text-xs font-semibold text-emerald-700">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  Inline QC & Defect Heatmap
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-purple-50 border border-purple-100 text-xs font-semibold text-purple-700">
-                  <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
-                  Color-Size Matrix & Roll IWM
-                </span>
-              </div>
             </div>
 
-            {/* Cột phải: Hình ảnh minh họa Smart Apparel Factory / MES Showcase */}
+            {/* Cột phải: Hình ảnh minh họa Smart Apparel Factory / MES Showcase (Nâng lên cân đối) */}
             <div className="lg:col-span-5 relative rounded-2xl overflow-hidden shadow-xl border border-slate-200/90 group bg-slate-900">
               <img
                 src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1200&q=80"
                 alt="FXPRO Apparel ERP & MES Smart Factory Operation"
-                className="w-full h-auto max-h-[380px] object-cover mx-auto transition-transform duration-700 group-hover:scale-103"
+                className="w-full h-[230px] sm:h-[260px] object-cover mx-auto transition-transform duration-700 group-hover:scale-103"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#15194f]/85 via-[#15194f]/20 to-transparent" />
               <div className="absolute bottom-3.5 left-3.5 right-3.5 flex items-center justify-between text-xs text-white">
                 <div className="inline-flex items-center gap-2 rounded-full bg-[#15194f]/90 backdrop-blur-md px-3 py-1 font-semibold shadow">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>FXPRO MES • Smart Sewing Floor</span>
+                  <span>FXPRO MES • Smart Business Applications</span>
                 </div>
                 <span className="text-[11px] text-slate-300 font-mono hidden sm:inline">22 Modules Live</span>
               </div>
             </div>
 
           </div>
+
+          {/* HÀNG DƯỚI: TRẢI DÀI FULL-WIDTH 4 THẺ GIÁ TRỊ (4 CỘT CÂN ĐỐI) */}
+          <div className="mt-8 pt-6 border-t border-slate-100">
+            <div className="text-xs sm:text-sm font-bold text-[#15194f] font-heading tracking-tight flex items-center gap-2 mb-3.5">
+              <TrendingUp size={16} className="text-[#087bc1]" />
+              <span>Drive Measurable Business Improvements</span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div className="flex items-center gap-2.5 p-3 rounded-xl bg-sky-50/70 border border-sky-100 text-xs sm:text-[13px] font-semibold text-[#087bc1] shadow-2xs hover:bg-sky-50 transition-colors">
+                <span className="w-2 h-2 rounded-full bg-[#087bc1] shrink-0" />
+                <span className="line-clamp-1">Improved Operational Efficiency</span>
+              </div>
+              <div className="flex items-center gap-2.5 p-3 rounded-xl bg-emerald-50/70 border border-emerald-100 text-xs sm:text-[13px] font-semibold text-emerald-700 shadow-2xs hover:bg-emerald-50 transition-colors">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+                <span className="line-clamp-1">Reduced Material Wastage</span>
+              </div>
+              <div className="flex items-center gap-2.5 p-3 rounded-xl bg-indigo-50/70 border border-indigo-100 text-xs sm:text-[13px] font-semibold text-indigo-700 shadow-2xs hover:bg-indigo-50 transition-colors">
+                <span className="w-2 h-2 rounded-full bg-indigo-500 shrink-0" />
+                <span className="line-clamp-1">End-to-End Order Traceability</span>
+              </div>
+              <div className="flex items-center gap-2.5 p-3 rounded-xl bg-amber-50/70 border border-amber-100 text-xs sm:text-[13px] font-semibold text-amber-800 shadow-2xs hover:bg-amber-50 transition-colors">
+                <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
+                <span className="line-clamp-1">Improved On-Time Delivery Performance</span>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         {/* =========================================================================
@@ -121,34 +138,61 @@ export default function ApparelSection() {
 
       </div>
 
-      {/* 3D Oval Architecture Suite (Full Bleed Cyan Ribbon) */}
-      <div className="w-full bg-[#259fd2] py-2 shadow-inner overflow-visible relative">
-          <h3 className="text-2xl sm:text-3xl font-bold text-[#15194f] tracking-tight font-heading">
-            Core Capabilities
+      {/* =========================================================================
+          APPLICATION MODULES STAGE: GOM TOÀN BỘ (HEADER + 3D OVAL + 5 THẺ + CTA)
+          VÀO CHUNG DẢI NỀN XANH CÔNG NGHỆ CAO — LIỀN KHỐI 100%
+      ========================================================================= */}
+      <div className="w-full bg-[#259fd2] pt-10 pb-10 shadow-inner overflow-hidden relative">
+        
+        {/* 1. Header Application Modules trên nền xanh */}
+        <div className="text-center max-w-3xl mx-auto px-4 mb-3">
+          <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight font-heading">
+            Application Modules
           </h3>
-        <ApparelArchitectureSuite />
-      </div>
-
-      {/* Section Footer: Checklist & CTA */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 mt-10">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
-          <div className="space-y-2">
-            {bulletPoints.map((point, idx) => (
-              <div key={idx} className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
-                <CheckCircle2 size={16} className="text-[#087bc1] shrink-0" />
-                <span>{point}</span>
-              </div>
-            ))}
-          </div>
-
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#087bc1] hover:bg-[#076da9] text-white text-xs sm:text-sm font-semibold shadow-md hover:shadow-lg transition-all hover:gap-2.5 shrink-0 cursor-pointer"
-          >
-            <span>Request Apparel Case Study</span>
-            <ArrowUpRight size={15} />
-          </a>
+          <p className="text-white/90 text-sm sm:text-base font-medium mt-1.5 font-sans">
+            Interactive multi-tier architecture spanning 22 specialized apparel manufacturing modules.
+          </p>
         </div>
+
+        {/* 2. Sơ đồ 3D Oval 22 Modules */}
+        <ApparelArchitectureSuite />
+
+        {/* 3. Khối 5 Thẻ chữ + Thanh CTA nằm ngay trong dải xanh liền mạch */}
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 mt-2 relative z-0">
+          <div className="rounded-3xl bg-white/15 backdrop-blur-md border border-white/30 p-5 sm:p-7 shadow-lg">
+            
+            {/* Hàng 5 Thẻ trải đều 5 cột ngang, nền trắng thanh lịch, chữ Navy đậm sắc nét */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+              {highlights.map((name, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-center text-center gap-2 px-3.5 py-3.5 rounded-2xl bg-white/95 hover:bg-white text-[#15194f] hover:text-[#087bc1] border border-white shadow-xs transition-all duration-200 text-xs sm:text-[13px] font-bold cursor-default group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#087bc1] shrink-0 group-hover:scale-125 transition-transform" />
+                  <span className="leading-snug">{name}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Dải CTA chân nền xanh: Thông điệp trắng + Nút Navy tương phản nổi bật */}
+            <div className="mt-5 pt-5 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-white">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                <span>Ready to transform your garment manufacturing operations with FXPRO?</span>
+              </div>
+
+              <a
+                href="#contact"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#15194f] hover:bg-[#0c0f33] text-white text-xs sm:text-sm font-semibold shadow-md hover:shadow-xl transition-all hover:gap-2.5 shrink-0 cursor-pointer"
+              >
+                <span>Request Apparel Case Study</span>
+                <ArrowUpRight size={15} />
+              </a>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </section>
   )
