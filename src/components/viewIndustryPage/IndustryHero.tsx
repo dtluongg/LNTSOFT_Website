@@ -75,7 +75,7 @@ export default function IndustryHero({ onSelectIndustry }: IndustryHeroProps) {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="max-w-3xl text-justify text-base sm:text-lg text-slate-600 leading-relaxed w-full mx-auto"
           >
-            LNTSOFT empowers businesses across diverse industries with intelligent enterprise software solutions. We combine industry knowledge, innovative technology, and practical expertise to help organizations streamline operations, improve efficiency, and accelerate digital transformation.
+            LNTSOFT empowers businesses a,,,cross diverse industries with intelligent enterprise software solutions. We combine industry knowledge, innovative technology, and practical expertise to help organizations streamline operations, improve efficiency, and accelerate digital transformation.
           </motion.p>
 
           {/* Quick Jump Industry Pills */}
