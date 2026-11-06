@@ -55,7 +55,7 @@ export default function IndustryHero({ onSelectIndustry }: IndustryHeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#15194f] tracking-tight leading-tight"
+            className="max-w-5xl mx-auto text-3xl sm:text-4xl lg:text-5xl font-bold text-[#15194f] tracking-tight leading-tight"
           >
             Industry-Specific Solutions.
           </motion.h1>
@@ -63,7 +63,7 @@ export default function IndustryHero({ onSelectIndustry }: IndustryHeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#15194f] tracking-tight leading-tight"
+            className="max-w-5xl mx-auto text-3xl sm:text-4xl lg:text-5xl font-bold text-[#15194f] tracking-tight leading-tight"
           >
             Smarter Business. Stronger Growth.
           </motion.h1>
@@ -73,12 +73,20 @@ export default function IndustryHero({ onSelectIndustry }: IndustryHeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto"
+            className="max-w-3xl text-justify text-base sm:text-lg text-slate-600 leading-relaxed w-full mx-auto"
           >
             LNTSOFT empowers businesses across diverse industries with intelligent enterprise software solutions. We combine industry knowledge, innovative technology, and practical expertise to help organizations streamline operations, improve efficiency, and accelerate digital transformation.
           </motion.p>
 
           {/* Quick Jump Industry Pills */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="max-w-5xl mx-auto text- sm:text-2xl lg:text-3xl font-bold text-[#15194f] tracking-tight leading-tight"
+          >
+            EXPLORE OUR INDUSTRY SOLUTIONS
+          </motion.h1>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

@@ -123,6 +123,9 @@ export default function ApparelSection() {
 
       {/* 3D Oval Architecture Suite (Full Bleed Cyan Ribbon) */}
       <div className="w-full bg-[#259fd2] py-2 shadow-inner overflow-visible relative">
+          <h3 className="text-2xl sm:text-3xl font-bold text-[#15194f] tracking-tight font-heading">
+            Core Capabilities
+          </h3>
         <ApparelArchitectureSuite />
       </div>
 

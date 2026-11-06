@@ -52,16 +52,16 @@ export default function ExploreKeyCapabilities() {
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-slate-200">
         <div>
           <h3 className="text-2xl sm:text-3xl font-bold text-[#15194f] tracking-tight font-heading">
-            EXPLORE KEY CAPABILITIES
+            Core Capabilities
           </h3>
           <p className="text-sm sm:text-base font-medium text-slate-500 mt-1 max-w-3xl font-sans">
-            Core functional pillars powering the FXPRO Apparel ERP & MES ecosystem.
+            Explore the integrated functional capabilities of the FXPRO Apparel Product Suite, designed to streamline complex manufacturing operations, optimize resource utilization, enhance operational visibility, and support sustainable business growth.
           </p>
         </div>
 
-        <div className="text-xs font-semibold text-slate-500 bg-slate-100/90 px-3.5 py-1.5 rounded-full border border-slate-200 shrink-0 self-start sm:self-auto font-sans">
+        {/* <div className="text-xs font-semibold text-slate-500 bg-slate-100/90 px-3.5 py-1.5 rounded-full border border-slate-200 shrink-0 self-start sm:self-auto font-sans">
           8 Modules • Hover to reveal • Click for full detail
-        </div>
+        </div> */}
       </div>
 
       {/* =========================================================================
@@ -91,7 +91,7 @@ export default function ExploreKeyCapabilities() {
                   {/* Badge số thứ tự */}
                   <div className="flex items-center justify-between mb-3.5">
                     <span className="text-xs font-bold font-mono px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-500 group-hover:bg-[#087bc1] group-hover:text-white transition-colors duration-200">
-                      MODULE {item.number}
+                      {item.number}
                     </span>
                     <span className="text-[11px] font-semibold text-slate-400 group-hover:text-[#087bc1] transition-colors">
                       Hover to reveal →
@@ -189,7 +189,7 @@ export default function ExploreKeyCapabilities() {
             <div className="px-6 py-5 sm:px-8 sm:py-6 border-b border-slate-200 bg-white sticky top-0 z-10 flex items-start justify-between gap-4">
               <div className="min-w-0 pr-2">
                 <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#15194f] text-white text-[11px] font-bold font-mono mb-1.5">
-                  MODULE {activeModalItem.number}
+                  {activeModalItem.number}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-bold text-[#15194f] tracking-tight font-heading leading-snug">
                   {activeModalItem.title}
