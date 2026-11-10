@@ -65,7 +65,7 @@ export default function ManufacturingSection() {
             Manufacturing ERP Solution
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-600 mt-2 max-w-3xl leading-relaxed font-sans">
+          <p className="text-base sm:text-lg text-slate-600 mt-2 max-w-3xl md:max-w-5xl leading-relaxed font-sans">
             A unified digital operating system engineered for high-mix industrial manufacturing — synchronizing planning, shop-floor execution, inventory, and cost control into one real-time source of truth.
           </p>
         </div>

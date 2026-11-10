@@ -54,7 +54,7 @@ export default function ExploreKeyCapabilities() {
           <h3 className="text-2xl sm:text-3xl font-bold text-[#15194f] tracking-tight font-heading">
             Core Capabilities
           </h3>
-          <p className="text-sm sm:text-base font-medium text-slate-500 mt-1 max-w-3xl font-sans">
+          <p className="text-sm sm:text-base font-medium text-slate-500 mt-1 max-w-3xl md:max-w-5xl font-sans">
             Explore the integrated functional capabilities of the FXPRO Apparel Product Suite, designed to streamline complex manufacturing operations, optimize resource utilization, enhance operational visibility, and support sustainable business growth.
           </p>
         </div>
@@ -89,14 +89,14 @@ export default function ExploreKeyCapabilities() {
               <div className="h-full flex flex-col justify-between select-none">
                 <div>
                   {/* Badge số thứ tự */}
-                  <div className="flex items-center justify-between mb-3.5">
+                  {/* <div className="flex items-center justify-between mb-3.5">
                     <span className="text-xs font-bold font-mono px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-500 group-hover:bg-[#087bc1] group-hover:text-white transition-colors duration-200">
                       {item.number}
                     </span>
                     <span className="text-[11px] font-semibold text-slate-400 group-hover:text-[#087bc1] transition-colors">
                       Hover to reveal →
                     </span>
-                  </div>
+                  </div> */}
 
                   {/* 1. Tiêu đề chính */}
                   <h4 className="text-base sm:text-[17px] font-bold text-[#15194f] tracking-tight font-heading leading-snug line-clamp-2">
@@ -128,7 +128,8 @@ export default function ExploreKeyCapabilities() {
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[11px] font-bold font-mono px-2 py-0.5 rounded bg-sky-100 text-[#087bc1]">
-                      {item.number} • OVERVIEW
+                      {/* {item.number} • OVERVIEW */}
+                      • OVERVIEW
                     </span>
                     <span className="text-[11px] font-bold text-[#087bc1]">
                       Click for full modal ↗

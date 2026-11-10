@@ -16,11 +16,11 @@ export default function ApparelSection() {
 
   // 5 Nội dung trọng tâm sếp yêu cầu
   const highlights = [
-    'FXPRO AI Suite',
-    'FXPRO Optize Plan',
-    'Digital Data Tracking',
-    'FXPRO AI Insight',
-    'Work Note Management',
+    'AI SUITE',
+    'SMART PLANNER',
+    'SMART FACTORY',
+    'AI INSIGHT',
+    'WORKNOTE',
   ]
 
   return (
@@ -36,7 +36,7 @@ export default function ApparelSection() {
             </h2>
 
             {/* Subtitle / Value Proposition Tagline */}
-            <p className="text-base sm:text-lg font-medium text-[#087bc1] mt-2 max-w-2xl leading-snug">
+            <p className="text-base sm:text-lg font-medium text-[#087bc1] mt-2 max-w-2xl md:max-w-none leading-snug">
               Modern, Customizable ERP Software for Your Entire Apparel Business Ecosystem
             </p>
           </div>
@@ -142,7 +142,7 @@ export default function ApparelSection() {
           APPLICATION MODULES STAGE: GOM TOÀN BỘ (HEADER + 3D OVAL + 5 THẺ + CTA)
           VÀO CHUNG DẢI NỀN XANH CÔNG NGHỆ CAO — LIỀN KHỐI 100%
       ========================================================================= */}
-      <div className="w-full bg-[#259fd2] pt-10 pb-10 shadow-inner overflow-hidden relative">
+      <div className="w-full bg-[#259fd2] pt-10 pb-12 shadow-inner overflow-hidden relative">
         
         {/* 1. Header Application Modules trên nền xanh */}
         <div className="text-center max-w-3xl mx-auto px-4 mb-3">
@@ -157,40 +157,43 @@ export default function ApparelSection() {
         {/* 2. Sơ đồ 3D Oval 22 Modules */}
         <ApparelArchitectureSuite />
 
-        {/* 3. Khối 5 Thẻ chữ + Thanh CTA nằm ngay trong dải xanh liền mạch */}
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 mt-2 relative z-0">
-          <div className="rounded-3xl bg-white/15 backdrop-blur-md border border-white/30 p-5 sm:p-7 shadow-lg">
-            
-            {/* Hàng 5 Thẻ trải đều 5 cột ngang, nền trắng thanh lịch, chữ Navy đậm sắc nét */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-              {highlights.map((name, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center justify-center text-center gap-2 px-3.5 py-3.5 rounded-2xl bg-white/95 hover:bg-white text-[#15194f] hover:text-[#087bc1] border border-white shadow-xs transition-all duration-200 text-xs sm:text-[13px] font-bold cursor-default group"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#087bc1] shrink-0 group-hover:scale-125 transition-transform" />
-                  <span className="leading-snug">{name}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Dải CTA chân nền xanh: Thông điệp trắng + Nút Navy tương phản nổi bật */}
-            <div className="mt-5 pt-5 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-white">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                <span>Ready to transform your garment manufacturing operations with FXPRO?</span>
-              </div>
-
-              <a
-                href="#contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#15194f] hover:bg-[#0c0f33] text-white text-xs sm:text-sm font-semibold shadow-md hover:shadow-xl transition-all hover:gap-2.5 shrink-0 cursor-pointer"
+        {/* 3. Floating Tech Nodes + CTA (Ý TƯỞNG 1: HOÀN TOÀN KHÔNG ĐÓNG KHUNG BO VIỀN) */}
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 mt-4 relative z-0">
+          
+          {/* 5 Điểm chạm công nghệ trôi nổi phẳng (Floating Tech Nodes) */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
+            {highlights.map((name, idx) => (
+              <div
+                key={idx}
+                className="group flex items-center justify-center text-center gap-2.5 py-2.5 px-3 rounded-xl hover:bg-white/10 transition-all duration-300 cursor-default"
               >
-                <span>Request Apparel Case Study</span>
-                <ArrowUpRight size={15} />
-              </a>
+                <span className="w-2 h-2 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.9)] shrink-0 group-hover:scale-125 group-hover:bg-amber-300 group-hover:shadow-[0_0_10px_rgba(253,224,71,0.9)] transition-all" />
+                <span className="text-white font-bold text-xs sm:text-[14px] font-heading tracking-wider leading-snug group-hover:text-amber-100 transition-colors uppercase">
+                  {name}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Đường kẻ phát quang ngang siêu mảnh mờ ảo */}
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-white/30 to-transparent my-6 sm:my-7" />
+
+          {/* Dải CTA chân nền xanh: Thông điệp thanh thoát + Nút Navy tương phản sang trọng */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2.5 text-xs sm:text-sm font-medium text-white/95">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399] shrink-0" />
+              <span>Ready to transform your garment manufacturing operations with FXPRO?</span>
             </div>
 
+            <a
+              href="#contact"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#15194f] hover:bg-[#0c0f33] text-white text-xs sm:text-sm font-semibold shadow-xl hover:shadow-2xl transition-all hover:gap-2.5 shrink-0 cursor-pointer border border-white/20"
+            >
+              <span>Request Apparel Case Study</span>
+              <ArrowUpRight size={15} />
+            </a>
           </div>
+
         </div>
 
       </div>
