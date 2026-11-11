@@ -1,8 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-heading: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Semantic Executive Color Tokens (Đổi 1 chỗ là cập nhật toàn bộ dự án) */
+  --color-title: #121212;
+  --color-body: #475569;
+  --color-body-muted: #64748b;
+
+  /* LNT Brand Color Tokens */
+  --color-lnt-navy: #15194f;
+  --color-lnt-blue-dark: #163d91;
+  --color-lnt-blue: #087bc1;
+  --color-lnt-blue-light: #24a6d8;
+  --color-lnt-cyan: #38bde8;
 }
 
 :root {
@@ -15,7 +27,10 @@
   --background: #ffffff;
   --surface: #f5f9fc;
 
-  --text-primary: #0f172a;
+  /* Executive Typography Tokens (Aptean Standard) */
+  --text-title: #121212;
+  --text-primary: #121212;
+  --text-body: #475569;
   --text-secondary: #64748b;
 }
 
@@ -37,9 +52,9 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Global Executive Typography Standard (MiSynergy Style):
-   - Headings & Titles: Outfit (Geometric, elegant, modern international tech flair)
-   - Body, UI, Navigation, Data: Plus Jakarta Sans (airy, crystal-clear, premium legibility) */
+/* Global Executive Typography Standard (Inter - Aptean Style):
+   - Headings & Titles: Inter Bold / SemiBold (Tracking-tight, crisp 700 weight, off-black #121212 or LNT Navy #15194f)
+   - Body, UI, Navigation, Data: Inter Regular / Medium (leading-relaxed, high legibility) */
 h1,
 h2,
 h3,
@@ -48,7 +63,7 @@ h5,
 h6,
 .font-heading {
   font-family: var(--font-heading);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   font-weight: 700;
 }
 
@@ -105,4 +120,63 @@ h6,
 .animate-scaleUp {
   animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* =========================================================================
+   DESIGN SYSTEM UTILITIES (Aptean Standard & LNT Brand)
+   Refer to DESIGN_SYSTEM.md for full specs
+========================================================================= */
+
+/* Button: Executive Dark Pill (Aptean Style) */
+.btn-dark-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 9999px;
+  background-color: #121212;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-dark-pill:hover {
+  background-color: #000000;
+  transform: translateY(-1px);
+}
+
+/* Button: Primary Brand LNT */
+.btn-brand-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  background-color: var(--lnt-blue);
+  color: #ffffff;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-brand-primary:hover {
+  background-color: #0769a6;
+}
+
+/* Pill Badge / Tagline */
+.tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(8, 123, 193, 0.25);
+  background-color: rgba(8, 123, 193, 0.08);
+  padding: 0.375rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--lnt-blue);
+}
+
 

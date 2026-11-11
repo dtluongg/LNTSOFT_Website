@@ -4,6 +4,7 @@ import {
   X,
   CheckCircle2,
   ExternalLink,
+  Layers,
 } from 'lucide-react'
 import { apparelCapabilities, type ApparelCapability } from './apparelCapabilitiesData'
 
@@ -46,22 +47,26 @@ export default function ExploreKeyCapabilities() {
   }, [activeModalItem])
 
   return (
-    <div className="mt-12">
+    <div>
       
-      {/* Header phần: Sạch sẽ, không còn title nhỏ thừa */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-slate-200">
-        <div>
-          <h3 className="text-2xl sm:text-3xl font-bold text-[#15194f] tracking-tight font-heading">
-            Core Capabilities
-          </h3>
-          <p className="text-sm sm:text-base font-medium text-slate-500 mt-1 max-w-3xl md:max-w-5xl font-sans">
-            Explore the integrated functional capabilities of the FXPRO Apparel Product Suite, designed to streamline complex manufacturing operations, optimize resource utilization, enhance operational visibility, and support sustainable business growth.
-          </p>
+      {/* Header phần: Chuẩn hóa theo Design System (text-title, font-Inter) */}
+      <div className="pb-6 border-b border-slate-200/80">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-sky-50 text-lnt-blue">
+            <Layers size={14} />
+          </span>
+          <span className="text-xs font-bold uppercase tracking-wider text-slate-500 font-heading">
+            FXPRO Functional Architecture
+          </span>
         </div>
 
-        {/* <div className="text-xs font-semibold text-slate-500 bg-slate-100/90 px-3.5 py-1.5 rounded-full border border-slate-200 shrink-0 self-start sm:self-auto font-sans">
-          8 Modules • Hover to reveal • Click for full detail
-        </div> */}
+        <h3 className="text-2xl sm:text-3xl font-bold text-title tracking-tight leading-snug">
+          Core Capabilities
+        </h3>
+
+        <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-4xl leading-relaxed font-normal">
+          Explore the integrated functional capabilities of the FXPRO Apparel Product Suite, designed to streamline complex manufacturing operations, optimize resource utilization, enhance operational visibility, and support sustainable business growth.
+        </p>
       </div>
 
       {/* =========================================================================
@@ -70,7 +75,7 @@ export default function ExploreKeyCapabilities() {
           - Khi Hover: Lớp phủ trượt ngang sang (Slide-in Overlay) hiện Description + Feature Titles
           - Khi Click: Mở Modal chi tiết
       ========================================================================= */}
-      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {apparelCapabilities.map((item) => {
           return (
             <div
@@ -78,66 +83,52 @@ export default function ExploreKeyCapabilities() {
               role="button"
               tabIndex={0}
               onClick={() => setActiveModalItem(item)}
-              className="group relative h-[260px] rounded-2xl border border-slate-200/90 bg-white p-5 sm:p-6 shadow-xs hover:shadow-xl hover:border-[#087bc1] transition-all duration-300 cursor-pointer overflow-hidden"
+              className="group relative h-[255px] rounded-2xl border border-slate-200/80 bg-white p-5 sm:p-6 shadow-2xs hover:shadow-lg hover:border-lnt-blue/60 transition-all duration-300 cursor-pointer overflow-hidden"
             >
               {/* Top Accent Line */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-slate-100 group-hover:bg-[#087bc1] transition-colors duration-300" />
+              <div className="absolute top-0 left-0 right-0 h-1 bg-slate-100 group-hover:bg-lnt-blue transition-colors duration-300" />
 
               {/* ===================================================================
                   MẶT TRƯỚC (BAN ĐẦU): CHỈ HIỂN THỊ TIÊU ĐỀ + TAGLINE
               =================================================================== */}
               <div className="h-full flex flex-col justify-between select-none">
                 <div>
-                  {/* Badge số thứ tự */}
-                  {/* <div className="flex items-center justify-between mb-3.5">
-                    <span className="text-xs font-bold font-mono px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-500 group-hover:bg-[#087bc1] group-hover:text-white transition-colors duration-200">
-                      {item.number}
-                    </span>
-                    <span className="text-[11px] font-semibold text-slate-400 group-hover:text-[#087bc1] transition-colors">
-                      Hover to reveal →
-                    </span>
-                  </div> */}
-
-                  {/* 1. Tiêu đề chính */}
-                  <h4 className="text-base sm:text-[17px] font-bold text-[#15194f] tracking-tight font-heading leading-snug line-clamp-2">
+                  {/* Tiêu đề chính: Dùng text-lnt-navy chuyển text-lnt-blue khi hover */}
+                  <h4 className="text-base sm:text-[16.5px] font-bold text-lnt-navy group-hover:text-lnt-blue transition-colors tracking-tight leading-snug line-clamp-2">
                     {item.title}
                   </h4>
 
-                  {/* 2. Dòng nội dung đầu (Tagline) */}
-                  <p className="text-xs sm:text-[13px] font-medium text-slate-600 mt-3 leading-relaxed font-sans line-clamp-4">
+                  {/* Dòng nội dung đầu (Tagline) */}
+                  <p className="text-xs sm:text-[13px] font-normal text-slate-600 mt-2.5 leading-relaxed line-clamp-4">
                     {item.tagline}
                   </p>
                 </div>
 
                 {/* Footer chân ô ban đầu */}
-                <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-400">
+                <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-400 group-hover:text-lnt-blue transition-colors">
                   <span>Explore features</span>
-                  <ChevronRight size={14} className="text-slate-400" />
+                  <ChevronRight size={14} className="transition-transform group-hover:translate-x-0.5" />
                 </div>
               </div>
 
               {/* ===================================================================
                   LỚP PHỦ KÉO SANG KHI HOVER (SLIDE-IN OVERLAY - KHÔNG ĐẨY TRANG)
-                  - Kéo từ bên phải sang (translate-x-full -> translate-x-0)
-                  - Nền trắng tinh tế, phủ kín khung ô đó
-                  - Hiện Description + Title của các Features + Nút click chi tiết
               =================================================================== */}
-              <div className="absolute inset-0 bg-white p-5 flex flex-col justify-between translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-10 border-2 border-[#087bc1] rounded-2xl shadow-xl">
+              <div className="absolute inset-0 bg-white p-5 flex flex-col justify-between translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-10 border border-lnt-blue/50 rounded-2xl shadow-xl">
                 
                 {/* Header lớp phủ */}
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[11px] font-bold font-mono px-2 py-0.5 rounded bg-sky-100 text-[#087bc1]">
-                      {/* {item.number} • OVERVIEW */}
+                    <span className="text-[11px] font-bold font-mono px-2 py-0.5 rounded-full bg-sky-50 text-lnt-blue border border-sky-100">
                       • OVERVIEW
                     </span>
-                    <span className="text-[11px] font-bold text-[#087bc1]">
+                    <span className="text-[11px] font-bold text-lnt-blue">
                       Click for full modal ↗
                     </span>
                   </div>
 
                   {/* Description ngắn gọn */}
-                  <p className="text-[11.5px] sm:text-xs text-slate-600 font-sans leading-relaxed line-clamp-3 mb-2.5">
+                  <p className="text-[11.5px] sm:text-xs text-slate-600 leading-relaxed line-clamp-3 mb-2.5 font-normal">
                     {item.descriptions[0]}
                   </p>
 
@@ -148,12 +139,12 @@ export default function ExploreKeyCapabilities() {
                     </div>
                     {item.features.slice(0, 3).map((feat, fIdx) => (
                       <div key={fIdx} className="flex items-start gap-1.5 text-[11px] text-slate-800 font-semibold leading-tight">
-                        <span className="text-[#087bc1]">•</span>
+                        <span className="text-lnt-blue">•</span>
                         <span className="line-clamp-1">{feat.title}</span>
                       </div>
                     ))}
                     {item.features.length > 3 && (
-                      <div className="text-[10.5px] font-bold text-[#087bc1] pl-2">
+                      <div className="text-[10.5px] font-bold text-lnt-blue pl-2">
                         +{item.features.length - 3} more capabilities...
                       </div>
                     )}
@@ -161,7 +152,7 @@ export default function ExploreKeyCapabilities() {
                 </div>
 
                 {/* Footer lớp phủ */}
-                <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#087bc1]">
+                <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-lnt-blue">
                   <span>Click to view full detail</span>
                   <ChevronRight size={15} />
                 </div>
@@ -189,13 +180,13 @@ export default function ExploreKeyCapabilities() {
             {/* Modal Header */}
             <div className="px-6 py-5 sm:px-8 sm:py-6 border-b border-slate-200 bg-white sticky top-0 z-10 flex items-start justify-between gap-4">
               <div className="min-w-0 pr-2">
-                <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#15194f] text-white text-[11px] font-bold font-mono mb-1.5">
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-lnt-navy text-white text-[11px] font-bold font-mono mb-1.5">
                   {activeModalItem.number}
                 </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-[#15194f] tracking-tight font-heading leading-snug">
+                <h3 className="text-xl sm:text-2xl font-bold text-title tracking-tight leading-snug">
                   {activeModalItem.title}
                 </h3>
-                <p className="text-xs sm:text-sm font-semibold text-[#087bc1] mt-1">
+                <p className="text-xs sm:text-sm font-semibold text-lnt-blue mt-1">
                   {activeModalItem.tagline}
                 </p>
               </div>
@@ -225,7 +216,7 @@ export default function ExploreKeyCapabilities() {
 
               {/* Danh sách toàn bộ Key Features & Capabilities */}
               <div>
-                <h5 className="text-xs font-bold uppercase tracking-wider text-[#15194f] mb-4">
+                <h5 className="text-xs font-bold uppercase tracking-wider text-lnt-navy mb-4">
                   Key Features & Capabilities ({activeModalItem.features.length})
                 </h5>
 
@@ -233,12 +224,12 @@ export default function ExploreKeyCapabilities() {
                   {activeModalItem.features.map((feat, idx) => (
                     <div
                       key={idx}
-                      className="p-3.5 rounded-xl bg-slate-50/90 border border-slate-200/80 hover:bg-white hover:border-[#087bc1]/40 transition-colors"
+                      className="p-3.5 rounded-xl bg-slate-50/80 border border-slate-200/80 hover:bg-white hover:border-lnt-blue/40 transition-colors"
                     >
                       <div className="flex items-start gap-2.5">
-                        <CheckCircle2 size={16} className="text-[#087bc1] shrink-0 mt-0.5" />
+                        <CheckCircle2 size={16} className="text-lnt-blue shrink-0 mt-0.5" />
                         <div>
-                          <div className="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                          <div className="text-xs sm:text-sm font-bold text-title leading-snug">
                             {feat.title}
                           </div>
                           {feat.description && (
@@ -254,7 +245,7 @@ export default function ExploreKeyCapabilities() {
               </div>
 
               {/* HÌNH ẢNH MINH HỌA TRỰC TIẾP */}
-              <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-md bg-slate-100">
+              <div className="rounded-2xl overflow-hidden border border-slate-200/80 shadow-md bg-slate-100">
                 <img
                   src={
                     activeModalItem.image ||
@@ -278,14 +269,14 @@ export default function ExploreKeyCapabilities() {
                 <button
                   type="button"
                   onClick={() => setActiveModalItem(null)}
-                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-full border border-slate-300 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
                 >
                   Close
                 </button>
                 <a
                   href="#contact"
                   onClick={() => setActiveModalItem(null)}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#087bc1] hover:bg-[#076da9] text-white text-xs sm:text-sm font-semibold shadow transition-all cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-title hover:bg-black text-white text-xs sm:text-sm font-semibold shadow-md transition-all cursor-pointer"
                 >
                   <span>Request Full Specification</span>
                   <ExternalLink size={14} />
