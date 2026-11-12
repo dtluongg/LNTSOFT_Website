@@ -1,22 +1,22 @@
 import React from 'react'
 import {
   ArrowRight,
+  ArrowUpRight,
   Sparkles,
   TrendingUp,
   Shirt,
-  CheckCircle2,
 } from 'lucide-react'
 import ApparelArchitectureSuite from '../viewHomePage/Industry/ApparelArchitectureSuite'
 import ExploreKeyCapabilities from './ExploreKeyCapabilities'
 
 export default function ApparelSection() {
-  // 5 Điểm chạm công nghệ cốt lõi
+  // 5 Điểm chạm công nghệ cốt lõi - Giữ nguyên 100% tên ban đầu, sẵn sàng liên kết mở trang chi tiết
   const highlights = [
-    'AI SUITE',
-    'SMART PLANNER',
-    'SMART FACTORY',
-    'AI INSIGHT',
-    'WORKNOTE',
+    { name: 'AI SUITE', slug: '#industry/ai-suite' },
+    { name: 'SMART PLANNER', slug: '#industry/smart-planner' },
+    { name: 'SMART FACTORY', slug: '#industry/smart-factory' },
+    { name: 'AI INSIGHT', slug: '#industry/ai-insight' },
+    { name: 'WORKNOTE', slug: '#industry/worknote' },
   ]
 
   // 4 Chỉ số cải tiến thực tiễn ban đầu (Độ dài chữ cân đối, không bị lệch hàng)
@@ -44,34 +44,35 @@ export default function ApparelSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 mb-14">
         
         {/* =========================================================================
-            TẦNG 1: BỐ CỤC 2 CỘT CHIA ĐÔI TỪ ĐỈNH HEADER
-            Cột phải: Hình ảnh lớn phóng to lên ngang hàng với tiêu đề
-            Cột trái: Tiêu đề lớn + Tiêu đề phụ + Khối Overview trọn vẹn
+            TẦNG 1: BỐ CỤC MỞ RỘNG TRÀN 2 BÊN (CÂN BẰNG THOÁNG ĐÃNG, KHÔNG BỊ TRỐNG)
+            - Cột trái: Header + Subtitle + Badge Overview + Quote + Đoạn giải thích
+            - Cột phải: Ý TƯỞNG 4 (Arch Horizon) - Vòm cong kiến trúc thời trang,
+              kèm họa tiết khung đệm và quầng sáng hào quang, ảnh sạch 100% không đè chữ
         ========================================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
-          {/* CỘT TRÁI (7 CỘT): HEADER + SUBTITLE + BADGE OVERVIEW + QUOTE + EXPLANATION */}
-          <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
+          {/* CỘT TRÁI (7 CỘT): NỘI DUNG MẠCH LẠC, TRẢI DÀI VỪA VẶN KHÔNG GIAN */}
+          <div className="lg:col-span-7 space-y-6">
             
-            {/* 1. Header & Subtitle */}
+            {/* Header & Subtitle */}
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-lnt-blue/30 bg-sky-50 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.18em] text-lnt-blue shadow-2xs mb-3">
                 <Shirt size={13} className="text-lnt-blue" />
                 <span>FASHION & APPAREL ENTERPRISE SUITE</span>
               </div>
 
-              {/* Tiêu đề H2: Chuẩn kích thước bằng đúng Manufacturing ERP */}
+              {/* Tiêu đề H2: Đồng bộ chuẩn xác với Manufacturing ERP */}
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-title tracking-tight leading-snug">
                 Apparel ERP & MES Solution
               </h2>
 
-              {/* Subtitle / Value Proposition Tagline */}
+              {/* Subtitle */}
               <p className="text-base sm:text-lg font-medium text-lnt-blue mt-2 leading-snug">
                 Modern, Customizable ERP Software for Your Entire Apparel Business Ecosystem
               </p>
             </div>
 
-            {/* 2. Khối OVERVIEW: Giữ trọn nội dung gốc ban đầu */}
+            {/* Khối OVERVIEW: Giữ nguyên vẹn 100% nội dung gốc */}
             <div className="space-y-4 pt-1">
               
               {/* OVERVIEW Badge (Capsule Pill đỏ Ruby tinh tế) */}
@@ -81,14 +82,14 @@ export default function ApparelSection() {
                 <span>OVERVIEW</span>
               </div>
 
-              {/* Đoạn 1: Lead Quote (In đậm, in nghiêng, font sắc sảo) */}
+              {/* Đoạn 1: Lead Quote */}
               <div className="relative border-l-3 border-lnt-blue pl-4 sm:pl-5 py-1">
                 <p className="text-base sm:text-[17px] font-bold italic text-slate-800 leading-relaxed font-sans">
                   "FXPRO Product Suite is an integrated, AI-powered, end-to-end Apparel ERP & MES solution designed to digitalize, streamline, and optimize the business operations, supply chain activities, and factory-floor execution within one unified platform."
                 </p>
               </div>
 
-              {/* Đoạn 2: Explanation (Đứng thẳng, viết thường, thoáng mắt, dễ đọc) */}
+              {/* Đoạn 2: Explanation */}
               <p className="text-sm sm:text-base font-normal not-italic text-slate-600 leading-relaxed pl-1 font-sans">
                 Leveraging advanced technologies, intelligent automation, and real-time operational intelligence, FXPRO empowers apparel manufacturers to achieve greater operational efficiency, enhance production performance, improve end-to-end visibility, and accelerate data-driven decision-making.
               </p>
@@ -96,37 +97,47 @@ export default function ApparelSection() {
 
           </div>
 
-          {/* CỘT PHẢI (5 CỘT): HÌNH ẢNH PHÓNG TO LÊN NGANG HÀNG HEADER CHẠY DỌC XUỐNG */}
-          <div className="lg:col-span-5 relative flex items-center">
-            <div className="w-full h-full min-h-[380px] sm:min-h-[440px] relative rounded-3xl overflow-hidden border border-slate-200/90 shadow-2xl group bg-slate-900">
+          {/* CỘT PHẢI (5 CỘT): TẠO HÌNH VIÊN THUỐC ĐỨNG PHÁ CÁCH (CAPSULE PORTAL)
+              - Tạo hình tròn viên thuốc mềm mại (rounded-full), phá vỡ hoàn toàn góc vuông lặp lại
+              - Bỏ sạch các chấm dot dot, chỉ giữ quầng sáng và vòng tròn đồng tâm tối giản
+              - Ảnh sạch nguyên bản 100%, không viết bất kỳ chữ nào đè lên ảnh
+          ========================================================================= */}
+          <div className="lg:col-span-5 relative flex items-center justify-center py-4 lg:py-6">
+            
+            {/* 1. Hào quang ánh sáng mềm mại phía sau (Brand Soft Glow) */}
+            <div className="pointer-events-none absolute -top-10 -right-10 h-80 w-80 rounded-full bg-gradient-to-tr from-sky-200/45 via-blue-100/30 to-indigo-100/25 blur-[100px] -z-30" />
+            <div className="pointer-events-none absolute -bottom-10 -left-10 h-72 w-72 rounded-full bg-cyan-100/40 blur-[90px] -z-30" />
+
+            {/* 2. Cụm vòng tròn quỹ đạo đồng tâm tối giản (Không chấm dot dot) */}
+            <div className="relative w-full flex items-center justify-center">
               
-              {/* Ảnh thực tế nhà máy thời trang & công nghệ may */}
-              <img
-                src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1200&q=80"
-                alt="FXPRO Apparel ERP & MES Smart Factory Operation"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
-              />
+              {/* Vòng đệm ngoài cùng: Bo tròn viên thuốc lớn, nền kính mờ nhẹ */}
+              <div className="absolute -inset-6 sm:-inset-7 rounded-full border border-sky-100 bg-gradient-to-b from-sky-50/50 via-slate-50/30 to-transparent -z-20 pointer-events-none" />
 
-              {/* Lớp phủ gradient ánh sáng */}
-              <div className="absolute inset-0 bg-gradient-to-t from-lnt-navy/85 via-lnt-navy/20 to-transparent pointer-events-none" />
+              {/* Vòng nét chỉ mạ kim thứ hai: Nét mảnh màu xanh thương hiệu LNT */}
+              <div className="absolute -inset-3 sm:-inset-3.5 rounded-full border border-lnt-blue/25 -z-10 pointer-events-none" />
 
-              {/* Dải thông tin chân ảnh: Khôi phục chính xác 100% nội dung gốc ban đầu */}
-              <div className="absolute bottom-3.5 left-3.5 right-3.5 flex items-center justify-between text-xs text-white">
-                <div className="inline-flex items-center gap-2 rounded-full bg-lnt-navy/90 backdrop-blur-md px-3.5 py-1.5 font-semibold shadow">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>FXPRO MES • Smart Business Applications</span>
-                </div>
-                <span className="text-[11px] text-slate-300 font-mono hidden sm:inline">22 Modules Live</span>
+              {/* Khung ảnh chính: Dáng Viên thuốc đứng cao cấp (Capsule Portal), bo tròn hoàn toàn rounded-full */}
+              <div className="relative w-full max-w-[390px] sm:max-w-[420px] lg:max-w-[430px] h-[460px] sm:h-[500px] lg:h-[520px] rounded-full overflow-hidden shadow-2xl border-4 border-white ring-1 ring-slate-200/90 group bg-slate-900">
+                <img
+                  src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1200&q=80"
+                  alt="FXPRO Apparel ERP & MES Smart Factory Operation"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                
+                {/* Lớp bóng kính mờ nhẹ ở đáy để tạo chiều sâu quang học tự nhiên, không che khuất ảnh */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none" />
               </div>
 
             </div>
+
           </div>
 
         </div>
 
         {/* =========================================================================
             TẦNG 2: 4 THẺ DATA TRẢI DÀI FULL-WIDTH (Chân khối, bệ đỡ ngang vững chãi)
-            Khôi phục chuẩn xác cấu trúc và nội dung mà bạn yêu cầu
+            Thiết kế tối giản đỡ viền, cả 4 thẻ nằm trên 1 dòng đồng đều tăm tắp
         ========================================================================= */}
         <div className="mt-12 pt-8 border-t border-slate-200/80">
           <div className="flex items-center justify-between mb-4">
@@ -183,21 +194,25 @@ export default function ApparelSection() {
         {/* Sơ đồ 3D Oval 22 Modules */}
         <ApparelArchitectureSuite />
 
-        {/* 5 Floating Tech Nodes + CTA (Phong cách phẳng không viền hộp) */}
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 mt-4 relative z-0">
+        {/* 5 Điểm chạm công nghệ - Dáng Pill tối giản chuẩn Aptean, không viền nặng, giữ nguyên 100% chữ ban đầu */}
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 mt-5 relative z-0">
           
-          {/* 5 Điểm chạm công nghệ trôi nổi phẳng (Floating Tech Nodes) */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
-            {highlights.map((name, idx) => (
-              <div
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3 lg:gap-4">
+            {highlights.map((item, idx) => (
+              <a
                 key={idx}
-                className="group flex items-center justify-center text-center gap-2.5 py-2.5 px-3 rounded-xl hover:bg-white/10 transition-all duration-300 cursor-default"
+                href={item.slug}
+                className="group flex items-center justify-center gap-2 py-2.5 px-3.5 rounded-full bg-white/10 hover:bg-white text-white hover:text-title transition-all duration-300 cursor-pointer border border-white/15 hover:border-white shadow-xs hover:shadow-md"
               >
-                <span className="w-2 h-2 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.9)] shrink-0 group-hover:scale-125 group-hover:bg-amber-300 group-hover:shadow-[0_0_10px_rgba(253,224,71,0.9)] transition-all" />
-                <span className="text-white font-bold text-xs sm:text-[14px] font-heading tracking-wider leading-snug group-hover:text-amber-100 transition-colors uppercase">
-                  {name}
+                <span className="w-1.5 h-1.5 rounded-full bg-white group-hover:bg-lnt-blue shadow-[0_0_6px_rgba(255,255,255,0.8)] group-hover:scale-125 transition-all shrink-0" />
+                <span className="font-bold text-xs sm:text-[13px] lg:text-[13.5px] font-heading tracking-wider leading-none uppercase group-hover:text-lnt-navy transition-colors whitespace-nowrap">
+                  {item.name}
                 </span>
-              </div>
+                <ArrowUpRight
+                  size={14}
+                  className="opacity-70 group-hover:opacity-100 text-white/80 group-hover:text-lnt-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0"
+                />
+              </a>
             ))}
           </div>
 
