@@ -2,6 +2,9 @@ import React, { useEffect } from 'react'
 import { ArrowLeft, ChevronRight, Home } from 'lucide-react'
 import AISuiteIntroduce from './AISuiteIntroduce'
 import AISuiteCapabilities from './AISuiteCapabilities'
+import AISuiteWorkflow from './AISuiteWorkflow'
+import AISuiteBenefits from './AISuiteBenefits'
+import AISuiteFinal from './AISuiteFinal'
 
 interface AISuitePageProps {
   onBack?: () => void
@@ -52,10 +55,14 @@ export default function AISuitePage({ onBack }: AISuitePageProps) {
       {/* PHẦN 2: CAPABILITIES (Nội dung cốt lõi: Order Automation & Tech Pack to BOM) */}
       <AISuiteCapabilities />
 
-      {/* CÁC PHẦN TIẾP THEO SẼ ĐƯỢC PHÁT TRIỂN TIẾP:
-          - PHẦN 3: Workflow (Luồng vận hành AI trên chuyền may)
-          - PHẦN 4: CTA & Đăng ký tư vấn
-      */}
+      {/* PHẦN 3: WORKFLOW (Sơ đồ tiến trình: How FXPRO AI Works) */}
+      <AISuiteWorkflow />
+
+      {/* PHẦN 4: KEY BUSINESS BENEFITS (Cụm Vệ tinh Hội tụ: Make Every Operation Smarter with AI) */}
+      <AISuiteBenefits />
+
+      {/* PHẦN 5: FINAL CTA & CONVERSION (The Executive Aurora Portal) */}
+      <AISuiteFinal />
     </div>
   )
 }

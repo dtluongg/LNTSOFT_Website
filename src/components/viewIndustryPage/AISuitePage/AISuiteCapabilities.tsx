@@ -131,7 +131,7 @@ export default function AISuiteCapabilities() {
               <div className="relative w-full max-w-[650px] lg:max-w-none mx-auto">
                 
                 {/* HÌNH ĐẰNG SAU (AI_Suite2 - Confirmed Order Management): Khổ lớn, lệch lên trên về phía bên phải */}
-                <div className="relative ml-auto w-[88%] sm:w-[90%] rounded-2xl overflow-hidden shadow-xl border border-slate-200/90 bg-white transition-all duration-500 hover:shadow-2xl hover:-translate-y-1">
+                <div className="relative mr-10 w-[88%] sm:w-[90%] rounded-2xl overflow-hidden shadow-xl border border-slate-200/90 bg-white transition-all duration-500 hover:shadow-2xl hover:-translate-y-1">
                   <img
                     src={aiSuite2}
                     alt="Customer Order Source Document - PO Items"
@@ -140,7 +140,7 @@ export default function AISuiteCapabilities() {
                 </div>
 
                 {/* HÌNH ĐẰNG TRƯỚC (AI_Suite1 - Customer PO Document): Khổ lớn đè lên phía trước, lệch xuống dưới về phía bên trái */}
-                <div className="relative z-10 -mt-50 sm:-mt-28 lg:-mt-60 mr-auto w-[100%] sm:w-[92%] rounded-2xl overflow-hidden shadow-2xl border-2 border-white ring-1 ring-slate-200/90 bg-white transition-all duration-500 hover:scale-[1.015] hover:shadow-2xl">
+                <div className="relative z-10 -mt-50 sm:-mt-28 lg:-mt-70 ml-15 w-[100%] sm:w-[92%] rounded-2xl overflow-hidden shadow-2xl border-2 border-white ring-1 ring-slate-200/90 bg-white transition-all duration-500 hover:scale-[1.015] hover:shadow-2xl">
                   <img
                     src={aiSuite1}
                     alt="FXPRO Confirmed Order Management & Product Detail"
