@@ -202,6 +202,12 @@ export default function ApparelSection() {
               <a
                 key={idx}
                 href={item.slug}
+                onClick={(e) => {
+                  e.preventDefault()
+                  window.location.hash = item.slug.replace(/^#/, '')
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                  window.dispatchEvent(new Event('hashchange'))
+                }}
                 className="group flex items-center justify-center gap-2 py-2.5 px-3.5 rounded-full bg-white/10 hover:bg-white text-white hover:text-title transition-all duration-300 cursor-pointer border border-white/15 hover:border-white shadow-xs hover:shadow-md"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-white group-hover:bg-lnt-blue shadow-[0_0_6px_rgba(255,255,255,0.8)] group-hover:scale-125 transition-all shrink-0" />

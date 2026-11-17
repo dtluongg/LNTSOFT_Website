@@ -1,0 +1,6 @@
+export { default as AIInsightPage } from './AIInsightPage'
+export { default as AIInsightIntroduce } from './AIInsightIntroduce'
+export { default as AIInsightCapabilities } from './AIInsightCapabilities'
+export { default as AIInsightWorkflow } from './AIInsightWorkflow'
+export { default as AIInsightBenefits } from './AIInsightBenefits'
+export { default as AIInsightFinal } from './AIInsightFinal'

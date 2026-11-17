@@ -6,21 +6,29 @@ import HomePage from './pages/HomePage'
 import ProductPage from './pages/ProductPage'
 import IndustryPage from './pages/IndustryPage'
 import { AISuitePage } from './components/viewIndustryPage/AISuitePage'
+import { AIInsightPage } from './components/viewIndustryPage/AIInsightPage'
 
-export type PageRoute = 'home' | 'product' | 'industry' | 'ai-suite'
+export type PageRoute = 'home' | 'product' | 'industry' | 'ai-suite' | 'ai-insight'
 
-// 1. Nhận diện Route cực kỳ gọn gàng từ URL Hash
+// 1. Nhận diện Route linh hoạt từ URL Hash lẫn URL Pathname
 const getRoute = (): { page: PageRoute; targetId?: string } => {
   const hash = (window.location.hash || '').toLowerCase()
+  const path = (window.location.pathname || '').toLowerCase()
+  const full = `${hash} ${path}`
 
-  if (hash.includes('ai-suite')) {
+  if (full.includes('ai-insight')) {
+    return { page: 'ai-insight', targetId: 'ai-insight' }
+  }
+  if (full.includes('ai-suite')) {
     return { page: 'ai-suite', targetId: 'ai-suite' }
   }
-  if (hash.includes('product')) {
-    return { page: 'product', targetId: hash.replace(/^#\/?product\/?/, '') || 'product' }
+  if (full.includes('product')) {
+    const target = hash ? hash.replace(/^#\/?product\/?/, '') : path.replace(/^\/?product\/?/, '')
+    return { page: 'product', targetId: target || 'product' }
   }
-  if (hash.includes('industry') || hash.includes('apparel') || hash.includes('manufacturing') || hash.includes('fintech')) {
-    return { page: 'industry', targetId: hash.replace(/^#\/?industry\/?/, '') || 'industry' }
+  if (full.includes('industry') || full.includes('apparel') || full.includes('manufacturing') || full.includes('fintech')) {
+    const target = hash ? hash.replace(/^#\/?industry\/?/, '') : path.replace(/^\/?industry\/?/, '')
+    return { page: 'industry', targetId: target || 'industry' }
   }
   return { page: 'home', targetId: undefined }
 }
@@ -28,18 +36,25 @@ const getRoute = (): { page: PageRoute; targetId?: string } => {
 export default function App() {
   const [route, setRoute] = useState(getRoute)
 
-  // 2. Lắng nghe thay đổi hash (Click link hoặc nút Back/Forward của trình duyệt)
+  // 2. Lắng nghe thay đổi hash & popstate (Click link hoặc nút Back/Forward)
   useEffect(() => {
-    const onHashChange = () => {
+    const syncRoute = () => {
       setRoute(getRoute())
     }
-    window.addEventListener('hashchange', onHashChange)
-    return () => window.removeEventListener('hashchange', onHashChange)
+    window.addEventListener('hashchange', syncRoute)
+    window.addEventListener('popstate', syncRoute)
+    return () => {
+      window.removeEventListener('hashchange', syncRoute)
+      window.removeEventListener('popstate', syncRoute)
+    }
   }, [])
 
   // 3. Hàm chuyển trang tập trung & gán Hash trực quan
   const handleNavigate = (page: PageRoute, targetId?: string) => {
-    if (page === 'ai-suite') {
+    if (page === 'ai-insight') {
+      window.location.hash = 'industry/ai-insight'
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else if (page === 'ai-suite') {
       window.location.hash = 'industry/ai-suite'
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } else if (page === 'product') {
@@ -57,6 +72,9 @@ export default function App() {
     <div className="min-h-screen bg-white text-slate-900">
       <Navbar currentPage={route.page} onNavigate={handleNavigate} />
       <main>
+        {route.page === 'ai-insight' && (
+          <AIInsightPage onBack={() => handleNavigate('industry', 'apparel')} />
+        )}
         {route.page === 'ai-suite' && (
           <AISuitePage onBack={() => handleNavigate('industry', 'apparel')} />
         )}
