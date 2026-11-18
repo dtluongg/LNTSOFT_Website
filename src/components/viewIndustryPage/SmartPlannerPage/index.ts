@@ -1,0 +1,6 @@
+export { default as SmartPlannerPage } from './SmartPlannerPage'
+export { default as SmartPlannerIntroduce } from './SmartPlannerIntroduce'
+export { default as SmartPlannerCapabilities } from './SmartPlannerCapabilities'
+export { default as SmartPlannerWorkflow } from './SmartPlannerWorkflow'
+export { default as SmartPlannerBenefits } from './SmartPlannerBenefits'
+export { default as SmartPlannerFinal } from './SmartPlannerFinal'
