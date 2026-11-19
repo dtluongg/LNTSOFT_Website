@@ -11,17 +11,13 @@ import {
   TrendingUp,
   CheckCircle2,
   ArrowRight,
+  ShieldCheck,
+  Check,
 } from 'lucide-react'
+import hinh2 from '../../../assets/components/industryPage/Smart_Planner/hinh2.png'
+import hinh3 from '../../../assets/components/industryPage/Smart_Planner/hinh3.png'
 
-export interface SmartPlannerCapabilitiesProps {
-  capacityImage?: string
-  schedulingImage?: string
-}
-
-export default function SmartPlannerCapabilities({
-  capacityImage = 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1400&q=85',
-  schedulingImage = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=85',
-}: SmartPlannerCapabilitiesProps) {
+export default function SmartPlannerCapabilities() {
   // 4 Trụ cột giải pháp cho Part 1: Production Capacity Planning
   const capacityHighlights = [
     {
@@ -70,7 +66,6 @@ export default function SmartPlannerCapabilities({
     <div id="capabilities" className="w-full bg-white">
       {/* =======================================================================
           HEADER CHUNG CHO PHÂN HỆ: FXPRO OPEZE PLANNER CAPABILITIES
-          - Phong cách tối giản, thoáng đãng, sang trọng
       ======================================================================= */}
       <section className="pt-20 sm:pt-24 pb-14 sm:pb-16 border-b border-slate-200/80 bg-slate-50/50 relative overflow-hidden">
         {/* Quầng sáng dịu nhẹ tối giản ở nền */}
@@ -94,13 +89,13 @@ export default function SmartPlannerCapabilities({
 
       {/* =======================================================================
           PHẦN 1: PRODUCTION CAPACITY PLANNING
-          - Thiết kế: Sang trọng, thoáng đãng, ảnh sạch 100% không đè chữ hay HUD rối rắm
+          - Thiết kế: Khung Máy Tính Chuyên Nghiệp (Laptop Mockup) hiển thị giao diện hinh2.png
       ======================================================================= */}
       <section className="w-full py-16 sm:py-20 lg:py-24 border-b border-slate-200/80 bg-white relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
             
-            {/* CỘT TRÁI (6 CỘT): NỘI DUNG CHỮ THOÁNG ĐÃNG, DỄ ĐỌC */}
+            {/* CỘT TRÁI (6 CỘT): NỘI DUNG CHỮ THOÁNG ĐÃNG */}
             <div className="lg:col-span-6 space-y-6">
               
               {/* Badge định danh */}
@@ -128,7 +123,7 @@ export default function SmartPlannerCapabilities({
                 </p>
               </div>
 
-              {/* 4 Trụ cột tính năng: Thiết kế tối giản, sạch sẽ, không đóng khung nặng nề */}
+              {/* 4 Trụ cột tính năng */}
               <div className="pt-2 border-t border-slate-100">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {capacityHighlights.map((item, idx) => (
@@ -149,26 +144,67 @@ export default function SmartPlannerCapabilities({
 
             </div>
 
-            {/* CỘT PHẢI (6 CỘT): KHUNG ẢNH NGHỆ THUẬT SANG TRỌNG, SẠCH 100% */}
+            {/* CỘT PHẢI (6 CỘT): MÁY TÍNH XÁCH TAY HIỂN THỊ HÌNH 2 (CAPACITY ALLOCATION) */}
             <div className="lg:col-span-6 relative flex items-center justify-center py-4">
               
               {/* Quầng sáng quang học mềm phía sau */}
-              <div className="pointer-events-none absolute -top-8 -right-8 h-80 w-80 rounded-full bg-gradient-to-tr from-sky-100/60 via-blue-50/40 to-transparent blur-[90px] -z-10" />
-              <div className="pointer-events-none absolute -bottom-8 -left-8 h-72 w-72 rounded-full bg-cyan-100/50 blur-[80px] -z-10" />
+              <div className="pointer-events-none absolute -top-10 -right-10 h-80 w-80 rounded-full bg-gradient-to-tr from-sky-100/70 via-blue-50/40 to-transparent blur-[90px] -z-10" />
+              <div className="pointer-events-none absolute -bottom-10 -left-10 h-72 w-72 rounded-full bg-cyan-100/50 blur-[80px] -z-10" />
 
-              {/* Vòng nét mảnh tinh tế bao ngoài */}
-              <div className="relative w-full max-w-[540px]">
+              {/* KHUNG LAPTOP WORKSTATION CHÂN THỰC CHỨA HÌNH 2 */}
+              <div className="relative w-full max-w-[620px] mx-auto group">
                 
-                {/* Khung ảnh chính: Viền trắng tinh khôi, bóng đổ mềm mại cao cấp, ảnh nguyên bản không đè chữ */}
-                <div className="relative w-full h-[360px] sm:h-[420px] lg:h-[460px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white ring-1 ring-slate-200/80 bg-slate-900 group">
-                  <img
-                    src={capacityImage}
-                    alt="FXPRO OPEZE Production Capacity Planning"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  {/* Hiệu ứng bóng mờ nhẹ tự nhiên ở đáy ảnh */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/25 via-transparent to-transparent pointer-events-none" />
+                {/* 1. NẮP MÀN HÌNH MÁY TÍNH (SCREEN LID) */}
+                <div className="relative rounded-t-[18px] rounded-b-sm bg-[#161a23] p-2 sm:p-2.5 shadow-2xl border border-slate-700/80 ring-1 ring-slate-900/60">
+                  
+                  {/* Camera Web ở đỉnh máy tính */}
+                  <div className="absolute top-1 left-1/2 -translate-x-1/2 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-800 border border-slate-700" />
+                    <span className="w-1 h-1 rounded-full bg-emerald-500/80" />
+                  </div>
+
+                  {/* KHUNG HIỂN THỊ MÀN HÌNH CHỨA ẢNH HÌNH 2 */}
+                  <div className="relative rounded-lg overflow-hidden bg-slate-950 border border-slate-800/90 shadow-inner">
+                    
+                    {/* Header Bar trình duyệt máy tính */}
+                    <div className="flex items-center justify-between px-3 py-1.5 bg-slate-900/95 border-b border-slate-800 text-xs">
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2.5 h-2.5 rounded-full bg-rose-500" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                      </div>
+                      
+                      <div className="flex items-center gap-1.5 px-3 py-0.5 rounded-md bg-slate-950 border border-slate-800 text-[10.5px] font-mono text-slate-300">
+                        <span className="text-emerald-400 text-[10px]">🔒</span>
+                        <span>FXPRO Planning Board — [Capacity Allocation]</span>
+                      </div>
+
+                      <div className="flex items-center gap-1.5 text-[10px] font-mono text-emerald-400">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="hidden sm:inline">LIVE SYNC</span>
+                      </div>
+                    </div>
+
+                    {/* HÌNH NỀN GIAO DIỆN PHẦN MỀM HÌNH 2 NGUYÊN BẢN */}
+                    <div className="relative w-full overflow-hidden bg-slate-900">
+                      <img
+                        src={hinh2}
+                        alt="FXPRO Planning Board - Capacity Allocation"
+                        className="w-full h-auto object-cover object-top block transition-transform duration-500 group-hover:scale-[1.02]"
+                      />
+                    </div>
+
+                  </div>
                 </div>
+
+                {/* 2. THÂN MÁY TÍNH DƯỚI (LAPTOP CHASSIS & BASE) */}
+                <div className="relative -mt-0.5 w-[104%] -left-[2%] h-3.5 sm:h-4 rounded-b-xl bg-gradient-to-r from-slate-400 via-slate-200 to-slate-400 border-t border-slate-300 shadow-xl flex items-center justify-center">
+                  {/* Rãnh mở máy tính */}
+                  <div className="w-16 sm:w-20 h-1.5 rounded-full bg-slate-500/40" />
+                </div>
+
+                {/* Bóng đổ gầm máy tính kim loại */}
+                <div className="w-[90%] mx-auto h-2.5 bg-slate-900/20 blur-md rounded-full mt-1" />
 
               </div>
 
@@ -180,30 +216,74 @@ export default function SmartPlannerCapabilities({
 
       {/* =======================================================================
           PHẦN 2: PRODUCTION SCHEDULING (Bố cục đảo chiều so le)
-          - Thiết kế: Nền nhẹ bg-slate-50/50 tạo nhịp điệu tương phản, ảnh sạch 100%
+          - Thiết kế: Khung Máy Tính Chuyên Nghiệp (Laptop Mockup) hiển thị giao diện hinh3.png
       ======================================================================= */}
       <section className="w-full py-16 sm:py-20 lg:py-24 border-b border-slate-200/80 bg-slate-50/50 relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
             
-            {/* CỘT TRÁI (6 CỘT - ĐẢO CHIỀU): KHUNG ẢNH SANG TRỌNG, SẠCH 100% */}
+            {/* CỘT TRÁI (6 CỘT - ĐẢO CHIỀU): MÁY TÍNH HIỂN THỊ HÌNH 3 (SEWING LINE GANTT SCHEDULING) */}
             <div className="lg:col-span-6 relative flex items-center justify-center py-4 order-2 lg:order-1">
               
               {/* Quầng sáng quang học mềm phía sau */}
-              <div className="pointer-events-none absolute -top-8 -left-8 h-80 w-80 rounded-full bg-gradient-to-tr from-cyan-100/60 via-sky-50/40 to-transparent blur-[90px] -z-10" />
-              <div className="pointer-events-none absolute -bottom-8 -right-8 h-72 w-72 rounded-full bg-sky-100/50 blur-[80px] -z-10" />
+              <div className="pointer-events-none absolute -top-10 -left-10 h-80 w-80 rounded-full bg-gradient-to-tr from-cyan-100/70 via-sky-50/40 to-transparent blur-[90px] -z-10" />
+              <div className="pointer-events-none absolute -bottom-10 -right-10 h-72 w-72 rounded-full bg-sky-100/50 blur-[80px] -z-10" />
 
-              <div className="relative w-full max-w-[540px]">
-                {/* Khung ảnh chính */}
-                <div className="relative w-full h-[360px] sm:h-[420px] lg:h-[460px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white ring-1 ring-slate-200/80 bg-slate-900 group">
-                  <img
-                    src={schedulingImage}
-                    alt="FXPRO OPEZE Production Scheduling"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  {/* Hiệu ứng bóng mờ nhẹ tự nhiên ở đáy ảnh */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/25 via-transparent to-transparent pointer-events-none" />
+              {/* KHUNG LAPTOP WORKSTATION CHÂN THỰC CHỨA HÌNH 3 */}
+              <div className="relative w-full max-w-[620px] mx-auto group">
+                
+                {/* 1. NẮP MÀN HÌNH MÁY TÍNH (SCREEN LID) */}
+                <div className="relative rounded-t-[18px] rounded-b-sm bg-[#161a23] p-2 sm:p-2.5 shadow-2xl border border-slate-700/80 ring-1 ring-slate-900/60">
+                  
+                  {/* Camera Web ở đỉnh máy tính */}
+                  <div className="absolute top-1 left-1/2 -translate-x-1/2 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-800 border border-slate-700" />
+                    <span className="w-1 h-1 rounded-full bg-sky-400/80" />
+                  </div>
+
+                  {/* KHUNG HIỂN THỊ MÀN HÌNH CHỨA ẢNH HÌNH 3 */}
+                  <div className="relative rounded-lg overflow-hidden bg-slate-950 border border-slate-800/90 shadow-inner">
+                    
+                    {/* Header Bar trình duyệt máy tính */}
+                    <div className="flex items-center justify-between px-3 py-1.5 bg-slate-900/95 border-b border-slate-800 text-xs">
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2.5 h-2.5 rounded-full bg-rose-500" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                      </div>
+                      
+                      <div className="flex items-center gap-1.5 px-3 py-0.5 rounded-md bg-slate-950 border border-slate-800 text-[10.5px] font-mono text-slate-300">
+                        <span className="text-sky-400 text-[10px]">🔒</span>
+                        <span>FXPRO Planning Board — [Sewing Line Scheduling]</span>
+                      </div>
+
+                      <div className="flex items-center gap-1.5 text-[10px] font-mono text-sky-400">
+                        <Clock size={11} />
+                        <span className="hidden sm:inline">GANTT</span>
+                      </div>
+                    </div>
+
+                    {/* HÌNH NỀN GIAO DIỆN PHẦN MỀM HÌNH 3 NGUYÊN BẢN */}
+                    <div className="relative w-full overflow-hidden bg-slate-900">
+                      <img
+                        src={hinh3}
+                        alt="FXPRO Planning Board - Sewing Line Scheduling"
+                        className="w-full h-auto object-cover object-top block transition-transform duration-500 group-hover:scale-[1.02]"
+                      />
+                    </div>
+
+                  </div>
                 </div>
+
+                {/* 2. THÂN MÁY TÍNH DƯỚI (LAPTOP CHASSIS & BASE) */}
+                <div className="relative -mt-0.5 w-[104%] -left-[2%] h-3.5 sm:h-4 rounded-b-xl bg-gradient-to-r from-slate-400 via-slate-200 to-slate-400 border-t border-slate-300 shadow-xl flex items-center justify-center">
+                  {/* Rãnh mở máy tính */}
+                  <div className="w-16 sm:w-20 h-1.5 rounded-full bg-slate-500/40" />
+                </div>
+
+                {/* Bóng đổ gầm máy tính kim loại */}
+                <div className="w-[90%] mx-auto h-2.5 bg-slate-900/20 blur-md rounded-full mt-1" />
+
               </div>
 
             </div>
@@ -230,7 +310,7 @@ export default function SmartPlannerCapabilities({
                 Coordinate production activities through structured scheduling capabilities. FXPRO Apparel Smart Planner helps manufacturers organize production timelines, manage scheduling priorities, and maintain better control over planned manufacturing activities.
               </p>
 
-              {/* 4 KEY FUNCTIONS: Thiết kế thanh lịch, gọn gàng, có chiều sâu sang trọng */}
+              {/* 4 KEY FUNCTIONS */}
               <div className="pt-2 border-t border-slate-200/70">
                 <h4 className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 font-heading mb-4">
                   Key Functions:

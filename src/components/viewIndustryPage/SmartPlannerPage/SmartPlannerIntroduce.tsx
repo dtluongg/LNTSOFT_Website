@@ -6,7 +6,7 @@ import {
   Sparkles,
 } from 'lucide-react'
 import IndustryHeroTemplate from '../common/IndustryHeroTemplate'
-
+import image1 from '../../../assets/components/industryPage/Smart_Planner/hinh1.png'
 export default function SmartPlannerIntroduce() {
   // 4 Tính năng cốt lõi của FXPRO Smart Planner
   const plannerFeatures = [
@@ -49,7 +49,8 @@ export default function SmartPlannerIntroduce() {
       primaryCtaLink="#capabilities"
       secondaryCtaText="Request a Demo"
       secondaryCtaLink="#contact"
-      bgImage="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80"
+      // bgImage="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80"
+      bgImage= {image1}
       bgImageAlt="FXPRO Smart Planner Advanced Manufacturing Scheduling"
     />
   )
