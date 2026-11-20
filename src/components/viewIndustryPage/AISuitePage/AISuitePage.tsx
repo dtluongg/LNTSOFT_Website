@@ -8,9 +8,10 @@ import AISuiteFinal from './AISuiteFinal'
 
 interface AISuitePageProps {
   onBack?: () => void
+  onNavigate?: (page: any, targetId?: string) => void
 }
 
-export default function AISuitePage({ onBack }: AISuitePageProps) {
+export default function AISuitePage({ onBack, onNavigate }: AISuitePageProps) {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [])
@@ -21,7 +22,7 @@ export default function AISuitePage({ onBack }: AISuitePageProps) {
           SUITE NAVIGATOR: BREADCRUMB PHÂN CẤP + 5 PILLS CHUYỂN TRANG TỨC THÌ
           Home > Industry Solutions > Apparel ERP & MES Solution
       ========================================================================= */}
-      <ApparelSuiteNav currentSuite="ai-suite" onBack={onBack} />
+      <ApparelSuiteNav currentSuite="ai-suite" onBack={onBack} onNavigate={onNavigate} />
 
       {/* PHẦN 1: INTRODUCE (Hero toàn cảnh tràn trang) */}
       <AISuiteIntroduce />

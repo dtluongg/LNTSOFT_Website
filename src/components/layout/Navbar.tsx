@@ -14,7 +14,7 @@ import {
 // 1. CONFIGURATION & TYPES
 // =========================================================================
 
-export type PageRoute = 'home' | 'product' | 'industry' | 'ai-suite' | 'ai-insight' | 'smart-planner'
+export type PageRoute = 'home' | 'product' | 'industry' | 'ai-suite' | 'ai-insight' | 'smart-planner' | 'smart-factory'
 type DropdownMenuKey = 'products' | 'services' | 'industries'
 
 const DRAWER_CONFIGS: Record<

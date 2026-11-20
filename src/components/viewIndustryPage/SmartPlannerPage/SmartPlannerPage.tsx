@@ -8,9 +8,10 @@ import SmartPlannerFinal from './SmartPlannerFinal'
 
 interface SmartPlannerPageProps {
   onBack?: () => void
+  onNavigate?: (page: any, targetId?: string) => void
 }
 
-export default function SmartPlannerPage({ onBack }: SmartPlannerPageProps) {
+export default function SmartPlannerPage({ onBack, onNavigate }: SmartPlannerPageProps) {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [])
@@ -21,7 +22,7 @@ export default function SmartPlannerPage({ onBack }: SmartPlannerPageProps) {
           SUITE NAVIGATOR: BREADCRUMB PHÂN CẤP + 5 PILLS CHUYỂN TRANG TỨC THÌ
           Home > Industry Solutions > Apparel ERP & MES Solution
       ========================================================================= */}
-      <ApparelSuiteNav currentSuite="smart-planner" onBack={onBack} />
+      <ApparelSuiteNav currentSuite="smart-planner" onBack={onBack} onNavigate={onNavigate} />
 
       {/* =========================================================================
           PHẦN 1: HERO / INTRODUCE (Áp dụng chung khung Template chuẩn)

@@ -8,8 +8,9 @@ import IndustryPage from './pages/IndustryPage'
 import { AISuitePage } from './components/viewIndustryPage/AISuitePage'
 import { AIInsightPage } from './components/viewIndustryPage/AIInsightPage'
 import { SmartPlannerPage } from './components/viewIndustryPage/SmartPlannerPage'
+import { SmartFactoryPage } from './components/viewIndustryPage/SmartFactoryPage'
 
-export type PageRoute = 'home' | 'product' | 'industry' | 'ai-suite' | 'ai-insight' | 'smart-planner'
+export type PageRoute = 'home' | 'product' | 'industry' | 'ai-suite' | 'ai-insight' | 'smart-planner' | 'smart-factory'
 
 // 1. Nhận diện Route linh hoạt từ URL Hash lẫn URL Pathname
 const getRoute = (): { page: PageRoute; targetId?: string } => {
@@ -17,6 +18,9 @@ const getRoute = (): { page: PageRoute; targetId?: string } => {
   const path = (window.location.pathname || '').toLowerCase()
   const full = `${hash} ${path}`
 
+  if (full.includes('smart-factory')) {
+    return { page: 'smart-factory', targetId: 'smart-factory' }
+  }
   if (full.includes('smart-planner')) {
     return { page: 'smart-planner', targetId: 'smart-planner' }
   }
@@ -55,7 +59,11 @@ export default function App() {
 
   // 3. Hàm chuyển trang tập trung & gán Hash trực quan
   const handleNavigate = (page: PageRoute, targetId?: string) => {
-    if (page === 'smart-planner') {
+    setRoute({ page, targetId: targetId || page })
+    if (page === 'smart-factory') {
+      window.location.hash = 'industry/smart-factory'
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else if (page === 'smart-planner') {
       window.location.hash = 'industry/smart-planner'
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } else if (page === 'ai-insight') {
@@ -79,14 +87,17 @@ export default function App() {
     <div className="min-h-screen bg-white text-slate-900">
       <Navbar currentPage={route.page} onNavigate={handleNavigate} />
       <main>
+        {route.page === 'smart-factory' && (
+          <SmartFactoryPage onBack={() => handleNavigate('industry', 'apparel')} onNavigate={handleNavigate} />
+        )}
         {route.page === 'smart-planner' && (
-          <SmartPlannerPage onBack={() => handleNavigate('industry', 'apparel')} />
+          <SmartPlannerPage onBack={() => handleNavigate('industry', 'apparel')} onNavigate={handleNavigate} />
         )}
         {route.page === 'ai-insight' && (
-          <AIInsightPage onBack={() => handleNavigate('industry', 'apparel')} />
+          <AIInsightPage onBack={() => handleNavigate('industry', 'apparel')} onNavigate={handleNavigate} />
         )}
         {route.page === 'ai-suite' && (
-          <AISuitePage onBack={() => handleNavigate('industry', 'apparel')} />
+          <AISuitePage onBack={() => handleNavigate('industry', 'apparel')} onNavigate={handleNavigate} />
         )}
         {route.page === 'product' && <ProductPage initialTargetId={route.targetId} />}
         {route.page === 'industry' && <IndustryPage initialTargetId={route.targetId} />}

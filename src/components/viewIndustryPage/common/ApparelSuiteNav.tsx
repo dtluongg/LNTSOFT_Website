@@ -6,9 +6,10 @@ export type ApparelSuiteId = 'ai-suite' | 'smart-planner' | 'smart-factory' | 'a
 export interface ApparelSuiteNavProps {
   currentSuite: ApparelSuiteId
   onBack?: () => void
+  onNavigate?: (page: any, targetId?: string) => void
 }
 
-export default function ApparelSuiteNav({ currentSuite, onBack }: ApparelSuiteNavProps) {
+export default function ApparelSuiteNav({ currentSuite, onBack, onNavigate }: ApparelSuiteNavProps) {
   // 5 Phân hệ công nghệ cốt lõi của Apparel ERP & MES Solution
   const suiteItems = [
     {
@@ -30,7 +31,7 @@ export default function ApparelSuiteNav({ currentSuite, onBack }: ApparelSuiteNa
       name: 'SMART FACTORY',
       slug: '#industry/smart-factory',
       icon: Factory,
-      available: false, // Sẵn sàng mở trang khi triển khai
+      available: true,
     },
     {
       id: 'ai-insight' as ApparelSuiteId,
@@ -50,11 +51,17 @@ export default function ApparelSuiteNav({ currentSuite, onBack }: ApparelSuiteNa
 
   const handleSelectSuite = (suite: typeof suiteItems[0]) => {
     if (suite.available) {
+      if (onNavigate) {
+        onNavigate(suite.id)
+      }
       window.location.hash = suite.slug.replace(/^#/, '')
       window.scrollTo({ top: 0, behavior: 'smooth' })
       window.dispatchEvent(new Event('hashchange'))
     } else {
       // Nếu là phân hệ đang chuẩn bị ra mắt, chuyển về mục Apparel với thông báo nhẹ
+      if (onNavigate) {
+        onNavigate('industry', 'apparel')
+      }
       window.location.hash = 'industry/apparel'
       window.scrollTo({ top: 0, behavior: 'smooth' })
       window.dispatchEvent(new Event('hashchange'))
@@ -133,8 +140,8 @@ export default function ApparelSuiteNav({ currentSuite, onBack }: ApparelSuiteNa
                 }}
                 className={
                   isActive
-                    ? 'inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-lnt-blue text-white text-xs font-bold shadow-xs tracking-wider shrink-0 uppercase transition-all'
-                    : 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white hover:bg-sky-50 text-slate-600 hover:text-lnt-blue border border-slate-200/90 hover:border-lnt-blue/40 text-xs font-semibold tracking-wider shrink-0 uppercase transition-all'
+                    ? 'inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-lnt-blue text-white text-xs font-bold shadow-xs tracking-wider shrink-0 uppercase transition-all cursor-default'
+                    : 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white hover:bg-sky-50 text-slate-600 hover:text-lnt-blue border border-slate-200/90 hover:border-lnt-blue/40 text-xs font-semibold tracking-wider shrink-0 uppercase transition-all cursor-pointer'
                 }
               >
                 {isActive ? (

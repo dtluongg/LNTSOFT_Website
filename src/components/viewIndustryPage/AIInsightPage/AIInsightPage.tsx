@@ -8,9 +8,10 @@ import AIInsightFinal from './AIInsightFinal'
 
 interface AIInsightPageProps {
   onBack?: () => void
+  onNavigate?: (page: any, targetId?: string) => void
 }
 
-export default function AIInsightPage({ onBack }: AIInsightPageProps) {
+export default function AIInsightPage({ onBack, onNavigate }: AIInsightPageProps) {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [])
@@ -21,7 +22,7 @@ export default function AIInsightPage({ onBack }: AIInsightPageProps) {
           SUITE NAVIGATOR: BREADCRUMB PHÂN CẤP + 5 PILLS CHUYỂN TRANG TỨC THÌ
           Home > Industry Solutions > Apparel ERP & MES Solution
       ========================================================================= */}
-      <ApparelSuiteNav currentSuite="ai-insight" onBack={onBack} />
+      <ApparelSuiteNav currentSuite="ai-insight" onBack={onBack} onNavigate={onNavigate} />
 
       {/* =========================================================================
           PHẦN 1: HERO / INTRODUCE (Áp dụng chung khung Template chuẩn)
