@@ -6,147 +6,156 @@ import {
   SlidersHorizontal,
   LayoutDashboard,
   RefreshCw,
-  ArrowRight,
-  ArrowLeft,
-  CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
+  RotateCcw,
   Sparkles,
-  Cpu,
-  Activity,
-  BarChart2,
-  TrendingUp,
-  AlertCircle,
-  Clock,
-  Layers,
+  ArrowRight,
+  CheckCircle2,
 } from 'lucide-react'
 
 export default function SmartFactoryWorkflow() {
-  const [activeStep, setActiveStep] = useState(0)
+  const [activeIndex, setActiveIndex] = useState(0)
 
-  const steps = [
+  // 5 Bước chuẩn hoá - 100% nội dung gốc của người dùng
+  const flowNodes = [
     {
       id: '01',
-      step: 'Step 1',
+      stepNumber: 1,
+      phase: 'PLAN RELEASE',
       title: 'Manufacturing Order & Plan Release',
-      shortTitle: 'Plan Release',
       desc: 'Release manufacturing orders and allocate planned production targets, resources, and assignments to sewing teams to initiate production execution.',
       icon: Send,
-      theme: 'blue',
-      badgeBg: 'bg-blue-50 text-blue-700 border-blue-200/80',
-      accentGlow: 'from-blue-500/20 to-sky-500/10',
-      // Visual Widget đại diện cho Step 1: Lệnh sản xuất & phân bổ mục tiêu
-      widget: {
-        tag: 'WORK ORDER RELEASE',
-        title: 'MO #2026-FX48 • Sewing Line A-02',
-        metric1: { label: 'Planned Target', value: '2,400 pcs / day' },
-        metric2: { label: 'Assigned Teams', value: '3 Teams (48 Operators)' },
-        metric3: { label: 'Status', value: 'Ready for Floor Execution' },
-        statusColor: 'text-emerald-600 bg-emerald-50 border-emerald-200',
-      },
+      themeColor: '#087bc1',
+      badgeBg: 'bg-sky-50 text-[#087bc1] border-sky-200',
+      lightBg: 'bg-sky-500/10',
+      borderColor: 'border-sky-300',
     },
     {
       id: '02',
-      step: 'Step 2',
+      stepNumber: 2,
+      phase: 'SHOPFLOOR TRACKING',
       title: 'Real-Time Production Tracking',
-      shortTitle: 'Real-Time Tracking',
       desc: 'Capture and update actual production output, team performance, and work-in-progress (WIP) information in real time through connected sewing workstations and mobile interfaces.',
       icon: Radio,
-      theme: 'sky',
-      badgeBg: 'bg-sky-50 text-sky-700 border-sky-200/80',
-      accentGlow: 'from-sky-500/20 to-cyan-500/10',
-      // Visual Widget đại diện cho Step 2: Dữ liệu thu thập thời gian thực
-      widget: {
-        tag: 'LIVE TELEMETRY STREAM',
-        title: 'Connected Workstations Online',
-        metric1: { label: 'Current Output', value: '1,865 pcs (77.7%)' },
-        metric2: { label: 'Connected Devices', value: '48 / 48 Active IoT Nodes' },
-        metric3: { label: 'WIP Tracking', value: 'Balanced Flow • Zero Bottleneck' },
-        statusColor: 'text-sky-600 bg-sky-50 border-sky-200',
-      },
+      themeColor: '#0284c7',
+      badgeBg: 'bg-cyan-50 text-cyan-700 border-cyan-200',
+      lightBg: 'bg-cyan-500/10',
+      borderColor: 'border-cyan-300',
     },
     {
       id: '03',
-      step: 'Step 3',
+      stepNumber: 3,
+      phase: 'PERFORMANCE CONTROL',
       title: 'Production Performance Monitoring',
-      shortTitle: 'Performance Monitoring',
       desc: 'Compare planned targets against actual production results. Monitor sewing team performance, identify output gaps, and highlight production teams requiring management attention.',
       icon: SlidersHorizontal,
-      theme: 'teal',
-      badgeBg: 'bg-teal-50 text-teal-700 border-teal-200/80',
-      accentGlow: 'from-teal-500/20 to-emerald-500/10',
-      // Visual Widget đại diện cho Step 3: Giám sát so sánh kế hoạch vs thực tế
-      widget: {
-        tag: 'VARIANCE MONITORING',
-        title: 'Planned Target vs Actual Output',
-        metric1: { label: 'Variance Rate', value: '+4.2% Ahead of Plan' },
-        metric2: { label: 'Attention Alert', value: 'Team 03 Needs Material Resupply' },
-        metric3: { label: 'Line Velocity', value: 'Optimal Cycle Time (42s)' },
-        statusColor: 'text-amber-600 bg-amber-50 border-amber-200',
-      },
+      themeColor: '#d97706',
+      badgeBg: 'bg-amber-50 text-amber-700 border-amber-200',
+      lightBg: 'bg-amber-500/10',
+      borderColor: 'border-amber-300',
     },
     {
       id: '04',
-      step: 'Step 4',
+      stepNumber: 4,
+      phase: 'MANAGEMENT INSIGHTS',
       title: 'Production Analytics & Management Insights',
-      shortTitle: 'Analytics & Insights',
       desc: 'Present production information through interactive dashboards and analytical reports, enabling supervisors and management to evaluate production performance, identify operational issues, and make informed decisions.',
       icon: LayoutDashboard,
-      theme: 'indigo',
-      badgeBg: 'bg-indigo-50 text-indigo-700 border-indigo-200/80',
-      accentGlow: 'from-indigo-500/20 to-purple-500/10',
-      // Visual Widget đại diện cho Step 4: Dashboard điều hành thông minh
-      widget: {
-        tag: 'MANAGEMENT DASHBOARD',
-        title: 'Overall Sewing Line Efficiency',
-        metric1: { label: 'OEE Efficiency', value: '94.8% Operational Score' },
-        metric2: { label: 'Defect Rate', value: '0.85% (Below 1.2% Threshold)' },
-        metric3: { label: 'Downtime Log', value: '-22% Idle Time this Shift' },
-        statusColor: 'text-indigo-600 bg-indigo-50 border-indigo-200',
-      },
+      themeColor: '#6366f1',
+      badgeBg: 'bg-indigo-50 text-indigo-700 border-indigo-200',
+      lightBg: 'bg-indigo-500/10',
+      borderColor: 'border-indigo-300',
     },
     {
       id: '05',
-      step: 'Step 5',
+      stepNumber: 5,
+      phase: 'CLOSED LOOP',
       title: 'Corrective Actions & Continuous Improvement',
-      shortTitle: 'Continuous Improvement',
       desc: 'Use real-time production information and performance insights to address production issues, improve team coordination, optimize resource utilization, and continuously enhance sewing operations',
       icon: RefreshCw,
-      theme: 'violet',
-      badgeBg: 'bg-violet-50 text-violet-700 border-violet-200/80',
-      accentGlow: 'from-violet-500/20 to-blue-500/10',
-      // Visual Widget đại diện cho Step 5: Cải tiến khép kín
-      widget: {
-        tag: 'CLOSED-LOOP OPTIMIZATION',
-        title: 'Operational Feedback Loop Active',
-        metric1: { label: 'Action Executed', value: 'Workload Re-balanced across Lines' },
-        metric2: { label: 'Resource Gain', value: '+11.5% Capacity Utilization' },
-        metric3: { label: 'Feedback Sync', value: 'Updated to Master Scheduling' },
-        statusColor: 'text-violet-600 bg-violet-50 border-violet-200',
-      },
+      themeColor: '#059669',
+      badgeBg: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+      lightBg: 'bg-emerald-500/10',
+      borderColor: 'border-emerald-300',
     },
   ]
 
-  const current = steps[activeStep]
-  const CurrentIcon = current.icon
+  const totalSteps = flowNodes.length
+
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev - 1 + totalSteps) % totalSteps)
+  }
+
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev + 1) % totalSteps)
+  }
+
+  const getPositionClass = (index: number) => {
+    // Tính toán khoảng cách tương đối có tuần hoàn khép kín (-2, -1, 0, 1, 2)
+    let diff = index - activeIndex
+    if (diff > 2) diff -= totalSteps
+    if (diff < -2) diff += totalSteps
+
+    if (diff === 0) {
+      // THẺ TRUNG TÂM (ĐANG XEM): Nổi bật nhất, kích thước chuẩn, tương tác đầy đủ
+      return {
+        style: 'translate-x-0 scale-100 opacity-100 z-30 shadow-2xl pointer-events-auto',
+        isCenter: true,
+        diff,
+      }
+    } else if (diff === -1) {
+      // THẺ NGAY BÊN TRÁI: Thu nhỏ nhẹ, mờ nhẹ, nhấn vào để tiến về trung tâm
+      return {
+        style: '-translate-x-[55%] sm:-translate-x-[68%] lg:-translate-x-[75%] scale-[0.88] opacity-50 sm:opacity-75 z-20 cursor-pointer hover:opacity-90',
+        isCenter: false,
+        diff,
+      }
+    } else if (diff === 1) {
+      // THẺ NGAY BÊN PHẢI: Thu nhỏ nhẹ, mờ nhẹ, nhấn vào để tiến về trung tâm
+      return {
+        style: 'translate-x-[55%] sm:translate-x-[68%] lg:translate-x-[75%] scale-[0.88] opacity-50 sm:opacity-75 z-20 cursor-pointer hover:opacity-90',
+        isCenter: false,
+        diff,
+      }
+    } else if (diff === -2) {
+      // THẺ XA BÊN TRÁI
+      return {
+        style: '-translate-x-[95%] sm:-translate-x-[115%] scale-[0.75] opacity-0 sm:opacity-30 z-10 pointer-events-none',
+        isCenter: false,
+        diff,
+      }
+    } else {
+      // THẺ XA BÊN PHẢI (diff === 2)
+      return {
+        style: 'translate-x-[95%] sm:translate-x-[115%] scale-[0.75] opacity-0 sm:opacity-30 z-10 pointer-events-none',
+        isCenter: false,
+        diff,
+      }
+    }
+  }
+
+  const currentStep = flowNodes[activeIndex]
 
   return (
-    <section id="workflow" className="w-full bg-white py-20 sm:py-24 lg:py-28 relative overflow-hidden border-b border-slate-200/80">
+    <section id="workflow" className="w-full bg-slate-50/70 py-20 sm:py-24 lg:py-28 relative overflow-hidden border-b border-slate-200/80">
+      
       {/* Quầng sáng quang học dịu êm làm nền */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden -z-10">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[520px] bg-gradient-to-r from-sky-100/40 via-blue-50/50 to-indigo-50/40 blur-[140px]" />
-      </div>
+      <div className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] rounded-full bg-gradient-to-b from-sky-100/60 via-blue-50/20 to-transparent blur-[140px] -z-10" />
+      <div className="pointer-events-none absolute bottom-0 right-0 w-[500px] h-[350px] rounded-full bg-emerald-50/30 blur-[130px] -z-10" />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-12">
         
         {/* =======================================================================
-            HEADER PHÂN HỆ: GỌN GÀNG, CAO CẤP
+            HEADER TIÊU ĐỀ SECTION
         ======================================================================= */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 rounded-full border border-sky-200/80 bg-sky-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-lnt-blue shadow-xs mb-4">
+          <div className="inline-flex items-center gap-2 rounded-full border border-sky-200/80 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-lnt-blue shadow-xs mb-4">
             <Workflow size={13} className="text-lnt-blue" />
             <span>Process Architecture</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-title font-heading tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-title font-heading tracking-tight leading-tight">
             How the Smart Sewing <span className="text-lnt-blue">Factory Works</span>
           </h2>
 
@@ -156,212 +165,229 @@ export default function SmartFactoryWorkflow() {
         </div>
 
         {/* =======================================================================
-            MINIMAP WORKFLOW CANVAS: SƠ ĐỒ ĐIỀU HƯỚNG TRỰC QUAN + STAGE BẮT MẮT
+            BỘ ĐIỀU HƯỚNG BƯỚC TUẦN HOÀN (STEPPER TIMELINE / MILESTONES)
+            - Cho phép nhấp chọn bất kỳ bước nào để đưa ra trung tâm
+            - Hiển thị rõ ràng chu trình khép kín 1 -> 2 -> 3 -> 4 -> 5 -> 1
         ======================================================================= */}
-        <div className="relative bg-slate-50/80 rounded-3xl border border-slate-200/90 p-6 sm:p-8 lg:p-10 shadow-lg shadow-slate-100/80 overflow-hidden">
-          
-          {/* Lưới toạ độ Blueprint mờ tinh tế */}
-          <div
-            className="pointer-events-none absolute inset-0 opacity-[0.25]"
-            style={{
-              backgroundImage: `radial-gradient(#087bc1 1px, transparent 1px)`,
-              backgroundSize: '24px 24px',
-            }}
-          />
+        <div className="max-w-4xl mx-auto mb-10 px-2 sm:px-4">
+          <div className="grid grid-cols-5 gap-1.5 sm:gap-3 bg-white/80 p-2 sm:p-2.5 rounded-2xl border border-slate-200/90 shadow-sm backdrop-blur-xs">
+            {flowNodes.map((node, idx) => {
+              const isActive = idx === activeIndex
+              const NodeIcon = node.icon
 
-          {/* ===================================================================
-              1. MINIMAP PROGRESS TRACK: 5 NÚT SƠ ĐỒ KẾT NỐI NGANG
-          =================================================================== */}
-          <div className="relative z-10 mb-8 sm:mb-10">
-            {/* Thanh dẫn dữ liệu ngầm */}
-            <div className="hidden lg:block absolute top-7 left-12 right-12 h-1 bg-slate-200 rounded-full -z-0" />
-            
-            {/* Thanh tiến trình sáng tương ứng với bước đang chọn */}
-            <div
-              className="hidden lg:block absolute top-7 left-12 h-1 bg-gradient-to-r from-lnt-blue to-sky-400 rounded-full transition-all duration-500 -z-0"
-              style={{
-                width: `${(activeStep / (steps.length - 1)) * (100 - (24 / 1200) * 100)}%`,
-              }}
-            />
-
-            {/* Danh sách 5 Node tương tác */}
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4 relative z-10">
-              {steps.map((item, idx) => {
-                const Icon = item.icon
-                const isActive = activeStep === idx
-
-                return (
-                  <button
-                    key={item.id}
-                    onClick={() => setActiveStep(idx)}
-                    className={`flex items-center sm:flex-col gap-3 sm:gap-2 p-3 sm:p-3.5 rounded-2xl border text-left sm:text-center transition-all duration-300 cursor-pointer ${
-                      isActive
-                        ? 'bg-white border-sky-400 shadow-md ring-2 ring-sky-100 -translate-y-1'
-                        : 'bg-white/80 border-slate-200/80 hover:bg-white hover:border-slate-300 hover:shadow-xs'
+              return (
+                <button
+                  key={node.id}
+                  onClick={() => setActiveIndex(idx)}
+                  className={`flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-1 sm:px-3 rounded-xl transition-all duration-300 text-left ${
+                    isActive
+                      ? 'bg-lnt-blue text-white shadow-md shadow-sky-500/20 scale-[1.02]'
+                      : 'text-slate-600 hover:text-lnt-blue hover:bg-slate-100/70'
+                  }`}
+                >
+                  <div
+                    className={`w-6 h-6 sm:w-7 sm:h-7 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 transition-colors ${
+                      isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500'
                     }`}
                   >
-                    {/* Node icon */}
-                    <div
-                      className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 ${
-                        isActive
-                          ? 'bg-lnt-blue text-white shadow-sm shadow-lnt-blue/30 scale-105'
-                          : 'bg-slate-100 text-slate-500'
-                      }`}
-                    >
-                      <Icon size={18} />
+                    <NodeIcon size={14} />
+                  </div>
+                  <div className="text-center sm:text-left min-w-0">
+                    <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider font-semibold opacity-90 truncate">
+                      Step {node.id}
                     </div>
+                    <div className="hidden md:block text-xs font-bold truncate max-w-[110px]">
+                      {node.phase}
+                    </div>
+                  </div>
+                </button>
+              )
+            })}
+          </div>
+        </div>
 
-                    <div className="min-w-0">
-                      <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                        {item.step}
-                      </div>
+        {/* =======================================================================
+            CAROUSEL SÂN KHẤU TÂM ĐIỂM (CENTER-STAGE 5-CARD CAROUSEL)
+            - Thẻ trung tâm luôn cố định kích thước, trực diện và nổi bật
+            - Thẻ 2 bên thu nhỏ tạo chiều sâu 3D perspective
+            - 2 Nút Lùi/Tiến nổi bật ở 2 cánh
+        ======================================================================= */}
+        <div className="relative max-w-5xl mx-auto flex items-center justify-center min-h-[420px] sm:min-h-[400px] my-4 select-none">
+          
+          {/* NÚT ĐIỀU HƯỚNG TRÁI (PREV) */}
+          <button
+            onClick={handlePrev}
+            aria-label="Previous step"
+            className="absolute left-2 sm:left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-40 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/95 hover:bg-white text-slate-700 hover:text-lnt-blue border border-slate-200/90 shadow-xl shadow-slate-300/40 flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 group focus:outline-hidden"
+          >
+            <ChevronLeft size={24} className="stroke-[2.5] transition-transform duration-200 group-hover:-translate-x-0.5" />
+          </button>
+
+          {/* KHÔNG GIAN HIỂN THỊ CÁC THẺ (CARD DECK WRAPPER) */}
+          <div className="relative w-full h-[380px] sm:h-[350px] flex items-center justify-center overflow-hidden py-4">
+            {flowNodes.map((item, idx) => {
+              const { style, isCenter, diff } = getPositionClass(idx)
+              const Icon = item.icon
+
+              return (
+                <div
+                  key={item.id}
+                  onClick={() => {
+                    if (!isCenter) {
+                      if (diff === -1) handlePrev()
+                      if (diff === 1) handleNext()
+                    }
+                  }}
+                  className={`absolute w-[86%] sm:w-[500px] lg:w-[560px] rounded-3xl bg-white border transition-all duration-500 ease-out flex flex-col justify-between p-6 sm:p-8 ${style} ${
+                    isCenter
+                      ? 'border-sky-300/90 shadow-[0_20px_50px_rgba(8,123,193,0.14)] ring-4 ring-sky-50'
+                      : 'border-slate-200/80 shadow-md'
+                  }`}
+                  style={{
+                    transformOrigin: 'center center',
+                  }}
+                >
+                  {/* Dải line màu nhận diện chủ đề trên đỉnh thẻ */}
+                  <div
+                    className="absolute top-0 left-8 right-8 h-1 rounded-b-full transition-opacity"
+                    style={{
+                      backgroundColor: item.themeColor,
+                      opacity: isCenter ? 1 : 0.4,
+                    }}
+                  />
+
+                  {/* HEADER CỦA THẺ */}
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-center gap-3.5">
                       <div
-                        className={`text-xs sm:text-sm font-bold truncate transition-colors ${
-                          isActive ? 'text-lnt-blue' : 'text-title'
-                        }`}
+                        className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shadow-xs transition-transform duration-300"
+                        style={{
+                          backgroundColor: item.lightBg,
+                          color: item.themeColor,
+                        }}
                       >
-                        {item.shortTitle}
+                        <Icon size={26} className="stroke-[2.2]" />
+                      </div>
+                      <div>
+                        <span
+                          className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wider uppercase border font-mono ${item.badgeBg}`}
+                        >
+                          Step {item.id} &bull; {item.phase}
+                        </span>
+                        <div className="text-xs text-slate-400 font-mono mt-0.5">
+                          Stage {item.stepNumber} of 5
+                        </div>
                       </div>
                     </div>
-                  </button>
-                )
-              })}
-            </div>
-          </div>
 
-          {/* ===================================================================
-              2. SÂN KHẤU MINIMAP (INTERACTIVE SPOTLIGHT STAGE)
-              - 1 Cột Hiển thị Widget công nghệ cao, trực quan bắt mắt
-              - 1 Cột Trình bày Tiêu đề & Nội dung với khoảng thở thoáng đãng, dễ đọc
-          =================================================================== */}
-          <div className="relative z-10 bg-white rounded-2xl border border-slate-200/90 shadow-sm p-6 sm:p-8 lg:p-10 transition-all duration-500">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              
-              {/* CỘT NỘI DUNG (7 CỘT): TIÊU ĐỀ + MÔ TẢ CHUẨN XÁC, THOÁNG ĐÃNG */}
-              <div className="lg:col-span-7 space-y-6">
-                <div className="flex items-center gap-3">
-                  <span className={`inline-flex px-3 py-1 rounded-full text-xs font-bold border ${current.badgeBg}`}>
-                    {current.step}
-                  </span>
-                  <span className="text-xs font-semibold text-slate-400">
-                    Process Phase {activeStep + 1} of 5
-                  </span>
-                </div>
-
-                <h3 className="text-2xl sm:text-3xl font-bold text-title font-heading tracking-tight leading-snug">
-                  {current.title}
-                </h3>
-
-                <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-                  {current.desc}
-                </p>
-
-                {/* Điều hướng nhanh Next / Prev */}
-                <div className="pt-4 flex items-center gap-3">
-                  <button
-                    disabled={activeStep === 0}
-                    onClick={() => setActiveStep((prev) => Math.max(0, prev - 1))}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold border border-slate-200 text-slate-600 bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
-                  >
-                    <ArrowLeft size={14} />
-                    <span>Previous</span>
-                  </button>
-
-                  <button
-                    disabled={activeStep === steps.length - 1}
-                    onClick={() => setActiveStep((prev) => Math.min(steps.length - 1, prev + 1))}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-lnt-blue text-white shadow-xs hover:bg-sky-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
-                  >
-                    <span>Next Step</span>
-                    <ArrowRight size={14} />
-                  </button>
-
-                  <span className="text-xs text-slate-400 ml-2">
-                    Click steps above or use arrows to explore
-                  </span>
-                </div>
-              </div>
-
-              {/* CỘT WIDGET BẮT MẮT (5 CỘT): MÔ PHỎNG DỮ LIỆU SẢN XUẤT THỜI GIAN THỰC */}
-              <div className="lg:col-span-5">
-                <div className="relative rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 p-6 sm:p-7 text-white shadow-xl ring-1 ring-slate-800/80 overflow-hidden">
-                  {/* Quầng sáng quang học trên widget */}
-                  <div className="pointer-events-none absolute -top-12 -right-12 w-48 h-48 bg-sky-500/20 rounded-full blur-2xl" />
-
-                  {/* Header widget */}
-                  <div className="flex items-center justify-between pb-4 border-b border-slate-800">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                      <span className="text-[11px] font-mono font-bold tracking-wider text-sky-400 uppercase">
-                        {current.widget.tag}
+                    {/* Vị trí badge trạng thái */}
+                    {isCenter && (
+                      <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sky-50 border border-sky-200/80 text-lnt-blue text-[11px] font-semibold font-mono">
+                        <Sparkles size={12} />
+                        Active View
                       </span>
-                    </div>
-                    <span className="text-[10px] font-mono text-slate-400">FXPRO • LIVE</span>
+                    )}
                   </div>
 
-                  {/* Tên trạm / thiết bị */}
-                  <div className="my-5">
-                    <div className="text-xs text-slate-400 mb-1">Active Operation</div>
-                    <div className="text-base font-bold text-white font-heading">
-                      {current.widget.title}
-                    </div>
+                  {/* THÂN THẺ: TIÊU ĐỀ VÀ MÔ TẢ NGUYÊN VĂN */}
+                  <div className="my-auto py-3">
+                    <h3 className="text-lg sm:text-xl font-bold text-title font-heading tracking-tight leading-snug mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs sm:text-[13.5px] text-slate-600 leading-relaxed font-normal">
+                      {item.desc}
+                    </p>
                   </div>
 
-                  {/* 3 Chỉ số giám sát cốt lõi */}
-                  <div className="space-y-3 pt-2">
-                    <div className="p-3 rounded-xl bg-slate-800/70 border border-slate-700/60 flex items-center justify-between">
-                      <span className="text-xs text-slate-300 font-medium">{current.widget.metric1.label}</span>
-                      <span className="text-xs font-bold text-sky-300 font-mono">{current.widget.metric1.value}</span>
-                    </div>
+                  {/* ĐÁY THẺ: DẪN LUỒNG HOẶC GHI CHÚ CHU TRÌNH */}
+                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                    {item.stepNumber < 5 ? (
+                      <div className="flex items-center gap-1.5 text-slate-500 font-medium">
+                        <span>Next:</span>
+                        <span className="font-semibold text-slate-700">Step 0{item.stepNumber + 1}</span>
+                        <ArrowRight size={13} className="text-slate-400" />
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-1.5 text-emerald-700 font-semibold bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200/80">
+                        <RotateCcw size={13} className="text-emerald-600" />
+                        <span>Loops back to Step 01</span>
+                      </div>
+                    )}
 
-                    <div className="p-3 rounded-xl bg-slate-800/70 border border-slate-700/60 flex items-center justify-between">
-                      <span className="text-xs text-slate-300 font-medium">{current.widget.metric2.label}</span>
-                      <span className="text-xs font-bold text-emerald-300 font-mono">{current.widget.metric2.value}</span>
+                    <div className="font-mono text-[11px] text-slate-400">
+                      Step {item.stepNumber}/5
                     </div>
-
-                    <div className="p-3 rounded-xl bg-slate-800/70 border border-slate-700/60 flex items-center justify-between">
-                      <span className="text-xs text-slate-300 font-medium">{current.widget.metric3.label}</span>
-                      <span className="text-xs font-bold text-amber-300 font-mono truncate max-w-[190px]">{current.widget.metric3.value}</span>
-                    </div>
-                  </div>
-
-                  {/* Footer status của widget */}
-                  <div className="mt-5 pt-4 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400 font-mono">
-                    <div className="flex items-center gap-1.5">
-                      <CurrentIcon size={13} className="text-sky-400" />
-                      <span>Smart Sewing Engine</span>
-                    </div>
-                    <span className="text-emerald-400 flex items-center gap-1">
-                      <CheckCircle2 size={12} /> Sync OK
-                    </span>
                   </div>
                 </div>
-              </div>
-
-            </div>
+              )
+            })}
           </div>
 
-          {/* VÒNG LẶP PHẢN HỒI KHÉP KÍN (CLOSED-LOOP FOOTER) */}
-          <div className="relative z-10 mt-6 pt-5 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="font-medium">Real-Time Continuous Production Data Stream</span>
-            </div>
-
-            <div className="inline-flex items-center gap-2 rounded-full bg-sky-50 border border-sky-200 px-3.5 py-1 text-xs font-semibold text-lnt-blue">
-              <RefreshCw size={12} className="text-lnt-blue animate-spin" style={{ animationDuration: '8s' }} />
-              <span>Step 5 Feedback Feeds Back Into Step 1 Planning</span>
-            </div>
-
-            <div className="flex items-center gap-1.5 font-medium text-slate-600">
-              <CheckCircle2 size={13} className="text-sky-600" />
-              <span>Connected Manufacturing System</span>
-            </div>
-          </div>
+          {/* NÚT ĐIỀU HƯỚNG PHẢI (NEXT) */}
+          <button
+            onClick={handleNext}
+            aria-label="Next step"
+            className="absolute right-2 sm:right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-40 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/95 hover:bg-white text-slate-700 hover:text-lnt-blue border border-slate-200/90 shadow-xl shadow-slate-300/40 flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 group focus:outline-hidden"
+          >
+            <ChevronRight size={24} className="stroke-[2.5] transition-transform duration-200 group-hover:translate-x-0.5" />
+          </button>
 
         </div>
 
+        {/* =======================================================================
+            CHỈ SỐ DẤU CHẤM TRANG (DOTS INDICATOR) & NÚT ĐIỀU HƯỚNG NHANH
+        ======================================================================= */}
+        <div className="flex items-center justify-center gap-2 mt-2 mb-8">
+          {flowNodes.map((_, dotIdx) => (
+            <button
+              key={dotIdx}
+              onClick={() => setActiveIndex(dotIdx)}
+              aria-label={`Jump to step ${dotIdx + 1}`}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                dotIdx === activeIndex
+                  ? 'w-8 bg-lnt-blue shadow-xs'
+                  : 'w-2 bg-slate-300 hover:bg-slate-400'
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* =======================================================================
+            VÒNG HỒI TIẾP KHÉP KÍN (CLOSED-LOOP BANNER):
+            "Feedback and Production Improvement"
+            Nối trực tiếp từ Bước 5 quay trở lại Bước 1
+        ======================================================================= */}
+        <div className="max-w-3xl mx-auto">
+          <div className="relative rounded-2xl bg-gradient-to-r from-sky-50 via-white to-emerald-50 border border-sky-200/80 p-4 sm:p-5 shadow-sm">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+              
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-white border border-sky-200 flex items-center justify-center text-lnt-blue shrink-0 shadow-2xs">
+                  <RotateCcw size={18} className="animate-spin" style={{ animationDuration: '10s' }} />
+                </div>
+                <div>
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-lnt-blue">
+                    Closed-Loop Continuous Flow
+                  </div>
+                  <div className="text-sm font-bold text-title">
+                    Feedback and Production Improvement
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 text-xs text-slate-600 bg-white/80 px-3 py-1.5 rounded-xl border border-slate-200/70">
+                <span className="font-semibold text-emerald-700">Step 05 Insights</span>
+                <ArrowRight size={13} className="text-slate-400" />
+                <span className="font-semibold text-lnt-blue">Step 01 Planning</span>
+                <CheckCircle2 size={14} className="text-emerald-600 ml-1" />
+              </div>
+
+            </div>
+          </div>
+        </div>
+
       </div>
+
     </section>
   )
 }

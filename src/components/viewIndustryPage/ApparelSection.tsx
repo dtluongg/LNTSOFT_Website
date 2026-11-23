@@ -8,15 +8,53 @@ import {
 } from 'lucide-react'
 import ApparelArchitectureSuite from '../viewHomePage/Industry/ApparelArchitectureSuite'
 import ExploreKeyCapabilities from './ExploreKeyCapabilities'
+import ApparelIndustryImage from '../../assets/components/industryPage/Apparel_ERP_Industries.png'
+import fxproAiBanner from '../../assets/components/industryPage/FXPRO_AI.jpg'
+import smartPlannerBanner from '../../assets/components/industryPage/Smart_Planner/hinh1.png'
 
 export default function ApparelSection() {
-  // 5 Điểm chạm công nghệ cốt lõi - Giữ nguyên 100% tên ban đầu, sẵn sàng liên kết mở trang chi tiết
+  // 5 Điểm chạm công nghệ cốt lõi - Tối giản chữ, tôn vinh hình ảnh banner thực tế của từng trang con
   const highlights = [
-    { name: 'AI SUITE', slug: '#industry/ai-suite' },
-    { name: 'SMART PLANNER', slug: '#industry/smart-planner' },
-    { name: 'SMART FACTORY', slug: '#industry/smart-factory' },
-    { name: 'AI INSIGHT', slug: '#industry/ai-insight' },
-    { name: 'WORKNOTE', slug: '#industry/worknote' },
+    {
+      id: 'ai-suite',
+      name: 'AI SUITE',
+      subtitle: 'Intelligent Order Automation',
+      slug: '#industry/ai-suite',
+      image: fxproAiBanner,
+      available: true,
+    },
+    {
+      id: 'smart-planner',
+      name: 'SMART PLANNER',
+      subtitle: 'Production Scheduling & Capacity',
+      slug: '#industry/smart-planner',
+      image: smartPlannerBanner,
+      available: true,
+    },
+    {
+      id: 'smart-factory',
+      name: 'SMART FACTORY',
+      subtitle: 'Sewing Workstations & Live MES',
+      slug: '#industry/smart-factory',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80',
+      available: true,
+    },
+    {
+      id: 'ai-insight',
+      name: 'AI INSIGHT',
+      subtitle: 'Executive Analytics & Intelligence',
+      slug: '#industry/ai-insight',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80',
+      available: true,
+    },
+    {
+      id: 'worknote',
+      name: 'WORKNOTE',
+      subtitle: 'Digital Floor Collaboration (Coming Soon)',
+      slug: '#industry/worknote',
+      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
+      available: false,
+    },
   ]
 
   // 4 Chỉ số cải tiến thực tiễn ban đầu (Độ dài chữ cân đối, không bị lệch hàng)
@@ -120,7 +158,7 @@ export default function ApparelSection() {
               {/* Khung ảnh chính: Dáng Viên thuốc đứng cao cấp (Capsule Portal), bo tròn hoàn toàn rounded-full */}
               <div className="relative w-full max-w-[390px] sm:max-w-[420px] lg:max-w-[430px] h-[460px] sm:h-[500px] lg:h-[520px] rounded-full overflow-hidden shadow-2xl border-4 border-white ring-1 ring-slate-200/90 group bg-slate-900">
                 <img
-                  src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1200&q=80"
+                  src={ApparelIndustryImage}
                   alt="FXPRO Apparel ERP & MES Smart Factory Operation"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -177,12 +215,12 @@ export default function ApparelSection() {
 
       {/* =========================================================================
           APPLICATION MODULES STAGE: DẢI NỀN XANH CÔNG NGHỆ CAO
-          Chứa sơ đồ 3D Oval 22 Modules + 5 Điểm chạm phẳng + Nút CTA
+          Chứa sơ đồ 3D Oval 22 Modules + 5 Cổng Solution Portals với Banner Hero thực tế
       ========================================================================= */}
-      <div className="w-full bg-[#259fd2] pt-10 pb-12 shadow-inner overflow-hidden relative">
+      <div className="w-full bg-[#259fd2] pt-12 pb-16 shadow-inner overflow-hidden relative">
         
         {/* Header Application Modules trên nền xanh */}
-        <div className="text-center max-w-3xl mx-auto px-4 mb-3">
+        <div className="text-center max-w-3xl mx-auto px-4 mb-4">
           <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight font-heading">
             Application Modules
           </h3>
@@ -194,36 +232,80 @@ export default function ApparelSection() {
         {/* Sơ đồ 3D Oval 22 Modules */}
         <ApparelArchitectureSuite />
 
-        {/* 5 Điểm chạm công nghệ - Dáng Pill tối giản chuẩn Aptean, không viền nặng, giữ nguyên 100% chữ ban đầu */}
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 mt-5 relative z-0">
+        {/* =========================================================================
+            5 CỔNG GIẢI PHÁP ĐỒNG BỘ HERO (MINI-HERO SOLUTION PORTALS):
+            - Thiết kế tinh gọn: Bớt chữ, không thanh trạng thái rườm rà, tập trung vào hình ảnh đẹp
+            - Click vào thẻ sẽ chuyển trang và mở ra phần Hero toàn cảnh tương ứng
+        ========================================================================= */}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-12 relative z-10">
           
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3 lg:gap-4">
+          {/* Header cụm 5 Solution Portals - Tối giản, gọn gàng */}
+          <div className="flex items-center justify-between gap-3 mb-5 px-1">
+            <h4 className="text-lg sm:text-xl font-bold text-white tracking-tight font-heading">
+              Explore Dedicated Solution Suites
+            </h4>
+            <span className="text-xs text-white/80 hidden sm:inline font-medium">
+              Click to view full suite hero
+            </span>
+          </div>
+
+          {/* Grid 5 Thẻ Mini-Hero Banner (Chữ gọn gàng, hình ảnh nổi bật) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4">
             {highlights.map((item, idx) => (
               <a
                 key={idx}
                 href={item.slug}
                 onClick={(e) => {
                   e.preventDefault()
-                  window.location.hash = item.slug.replace(/^#/, '')
-                  window.scrollTo({ top: 0, behavior: 'smooth' })
-                  window.dispatchEvent(new Event('hashchange'))
+                  if (item.available) {
+                    window.location.hash = item.slug.replace(/^#/, '')
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                    window.dispatchEvent(new Event('hashchange'))
+                  }
                 }}
-                className="group flex items-center justify-center gap-2 py-2.5 px-3.5 rounded-full bg-white/10 hover:bg-white text-white hover:text-title transition-all duration-300 cursor-pointer border border-white/15 hover:border-white shadow-xs hover:shadow-md"
+                className={`relative overflow-hidden rounded-2xl sm:rounded-3xl bg-slate-900 border transition-all duration-500 flex flex-col justify-between p-4 sm:p-5 select-none h-[280px] sm:h-[300px] lg:h-[320px] group ${
+                  item.available
+                    ? 'border-white/20 hover:border-white shadow-lg hover:shadow-2xl hover:-translate-y-1.5 cursor-pointer'
+                    : 'border-white/10 opacity-75 cursor-default'
+                }`}
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-white group-hover:bg-lnt-blue shadow-[0_0_6px_rgba(255,255,255,0.8)] group-hover:scale-125 transition-all shrink-0" />
-                <span className="font-bold text-xs sm:text-[13px] lg:text-[13.5px] font-heading tracking-wider leading-none uppercase group-hover:text-lnt-navy transition-colors whitespace-nowrap">
-                  {item.name}
-                </span>
-                <ArrowUpRight
-                  size={14}
-                  className="opacity-70 group-hover:opacity-100 text-white/80 group-hover:text-lnt-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0"
-                />
+                {/* 1. Hình ảnh banner thực tế của Hero, sáng rõ và sắc nét */}
+                <div className="absolute inset-0 z-0 overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
+                  />
+                  {/* Lớp gradient tối nhẹ chỉ phủ ở chân thẻ để chữ nổi bật, giữ trọn vẹn hình ảnh phía trên */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent" />
+                </div>
+
+                {/* 2. GÓC TRÊN: Nút tròn mở nhanh tối giản */}
+                <div className="relative z-10 flex justify-end">
+                  <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ${
+                    item.available
+                      ? 'bg-black/30 backdrop-blur-md border-white/30 text-white group-hover:bg-white group-hover:text-lnt-blue group-hover:scale-110 shadow-sm'
+                      : 'bg-black/40 border-white/15 text-white/40'
+                  }`}>
+                    <ArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </div>
+                </div>
+
+                {/* 3. GÓC DƯỚI: Tên phân hệ chuẩn + 1 dòng tóm tắt cực ngắn */}
+                <div className="relative z-10">
+                  <h4 className="text-base sm:text-lg font-bold font-heading text-white tracking-wide uppercase group-hover:text-sky-200 transition-colors">
+                    {item.name}
+                  </h4>
+                  <p className="text-xs text-white/80 font-normal mt-0.5 truncate">
+                    {item.subtitle}
+                  </p>
+                </div>
               </a>
             ))}
           </div>
 
           {/* Đường kẻ phát quang ngang siêu mảnh mờ ảo */}
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-white/30 to-transparent my-6 sm:my-7" />
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-white/30 to-transparent my-8 sm:my-10" />
 
           {/* Dải CTA chân nền xanh: Nút Dark Pill Aptean tương phản sang trọng */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
