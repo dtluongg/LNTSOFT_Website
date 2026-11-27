@@ -5,7 +5,7 @@ import {
   TrendingUp,
   Trophy,
 } from 'lucide-react'
-import fxproAiBanner from '../../../assets/components/industryPage/FXPRO_AI.jpg'
+import fxproAiBanner from '../../../assets/components/industryPage/AI_SUITE/banner.jpg'
 import IndustryHeroTemplate from '../common/IndustryHeroTemplate'
 
 export default function AISuiteIntroduce() {

@@ -50,7 +50,7 @@ export default function IndustryHeroTemplate({
   bgImageAlt = 'FXPRO Solution Banner',
 }: IndustryHeroTemplateProps) {
   return (
-    <section className="relative w-full overflow-hidden bg-white min-h-[640px] sm:min-h-[700px] lg:min-h-[760px] xl:min-h-[820px] flex items-center border-b border-slate-200/80">
+    <section className="relative w-full overflow-hidden bg-white min-h-[680px] sm:min-h-[720px] lg:min-h-[780px] xl:min-h-[820px] flex flex-col justify-start border-b border-slate-200/80">
       
       {/* =========================================================================
           NỀN BÊN PHẢI: HÌNH ẢNH THỰC TẾ ĐẶC TRƯNG CỦA TỪNG PHÂN HỆ
@@ -207,17 +207,17 @@ export default function IndustryHeroTemplate({
       </div>
 
       {/* =========================================================================
-          NỘI DUNG CHÍNH CỘT TRÁI (KHUNG LƯỚI ĐỒNG BỘ 100%)
+          NỘI DUNG CHÍNH CỘT TRÁI (KHUNG LƯỚI ĐỒNG BỘ 100% CỐ ĐỊNH KÍCH THƯỚC & VỊ TRÍ)
       ========================================================================= */}
       <div
-        className="relative w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 py-14 sm:py-16 lg:py-20"
+        className="relative w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 pt-12 sm:pt-14 lg:pt-16 pb-12 sm:pb-16"
         style={{ zIndex: 10 }}
       >
-        <div className="max-w-xl lg:max-w-2xl space-y-6 sm:space-y-7">
+        <div className="max-w-xl lg:max-w-2xl space-y-5 sm:space-y-6">
           
-          {/* 1. Header Branding: FXPRO | {brandCategory} */}
-          <div className="flex items-center gap-2.5">
-            <span className="text-xl sm:text-2xl font-black text-[#0055b3] tracking-tight font-heading">
+          {/* 1. Header Branding: FXPRO | {brandCategory} (Cố định chiều cao 32px) */}
+          <div className="h-8 flex items-center gap-2.5">
+            <span className="text-xl sm:text-2xl font-black text-lnt-blue tracking-tight font-heading">
               FXPRO
             </span>
             <span className="text-slate-300 text-lg font-light select-none">|</span>
@@ -226,25 +226,31 @@ export default function IndustryHeroTemplate({
             </span>
           </div>
 
-          {/* 2. Tiêu đề lớn 2 dòng đậm chất hiện đại */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#15194f] font-heading tracking-tight leading-[1.08]">
-            {titleLine1} <br />
-            <span style={{ color: titleLine2Color }}>{titleLine2}</span>
-          </h1>
+          {/* 2. Tiêu đề lớn 2 dòng H1 (Cố định chuẩn xác chiều cao 80px / 96px / 112px) */}
+          <div className="min-h-[80px] sm:min-h-[96px] lg:min-h-[112px] flex flex-col justify-center">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-lnt-navy font-heading tracking-tight leading-[1.15]">
+              <span className="block">{titleLine1}</span>
+              <span className="block" style={{ color: titleLine2Color }}>{titleLine2}</span>
+            </h1>
+          </div>
 
-          {/* 3. Dòng Tagline in đậm nổi bật */}
-          <p className="text-base sm:text-lg lg:text-[19px] font-bold text-slate-900 leading-snug">
-            {tagline}
-          </p>
+          {/* 3. Dòng Tagline in đậm nổi bật (Cố định không gian 48px / 52px, hiển thị 100% không cắt chữ) */}
+          <div className="min-h-[48px] sm:min-h-[52px] flex items-center">
+            <p className="text-base sm:text-lg font-bold text-title leading-snug">
+              {tagline}
+            </p>
+          </div>
 
-          {/* 4. Đoạn văn mô tả (100% nội dung gốc) */}
-          <p className="text-sm sm:text-[15px] text-slate-600 font-normal leading-relaxed max-w-xl">
-            {description}
-          </p>
+          {/* 4. Đoạn văn mô tả: Dành sẵn không gian 126px rộng rãi để chứa 4-6 dòng trọn vẹn, 100% nguyên vẹn chữ, vị trí các nút bên dưới không bao giờ bị lệch */}
+          <div className="min-h-[105px] sm:min-h-[115px] lg:min-h-[126px] flex items-start">
+            <p className="text-sm sm:text-[15px] text-body font-normal leading-relaxed max-w-xl">
+              {description}
+            </p>
+          </div>
 
-          {/* 5. Cụm 4 Biểu tượng hình tròn xếp ngang */}
-          <div className="pt-2">
-            <div className="grid grid-cols-4 gap-3 sm:gap-6 max-w-lg">
+          {/* 5. Cụm 4 Biểu tượng hình tròn xếp ngang (Cố định chiều cao hàng 108px / 116px, hiển thị đầy đủ chữ) */}
+          <div className="min-h-[108px] sm:min-h-[116px] flex items-center pt-1">
+            <div className="grid grid-cols-4 gap-3 sm:gap-6 max-w-lg w-full">
               {features.map((item, idx) => (
                 <div
                   key={idx}
@@ -252,12 +258,12 @@ export default function IndustryHeroTemplate({
                   className="flex flex-col items-center text-center group cursor-pointer"
                 >
                   {/* Nút tròn màu trắng, viền xanh nhẹ, icon xanh LNT */}
-                  <div className="w-13 h-13 sm:w-15 sm:h-15 rounded-full bg-white border border-sky-200/80 shadow-md text-[#087bc1] flex items-center justify-center group-hover:scale-110 group-hover:bg-[#087bc1] group-hover:text-white group-hover:border-[#087bc1] transition-all duration-300">
+                  <div className="w-14 h-14 sm:w-15 sm:h-15 rounded-full bg-white border border-sky-200/80 shadow-md text-lnt-blue flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-lnt-blue group-hover:text-white group-hover:border-lnt-blue transition-all duration-300">
                     <item.icon size={23} className="stroke-[2.2]" />
                   </div>
 
-                  {/* Nhãn 2 dòng phía dưới nút tròn */}
-                  <div className="mt-2.5 text-xs sm:text-[13px] font-bold text-[#15194f] font-heading leading-tight group-hover:text-[#087bc1] transition-colors">
+                  {/* Nhãn 2 dòng phía dưới nút tròn - Cố định chiều cao 36px / 40px, hiển thị đủ từ */}
+                  <div className="mt-2.5 min-h-[36px] sm:min-h-[40px] flex flex-col justify-start items-center text-center text-xs sm:text-[13px] font-bold text-lnt-navy font-heading leading-tight group-hover:text-lnt-blue transition-colors">
                     <div>{item.titleTop}</div>
                     <div>{item.titleBottom}</div>
                   </div>
@@ -266,25 +272,25 @@ export default function IndustryHeroTemplate({
             </div>
           </div>
 
-          {/* 6. Hai nút bấm CTA song hành bo tròn viên thuốc */}
-          <div className="flex flex-wrap items-center gap-4 pt-3">
+          {/* 6. Hai nút bấm CTA song hành bo tròn viên thuốc (Cố định chuẩn xác chiều cao h-12) */}
+          <div className="h-12 flex items-center gap-4 pt-2">
             
             {/* Nút 1: Nền xanh thương hiệu */}
             <a
               href={primaryCtaLink}
-              className="inline-flex items-center gap-2.5 rounded-full bg-[#087bc1] hover:bg-[#0769a6] text-white px-7 py-3.5 text-sm font-bold shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer"
+              className="h-12 px-7 min-w-[190px] inline-flex items-center justify-center gap-2.5 rounded-full bg-lnt-blue hover:bg-lnt-blue-dark text-white text-sm font-bold shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer"
             >
               <span>{primaryCtaText}</span>
               <ArrowRight
                 size={16}
-                className="transition-transform duration-300 group-hover:translate-x-1"
+                className="transition-transform duration-300 group-hover:translate-x-1 shrink-0"
               />
             </a>
 
             {/* Nút 2: Nền trắng viền xám nhẹ thanh lịch */}
             <a
               href={secondaryCtaLink}
-              className="inline-flex items-center gap-2.5 rounded-full border border-slate-300 bg-white hover:bg-slate-50 text-slate-800 px-7 py-3.5 text-sm font-bold shadow-xs hover:border-slate-400 hover:scale-[1.02] transition-all duration-300 cursor-pointer"
+              className="h-12 px-7 min-w-[170px] inline-flex items-center justify-center gap-2.5 rounded-full border border-slate-300 bg-white hover:bg-slate-50 text-slate-800 text-sm font-bold shadow-2xs hover:border-slate-400 hover:scale-[1.02] transition-all duration-300 group cursor-pointer"
             >
               <span>{secondaryCtaText}</span>
               <Play size={11} className="fill-slate-800 text-slate-800 shrink-0" />

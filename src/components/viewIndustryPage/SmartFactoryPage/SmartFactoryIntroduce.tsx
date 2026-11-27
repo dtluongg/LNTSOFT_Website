@@ -6,13 +6,15 @@ import {
   BarChart3,
 } from 'lucide-react'
 import IndustryHeroTemplate from '../common/IndustryHeroTemplate'
+import SmartFactoryBanner from '../../../assets/components/industryPage/Smart_Factory/banner.png' 
 
 export interface SmartFactoryIntroduceProps {
   bgImage?: string
 }
 
 export default function SmartFactoryIntroduce({
-  bgImage = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80',
+  // bgImage = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80',
+  bgImage = SmartFactoryBanner  ,
 }: SmartFactoryIntroduceProps) {
   // 4 Tính năng cốt lõi đúc kết từ nội dung người dùng cung cấp
   const factoryFeatures = [

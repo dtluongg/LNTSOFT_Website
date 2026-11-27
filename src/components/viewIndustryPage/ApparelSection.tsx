@@ -9,8 +9,9 @@ import {
 import ApparelArchitectureSuite from '../viewHomePage/Industry/ApparelArchitectureSuite'
 import ExploreKeyCapabilities from './ExploreKeyCapabilities'
 import ApparelIndustryImage from '../../assets/components/industryPage/Apparel_ERP_Industries.png'
-import fxproAiBanner from '../../assets/components/industryPage/FXPRO_AI.jpg'
-import smartPlannerBanner from '../../assets/components/industryPage/Smart_Planner/hinh1.png'
+import fxproAiBanner from '../../assets/components/industryPage/AI_SUITE/banner.jpg'
+import smartPlannerBanner from '../../assets/components/industryPage/Smart_Planner/banner.png'
+import smartFactoryBanner from '../../assets/components/industryPage/Smart_Factory/banner.png'
 
 export default function ApparelSection() {
   // 5 Điểm chạm công nghệ cốt lõi - Tối giản chữ, tôn vinh hình ảnh banner thực tế của từng trang con
@@ -36,7 +37,8 @@ export default function ApparelSection() {
       name: 'SMART FACTORY',
       subtitle: 'Sewing Workstations & Live MES',
       slug: '#industry/smart-factory',
-      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80',
+      // image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80',
+      image: smartFactoryBanner,
       available: true,
     },
     {
@@ -50,10 +52,10 @@ export default function ApparelSection() {
     {
       id: 'worknote',
       name: 'WORKNOTE',
-      subtitle: 'Digital Floor Collaboration (Coming Soon)',
+      subtitle: 'Digital Floor Collaboration & Task Tracking',
       slug: '#industry/worknote',
       image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
-      available: false,
+      available: true,
     },
   ]
 
@@ -82,36 +84,55 @@ export default function ApparelSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 mb-14">
         
         {/* =========================================================================
-            TẦNG 1: BỐ CỤC MỞ RỘNG TRÀN 2 BÊN (CÂN BẰNG THOÁNG ĐÃNG, KHÔNG BỊ TRỐNG)
-            - Cột trái: Header + Subtitle + Badge Overview + Quote + Đoạn giải thích
-            - Cột phải: Ý TƯỞNG 4 (Arch Horizon) - Vòm cong kiến trúc thời trang,
-              kèm họa tiết khung đệm và quầng sáng hào quang, ảnh sạch 100% không đè chữ
+            TIÊU ĐỀ KHỐI: TRẢI DÀI TOÀN CHIỀU NGANG MÀN HÌNH (FULL-WIDTH HEADLINE)
+            Tuân thủ nghiêm ngặt chuẩn DESIGN_SYSTEM.md:
+            - Pill Badge: text-xs font-bold uppercase tracking-[0.2em] text-lnt-blue
+            - H2: text-2xl sm:text-3xl lg:text-4xl font-bold text-title tracking-tight leading-snug
+            - Subtitle: text-base sm:text-lg font-medium text-lnt-blue mt-2 leading-snug
         ========================================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div className="mb-8 sm:mb-10 lg:mb-12">
+          {/* Pill Badge */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-lnt-blue/30 bg-sky-50 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.2em] text-lnt-blue shadow-2xs mb-3">
+            <Shirt size={13} className="text-lnt-blue" />
+            <span>FASHION & APPAREL ENTERPRISE SUITE</span>
+          </div>
+
+          {/* Tiêu đề H2 chuẩn mực */}
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-title tracking-tight leading-snug">
+            Apparel ERP & MES Solution
+          </h2>
+
+          {/* Subtitle */}
+          <p className="text-base sm:text-lg font-medium text-lnt-blue mt-2 leading-snug">
+            Modern, Customizable ERP Software for Your Entire Apparel Business Ecosystem
+          </p>
+        </div>
+
+        {/* =========================================================================
+            PHONG CÁCH 2: THE OVERLAPPING GLASS STAGE
+            - Khung ảnh toàn cảnh nằm ngang rộng mở (Wide Horizon Canvas)
+            - Thẻ kính mờ nổi (Floating Frosted Glass Card) gối lên phía trái của ảnh
+            - Phong cách thời trang cao cấp & nghệ thuật kiến trúc (Editorial Layering)
+        ========================================================================= */}
+        <div className="relative rounded-3xl overflow-hidden border border-slate-200/90 shadow-xl bg-slate-900 group">
           
-          {/* CỘT TRÁI (7 CỘT): NỘI DUNG MẠCH LẠC, TRẢI DÀI VỪA VẶN KHÔNG GIAN */}
-          <div className="lg:col-span-7 space-y-6">
-            
-            {/* Header & Subtitle */}
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-lnt-blue/30 bg-sky-50 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.18em] text-lnt-blue shadow-2xs mb-3">
-                <Shirt size={13} className="text-lnt-blue" />
-                <span>FASHION & APPAREL ENTERPRISE SUITE</span>
-              </div>
+          {/* Quầng sáng quang học mềm mại phía sau khung */}
+          <div className="pointer-events-none absolute -top-16 -right-16 h-80 w-80 rounded-full bg-gradient-to-tr from-sky-400/20 via-blue-200/10 to-transparent blur-3xl z-10" />
 
-              {/* Tiêu đề H2: Đồng bộ chuẩn xác với Manufacturing ERP */}
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-title tracking-tight leading-snug">
-                Apparel ERP & MES Solution
-              </h2>
+          {/* 1. KHUNG ẢNH TOÀN CẢNH NỀN RỘNG (WIDE HORIZON IMAGE) */}
+          <div className="relative w-full h-[460px] sm:h-[500px] lg:h-[540px] overflow-hidden">
+            <img
+              src={ApparelIndustryImage}
+              alt="FXPRO Apparel ERP & MES Smart Factory Operation"
+              className="w-full h-full object-cover object-center lg:object-right transition-transform duration-1000 ease-out group-hover:scale-105"
+            />
+            {/* Gradient phủ nhẹ để hòa sắc tự nhiên và tạo độ tương phản */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent lg:bg-gradient-to-r lg:from-slate-950/50 lg:via-slate-950/10 lg:to-transparent pointer-events-none" />
+          </div>
 
-              {/* Subtitle */}
-              <p className="text-base sm:text-lg font-medium text-lnt-blue mt-2 leading-snug">
-                Modern, Customizable ERP Software for Your Entire Apparel Business Ecosystem
-              </p>
-            </div>
-
-            {/* Khối OVERVIEW: Giữ nguyên vẹn 100% nội dung gốc */}
-            <div className="space-y-4 pt-1">
+          {/* 2. THẺ KÍNH MỜ NỔI (FLOATING FROSTED GLASS OVERLAY CARD) */}
+          <div className="relative p-6 sm:p-8 lg:p-0 lg:absolute lg:inset-y-8 lg:left-8 lg:max-w-[560px] xl:max-w-[620px] z-20 flex items-center">
+            <div className="w-full rounded-2xl sm:rounded-3xl bg-white/95 lg:bg-white/90 backdrop-blur-xl border border-white/95 shadow-2xl p-6 sm:p-8 lg:p-9 space-y-4 ring-1 ring-slate-900/5">
               
               {/* OVERVIEW Badge (Capsule Pill đỏ Ruby tinh tế) */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-600 text-xs font-bold uppercase tracking-wider shadow-2xs">
@@ -120,55 +141,19 @@ export default function ApparelSection() {
                 <span>OVERVIEW</span>
               </div>
 
-              {/* Đoạn 1: Lead Quote */}
+              {/* Lead Quote */}
               <div className="relative border-l-3 border-lnt-blue pl-4 sm:pl-5 py-1">
                 <p className="text-base sm:text-[17px] font-bold italic text-slate-800 leading-relaxed font-sans">
                   "FXPRO Product Suite is an integrated, AI-powered, end-to-end Apparel ERP & MES solution designed to digitalize, streamline, and optimize the business operations, supply chain activities, and factory-floor execution within one unified platform."
                 </p>
               </div>
 
-              {/* Đoạn 2: Explanation */}
-              <p className="text-sm sm:text-base font-normal not-italic text-slate-600 leading-relaxed pl-1 font-sans">
+              {/* Explanation Paragraph */}
+              <p className="text-sm sm:text-base font-normal text-slate-600 leading-relaxed pl-1 font-sans">
                 Leveraging advanced technologies, intelligent automation, and real-time operational intelligence, FXPRO empowers apparel manufacturers to achieve greater operational efficiency, enhance production performance, improve end-to-end visibility, and accelerate data-driven decision-making.
               </p>
-            </div>
-
-          </div>
-
-          {/* CỘT PHẢI (5 CỘT): TẠO HÌNH VIÊN THUỐC ĐỨNG PHÁ CÁCH (CAPSULE PORTAL)
-              - Tạo hình tròn viên thuốc mềm mại (rounded-full), phá vỡ hoàn toàn góc vuông lặp lại
-              - Bỏ sạch các chấm dot dot, chỉ giữ quầng sáng và vòng tròn đồng tâm tối giản
-              - Ảnh sạch nguyên bản 100%, không viết bất kỳ chữ nào đè lên ảnh
-          ========================================================================= */}
-          <div className="lg:col-span-5 relative flex items-center justify-center py-4 lg:py-6">
-            
-            {/* 1. Hào quang ánh sáng mềm mại phía sau (Brand Soft Glow) */}
-            <div className="pointer-events-none absolute -top-10 -right-10 h-80 w-80 rounded-full bg-gradient-to-tr from-sky-200/45 via-blue-100/30 to-indigo-100/25 blur-[100px] -z-30" />
-            <div className="pointer-events-none absolute -bottom-10 -left-10 h-72 w-72 rounded-full bg-cyan-100/40 blur-[90px] -z-30" />
-
-            {/* 2. Cụm vòng tròn quỹ đạo đồng tâm tối giản (Không chấm dot dot) */}
-            <div className="relative w-full flex items-center justify-center">
-              
-              {/* Vòng đệm ngoài cùng: Bo tròn viên thuốc lớn, nền kính mờ nhẹ */}
-              <div className="absolute -inset-6 sm:-inset-7 rounded-full border border-sky-100 bg-gradient-to-b from-sky-50/50 via-slate-50/30 to-transparent -z-20 pointer-events-none" />
-
-              {/* Vòng nét chỉ mạ kim thứ hai: Nét mảnh màu xanh thương hiệu LNT */}
-              <div className="absolute -inset-3 sm:-inset-3.5 rounded-full border border-lnt-blue/25 -z-10 pointer-events-none" />
-
-              {/* Khung ảnh chính: Dáng Viên thuốc đứng cao cấp (Capsule Portal), bo tròn hoàn toàn rounded-full */}
-              <div className="relative w-full max-w-[390px] sm:max-w-[420px] lg:max-w-[430px] h-[460px] sm:h-[500px] lg:h-[520px] rounded-full overflow-hidden shadow-2xl border-4 border-white ring-1 ring-slate-200/90 group bg-slate-900">
-                <img
-                  src={ApparelIndustryImage}
-                  alt="FXPRO Apparel ERP & MES Smart Factory Operation"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                
-                {/* Lớp bóng kính mờ nhẹ ở đáy để tạo chiều sâu quang học tự nhiên, không che khuất ảnh */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none" />
-              </div>
 
             </div>
-
           </div>
 
         </div>

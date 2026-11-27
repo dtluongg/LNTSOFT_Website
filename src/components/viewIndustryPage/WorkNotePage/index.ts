@@ -1,0 +1,6 @@
+export { default as WorkNotePage } from './WorkNotePage'
+export { default as WorkNoteIntroduce } from './WorkNoteIntroduce'
+export { default as WorkNoteCapabilities } from './WorkNoteCapabilities'
+export { default as WorkNoteWorkflow } from './WorkNoteWorkflow'
+export { default as WorkNoteBenefits } from './WorkNoteBenefits'
+export { default as WorkNoteFinal } from './WorkNoteFinal'

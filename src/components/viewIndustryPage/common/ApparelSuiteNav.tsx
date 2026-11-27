@@ -45,7 +45,7 @@ export default function ApparelSuiteNav({ currentSuite, onBack, onNavigate }: Ap
       name: 'WORKNOTE',
       slug: '#industry/worknote',
       icon: FileText,
-      available: false, // Sẵn sàng mở trang khi triển khai
+      available: true,
     },
   ]
 

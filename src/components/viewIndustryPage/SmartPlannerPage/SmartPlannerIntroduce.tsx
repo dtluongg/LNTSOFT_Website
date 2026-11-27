@@ -6,7 +6,7 @@ import {
   Sparkles,
 } from 'lucide-react'
 import IndustryHeroTemplate from '../common/IndustryHeroTemplate'
-import image1 from '../../../assets/components/industryPage/Smart_Planner/hinh1.png'
+import smartPlannerBanner from '../../../assets/components/industryPage/Smart_Planner/banner.png'
 export default function SmartPlannerIntroduce() {
   // 4 Tính năng cốt lõi của FXPRO Smart Planner
   const plannerFeatures = [
@@ -43,14 +43,14 @@ export default function SmartPlannerIntroduce() {
       titleLine2="Smart Planner"
       titleLine2Color="#087bc1"
       tagline="Intelligent Production Scheduling & Dynamic Capacity Optimization"
-      description="FXPRO Smart Planner empowers garment manufacturers with automated scheduling, real-time capacity balancing, and critical path control. By synchronizing sewing line loading with material readiness and order lead times, Smart Planner eliminates bottlenecks, maximizes line efficiency, and ensures on-time delivery across every factory floor."
+      description="FXPRO Smart Planner empowers garment manufacturers with automated scheduling, real-time capacity balancing, and critical path control. By synchronizing line loading with material readiness, it eliminates bottlenecks, maximizes throughput, and ensures on-time delivery across every floor."
       features={plannerFeatures}
       primaryCtaText="Explore Capabilities"
       primaryCtaLink="#capabilities"
       secondaryCtaText="Request a Demo"
       secondaryCtaLink="#contact"
       // bgImage="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80"
-      bgImage= {image1}
+      bgImage= {smartPlannerBanner}
       bgImageAlt="FXPRO Smart Planner Advanced Manufacturing Scheduling"
     />
   )

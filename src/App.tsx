@@ -9,8 +9,9 @@ import { AISuitePage } from './components/viewIndustryPage/AISuitePage'
 import { AIInsightPage } from './components/viewIndustryPage/AIInsightPage'
 import { SmartPlannerPage } from './components/viewIndustryPage/SmartPlannerPage'
 import { SmartFactoryPage } from './components/viewIndustryPage/SmartFactoryPage'
+import { WorkNotePage } from './components/viewIndustryPage/WorkNotePage'
 
-export type PageRoute = 'home' | 'product' | 'industry' | 'ai-suite' | 'ai-insight' | 'smart-planner' | 'smart-factory'
+export type PageRoute = 'home' | 'product' | 'industry' | 'ai-suite' | 'ai-insight' | 'smart-planner' | 'smart-factory' | 'worknote'
 
 // 1. Nhận diện Route linh hoạt từ URL Hash lẫn URL Pathname
 const getRoute = (): { page: PageRoute; targetId?: string } => {
@@ -18,6 +19,9 @@ const getRoute = (): { page: PageRoute; targetId?: string } => {
   const path = (window.location.pathname || '').toLowerCase()
   const full = `${hash} ${path}`
 
+  if (full.includes('worknote')) {
+    return { page: 'worknote', targetId: 'worknote' }
+  }
   if (full.includes('smart-factory')) {
     return { page: 'smart-factory', targetId: 'smart-factory' }
   }
@@ -60,7 +64,10 @@ export default function App() {
   // 3. Hàm chuyển trang tập trung & gán Hash trực quan
   const handleNavigate = (page: PageRoute, targetId?: string) => {
     setRoute({ page, targetId: targetId || page })
-    if (page === 'smart-factory') {
+    if (page === 'worknote') {
+      window.location.hash = 'industry/worknote'
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else if (page === 'smart-factory') {
       window.location.hash = 'industry/smart-factory'
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } else if (page === 'smart-planner') {
@@ -87,6 +94,9 @@ export default function App() {
     <div className="min-h-screen bg-white text-slate-900">
       <Navbar currentPage={route.page} onNavigate={handleNavigate} />
       <main>
+        {route.page === 'worknote' && (
+          <WorkNotePage onBack={() => handleNavigate('industry', 'apparel')} onNavigate={handleNavigate} />
+        )}
         {route.page === 'smart-factory' && (
           <SmartFactoryPage onBack={() => handleNavigate('industry', 'apparel')} onNavigate={handleNavigate} />
         )}
